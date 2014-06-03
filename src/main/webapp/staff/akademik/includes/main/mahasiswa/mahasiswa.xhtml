@@ -25,6 +25,19 @@
 		<br />
 		<br />
 
+		<h3>Export Page Data Only</h3>
+		<h:commandLink>
+			<p:graphicImage name="/demo/images/excel.png" />
+			<p:dataExporter type="xls" target="tbl_mahasiswa" fileName="cars"
+				pageOnly="true" />
+		</h:commandLink>
+
+		<h:commandLink>
+			<p:graphicImage name="/demo/images/pdf.png" />
+			<p:dataExporter type="pdf" target="tbl_mahasiswa" fileName="cars"
+				pageOnly="true" />
+		</h:commandLink>
+
 		<p:dataTable id="tbl_mahasiswa" widgetVar="mahasiswaTable"
 			value="#{mahasiswaBean.listMahasiswas}" var="mahasiswas"
 			paginator="true" rows="20"
@@ -40,30 +53,50 @@
             </p:outputPanel>
         	</f:facet>
 
-			<p:column headerText="NPM" filterBy="#{mahasiswas.mhsNpm}"
-				filterMatchMode="contains">
+			<p:column filterBy="#{mahasiswas.mhsNpm}" filterMatchMode="contains">
+				<f:facet name="header">
+					<h:outputText value="NPM" />
+				</f:facet>
 				<h:outputText value="#{mahasiswas.mhsNpm}" />
 			</p:column>
-			<p:column headerText="Nama Lengkap"
-				filterBy="#{mahasiswas.mhsNamaLengkap}" filterMatchMode="contains">
+			<p:column filterBy="#{mahasiswas.mhsNamaLengkap}"
+				filterMatchMode="contains">
+				<f:facet name="header">
+					<h:outputText value="Nama Lengkap" />
+				</f:facet>
 				<h:outputText value="#{mahasiswas.mhsNamaLengkap}" />
 			</p:column>
-			<p:column headerText="Tempat Lahir">
+			<p:column>
+				<f:facet name="header">
+					<h:outputText value="Tempat Lahir" />
+				</f:facet>
 				<h:outputText value="#{mahasiswas.mhsTempatLahir}" />
 			</p:column>
-			<p:column headerText="Tanggal Lahir">
+			<p:column>
+				<f:facet name="header">
+					<h:outputText value="Tanggal Lahir" />
+				</f:facet>
 				<h:outputText value="#{mahasiswas.mhsTanggalLahir}" />
 			</p:column>
-			<p:column headerText="Jenis Kelamin"
-				filterBy="#{mahasiswas.mhsJnsKelamin}" filterMatchMode="contains">
+			<p:column filterBy="#{mahasiswas.mhsJnsKelamin}"
+				filterMatchMode="contains">
+				<f:facet name="header">
+					<h:outputText value="Jenis Kelamin" />
+				</f:facet>
 				<h:outputText value="#{mahasiswas.mhsJnsKelamin}" />
 			</p:column>
-			<p:column headerText="Asal Sekolah"
-				filterBy="#{mahasiswas.mhsAsalSekolah}" filterMatchMode="contains">
+			<p:column filterBy="#{mahasiswas.mhsAsalSekolah}"
+				filterMatchMode="contains">
+				<f:facet name="header">
+					<h:outputText value="Asal Sekolah" />
+				</f:facet>
 				<h:outputText value="#{mahasiswas.mhsAsalSekolah}" />
 			</p:column>
-			<p:column headerText="Alamat" filterBy="#{mahasiswas.mhsAlamat}"
+			<p:column filterBy="#{mahasiswas.mhsAlamat}"
 				filterMatchMode="contains">
+				<f:facet name="header">
+					<h:outputText value="Alamat" />
+				</f:facet>
 				<h:outputText value="#{mahasiswas.mhsAlamat}" />
 			</p:column>
 			<!-- <p:column headerText="Nama Orang Tua">
@@ -72,11 +105,14 @@
 			<p:column headerText="Pekerjaan Orang Tua">
 				<h:outputText value="#{mahasiswas.mhsPekerjaanOrangTua}" />
 			</p:column> -->
-			<p:column headerText="Judul Penelitian">
+			<p:column>
+				<f:facet name="header">
+					<h:outputText value="Judul Penelitian" />
+				</f:facet>
 				<h:outputText value="#{mahasiswas.mhsJudulPenelitian}" />
 			</p:column>
 
-			<p:column headerText="Action" style="width:120px">
+			<p:column headerText="Action" style="width:120px" exportable="false">
 				<p:commandButton id="view" icon="ui-icon-contact" update=":display"
 					onclick="mahasiswaDialogShowWidget.show()">
 					<f:setPropertyActionListener value="#{mahasiswas}"
@@ -99,6 +135,7 @@
 			</p:column>
 		</p:dataTable>
 	</h:form>
+
 	<ui:include
 		src="/staff/akademik/includes/main/mahasiswa/dialogs/addMahasiswaDialog.xhtml"></ui:include>
 	<ui:include
