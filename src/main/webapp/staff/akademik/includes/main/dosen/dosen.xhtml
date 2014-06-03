@@ -30,20 +30,21 @@
 			rows="20"
 			paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
 			rowsPerPageTemplate="20,50,100">
-
-			<p:column headerText="Kode">
+ 
+			
+			<p:column headerText="Kode" filterBy="#{dosens.DKodeDosen}" filterMatchMode="contains">
 				<h:outputText value="#{dosens.DKodeDosen}" />
 			</p:column>
-			<p:column headerText="Nama Lengkap">
+			<p:column headerText="Nama Lengkap" filterBy="#{dosens.DNamaDosen}" filterMatchMode="contains">
 				<h:outputText value="#{dosens.DNamaDosen}" />
 			</p:column>
-			<p:column headerText="Nidn">
+			<p:column headerText="Nidn" filterBy="#{dosens.DNidn}" filterMatchMode="contains">
 				<h:outputText value="#{dosens.DNidn}" />
 			</p:column>
-			<p:column headerText="Riwayat Pendidikan">
+			<p:column headerText="Riwayat Pendidikan" filterBy="#{dosens.DRiwayatPendidikan}" filterMatchMode="contains">
 				<h:outputText value="#{dosens.DRiwayatPendidikan}" />
 			</p:column>
-			<p:column headerText="Alamat">
+			<p:column headerText="Alamat" filterBy="#{dosens.DAlamat}" filterMatchMode="contains">
 				<h:outputText value="#{dosens.DAlamat}" />
 			</p:column>
 			<p:column headerText="Kontak">
