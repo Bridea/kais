@@ -1,0 +1,76 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<f:view>
+	<h:head>
+		<title>SIAK | APIKES</title>
+		<link rel="shortcut icon" href="images/favicon.png" />
+		<!-- Google Web Fonts-->
+		<link
+			href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800'
+			rel='stylesheet' type='text/css' />
+		<link href='http://fonts.googleapis.com/css?family=Montserrat:400,700'
+			rel='stylesheet' type='text/css' />
+		<link
+			href='http://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic'
+			rel='stylesheet' type='text/css' />
+
+		<!-- Style Sheet-->
+		<link rel="stylesheet" href="resources/css/style.css" />
+		<link rel='stylesheet' id='bootstrap-css-css'
+			href='resources/css/bootstrap5152.css?ver=1.0' type='text/css'
+			media='all' />
+		<link rel='stylesheet' id='responsive-css-css'
+			href='resources/css/responsive5152.css?ver=1.0' type='text/css'
+			media='all' />
+		<link rel='stylesheet' id='pretty-photo-css-css'
+			href='resources/js/prettyphoto/prettyPhotoaeb9.css?ver=3.1.4'
+			type='text/css' media='all' />
+		<link rel='stylesheet' id='main-css-css'
+			href='resources/css/main5152.css?ver=1.0' type='text/css' media='all' />
+		<link rel='stylesheet' id='custom-css-css'
+			href='resources/css/custom5152.html?ver=1.0' type='text/css'
+			media='all' />
+	</h:head>
+
+	<h:body>
+
+		<ui:insert name="header">
+			<ui:include src="/WEB-INF/includes/content/header.xhtml"></ui:include>
+		</ui:insert>
+
+		<!-- Start of Page Container -->
+		<div class="page-container">
+			<div class="container">
+				<div class="row">
+
+					<ui:insert name="sidebar">
+						<ui:include src="/WEB-INF/includes/content/sidebar.xhtml"></ui:include>
+					</ui:insert>
+
+					<div id="wrapper">
+						<p:growl id="growl" />
+						<ui:insert name="page-content">
+							<ui:include src="/WEB-INF/includes/main/dashboard.xhtml"></ui:include>
+						</ui:insert>
+
+					</div>
+				</div>
+			</div>
+
+		</div>
+
+		<!-- End of Page Container -->
+
+		<ui:insert name="footer">
+			<ui:include src="/WEB-INF/includes/content/footer.xhtml"></ui:include>
+		</ui:insert>
+	</h:body>
+</f:view>
+</html>

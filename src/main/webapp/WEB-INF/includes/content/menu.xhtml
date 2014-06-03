@@ -1,0 +1,47 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+	<h:form>
+		<div id="menu">
+			<ul class="menu">
+				<li><h:commandLink id="Beranda"
+						actionListener="#{navigationBean.navigationPathChange}"
+						styleClass="parent">
+						<span>Beranda</span>
+						<f:param name="includePath"
+							value="/WEB-INF/includes/main/beranda.xhtml" />
+					</h:commandLink></li>
+
+				<li><a href="#" class="parent"><span>Layanan</span></a>
+					<div>
+						<ul>
+							<li><a href="#" class="parent"><span>Mahasiswa</span></a>
+								<div>
+									<ul>
+										<li><a href="#"><span>Mahasiswa Aktif</span></a></li>
+										<li><a href="#"><span>Mahasiswa Pindahan</span></a></li>
+										<li><a href="#"><span>Alumni</span></a></li>
+									</ul>
+								</div></li>
+							<li><a href="fakultas"><span>Fakultas</span></a></li>
+							<li><a href="jurusan"><span>Jurusan</span></a></li>
+							<li><a href="#"><span>Mata Kuliah</span></a></li>
+							<li><a href="#"><span>Pegawai</span></a></li>
+							<li><a href="#"><span>Dosen</span></a></li>
+						</ul>
+					</div></li>
+				<li><a href="#" class="parent"><span>Registrasi</span></a>
+					<div>
+						<ul>
+							<li><a href="#"><span>Registrasi Wisuda</span></a></li>
+							<li><a href="#"><span>Registrasi Tugas Akhir</span></a></li>
+							<li><a href="#"><span>Registrasi Skripsi</span></a></li>
+							<li><a href="#"><span>Registrasi Kerja Praktek</span></a></li>
+						</ul>
+					</div></li>
+				<li class="last"><a href="#"><span>logout</span></a></li>
+			</ul>
+		</div>
+	</h:form>
+</ui:composition>

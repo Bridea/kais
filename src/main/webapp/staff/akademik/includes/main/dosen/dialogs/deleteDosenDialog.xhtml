@@ -1,0 +1,29 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+	<p:dialog header="Delete Dosen" widgetVar="dosenDeleteDialogWidget"
+		id="dosenDeleteDialogId" modal="false" closable="true"
+		draggable="false" resizable="false" showEffect="clip"
+		hideEffect="clip">
+		<h:form id="dosenDeleteDialogForm" prependId="false">
+			<h:outputText value="Yakin Akan Menhapus dosen : " />
+			<h:outputText value="#{dosenBean.dosen.DNamaDosen}" />
+			<br />
+			<br />
+
+			<p:commandButton value="Submit" icon="ui-icon-plus"
+				action="#{dosenBean.delete}" update=":growl :form_dosen:tbl_dosen"
+				oncomplete="closeDialogIfSucess(xhr, status, args, dosenDeleteDialogWidget, 'dosenDeleteDialogId')" />
+			<p:commandButton value="Cancel" icon="ui-icon-cancel"
+				actionListener="#{dosenBean.clear}"
+				onclick="dosenDeleteDialogWidget.hide();" type="button" />
+		</h:form>
+	</p:dialog>
+
+</ui:composition>

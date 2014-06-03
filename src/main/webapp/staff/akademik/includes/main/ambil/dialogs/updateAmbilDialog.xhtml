@@ -1,0 +1,44 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+	<p:dialog header="Update ambil" widgetVar="ambilUpdateDialogWidget"
+		id="ambilUpdateDialogId" modal="false" closable="true"
+		draggable="false" resizable="false" showEffect="clip"
+		hideEffect="clip">
+		<h:form id="ambilUpdateDialogForm" prependId="false">
+			<h:panelGrid columns="2">
+
+				<p:outputLabel value="Mahasiswa : " />
+				<p:selectOneMenu value="#{ambilBean.tempNPM}">
+					<f:selectItem itemLabel="-- Pilih Mahasiswa --" itemValue=" " />
+					<f:selectItems value="#{mahasiswaBean.listMahasiswas}"
+						var="mahasiswa" itemLabel="#{mahasiswa.mhsNamaLengkap}"
+						itemValue="#{mahasiswa.mhsNpm}" />
+				</p:selectOneMenu>
+
+				<p:outputLabel value="Jadwal : " />
+				<p:selectOneMenu value="#{ambilBean.tempIdJadwal}">
+					<f:selectItem itemLabel="-- Pilih Jadwal --" itemValue=" " />
+					<f:selectItems value="#{jadwalBean.listJadwals}" var="jadwal"
+						itemLabel="#{jadwal.JIdJadwal}" itemValue="#{jadwal.JIdJadwal}" />
+				</p:selectOneMenu>
+
+				<p:outputLabel value="Nilai : " />
+				<p:inputText id="add_ambil_update_nilai"
+					value="#{ambilBean.ambil.ANilai}" required="true"
+					requiredMessage="Nilai tidak boleh kosong"
+					label="add_ambil_update_nilai" />
+
+			</h:panelGrid>
+			<p:commandButton value="Submit" icon="ui-icon-plus"
+				action="#{ambilBean.update}" update=":growl :form_ambil:tbl_ambil"
+				oncomplete="closeDialogIfSucess(xhr, status, args, ambilUpdateDialogWidget, 'ambilUpdateDialogId')" />
+		</h:form>
+	</p:dialog>
+</ui:composition>

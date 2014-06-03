@@ -1,0 +1,40 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+	<p:dialog header="Tambah Mata Kuliah Baru"
+		widgetVar="mataKuliahCreateDialogWidget" id="mataKuliahCreateDialogId"
+		modal="false" closable="true" draggable="false" resizable="false"
+		showEffect="clip" hideEffect="clip">
+		<h:form id="mataKuliahCreateDialogForm">
+			<h:panelGrid columns="2" style="margin-bottom:20px" cellpadding="3">
+
+				<p:outputLabel value="Kode Mk : " />
+				<p:inputText id="add_mk_inp_kode_mk"
+					value="#{mataKuliahBean.mataKuliah.mkKodeMk}" required="true"
+					requiredMessage="Kode MK tidak boleh kosong"
+					label="add_mk_inp_kode_mk" />
+
+				<p:outputLabel value="Nama : " />
+				<p:inputText id="add_mk_inp_nama"
+					value="#{mataKuliahBean.mataKuliah.mkNamaMk}" required="true"
+					requiredMessage="Nama tidak boleh kosong" label="add_mk_inp_nama" />
+
+				<p:outputLabel value="SKS : " />
+				<p:inputText id="add_mk_inp_sks"
+					value="#{mataKuliahBean.mataKuliah.mkSks}" required="true"
+					requiredMessage="SKS tidak boleh kosong" label="add_mk_inp_sks" />
+
+			</h:panelGrid>
+			<p:commandButton value="Submit" icon="ui-icon-plus"
+				action="#{mataKuliahBean.insert}"
+				update=":growl :form_mataKuliah:tbl_mataKuliah"
+				oncomplete="closeDialogIfSucess(xhr, status, args, mataKuliahCreateDialogWidget, 'mataKuliahCreateDialogId')" />
+		</h:form>
+	</p:dialog>
+</ui:composition>

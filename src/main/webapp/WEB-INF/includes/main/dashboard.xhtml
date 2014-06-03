@@ -1,0 +1,70 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+	<!-- start of page content -->
+	<div class="span8 page-content">
+
+		<!-- Basic Home Page Template -->
+		<div class="row separator offset1">
+			<p style="text-align: center; font-style: arial; font-size: 20px;">Selamat
+				Datang Di Situs Akademik</p>
+			<p style="padding-left: 5%">Daftar informasi nilai matakuliah
+				yang telah tersedia</p>
+
+			<h:form id="form_nilai_mahasiswa">
+				<p:dataTable id="tbl_lihat_nilai" widgetVar="lihatNilaiTable"
+					value="#{ambilBean.listNilaiMahasiswaSesuaiNPM}" var="ambils"
+					style="width:100%">
+
+					<p:column headerText="NPM">
+						<h:outputText value="#{ambils.MMahasiswa.mhsNpm}" />
+					</p:column>
+					<p:column headerText="Mahasiswa">
+						<h:outputText value="#{ambils.MMahasiswa.mhsNamaLengkap}" />
+					</p:column>
+					<p:column headerText="Kode MK">
+						<h:outputText value="#{ambils.MJadwal.MMataKuliah.mkKodeMk}" />
+					</p:column>
+					<p:column headerText="MataKuliah">
+						<h:outputText value="#{ambils.MJadwal.MMataKuliah.mkNamaMk}" />
+					</p:column>
+					<p:column headerText="SKS">
+						<h:outputText value="#{ambils.MJadwal.MMataKuliah.mkSks}" />
+					</p:column>
+					<p:column headerText="Nilai">
+						<h:outputText value="#{ambils.ANilai}" />
+					</p:column>
+				</p:dataTable>
+			</h:form>
+
+			<p style="border-bottom: 1px solid #ccc;"></p>
+
+			<p style="padding-left: 5%">Daftar informasi IPK tertinggi</p>
+			<table border="1" style="width: 100%" class="table">
+				<tr class="active">
+					<td width="5">Angkatan</td>
+					<td width="68"><div align="center">Nama Mahasiswa</div></td>
+					<td><div align="center">IPK</div></td>
+				</tr>
+
+				<tr class="active">
+					<td></td>
+					<td></td>
+					<td width="3"></td>
+				</tr>
+				<tr class="active">
+					<td></td>
+					<td></td>
+					<td></td>
+				</tr>
+			</table>
+			<p style="border-bottom: 1px solid #ccc;"></p>
+			<p style="padding-left: 5%">*silahkan cek nilai anda dengan
+				mengisi form pada sisi kiri situs ini</p>
+		</div>
+	</div>
+	<!-- end of page content -->
+</ui:composition>

@@ -1,0 +1,39 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+	<p:dialog header="Tahun Ajaran Detail"
+		widgetVar="tahunAjaranDialogShowWidget" resizable="false"
+		id="tahunAjaranDlgShow" draggable="false" showEffect="clip"
+		hideEffect="clip" modal="false">
+		<p:panel>
+			<h:panelGrid id="display" columns="2" cellpadding="4"
+				style="margin:0 auto;">
+
+				<p:outputLabel value="Id Tahun Ajaran : " />
+				<p:outputLabel value="#{thnAjaranBean.thnAjaran.taIdThnAjaran}"
+					style="font-weight:bold" />
+
+				<p:outputLabel value="Kurikulum : " />
+				<p:outputLabel
+					value="#{thnAjaranBean.thnAjaran.MKurikulum.kurNamaKurikulum}"
+					style="font-weight:bold" />
+
+				<p:outputLabel value="Tahun Ajaran : " />
+				<p:outputLabel value="#{thnAjaranBean.thnAjaran.taTahunAjaran}"
+					style="font-weight:bold" />
+
+				<p:outputLabel value="Semester : " />
+				<p:outputLabel value="#{thnAjaranBean.thnAjaran.taSemester}"
+					style="font-weight:bold" />
+
+			</h:panelGrid>
+		</p:panel>
+	</p:dialog>
+
+</ui:composition>

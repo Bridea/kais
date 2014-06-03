@@ -1,0 +1,52 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+	<!-- start of sidebar -->
+	<aside class="span4 page-sidebar">
+
+		<section class="widget">
+			<div class="support-widget">
+				<p style="text-align: center;">Masukkan NPM Anda untuk dapat
+					mengakses data akademik.</p>
+				<p style="border-bottom: 1px solid #ccc;"></p>
+
+				<h:form style="padding:0% 15% 0% 15%; margin:5%">
+					<p:inputText value="#{ambilBean.tempNPMCariNilai}"
+						style="width:90%" />
+					<p:commandButton value="Search"
+						action="#{ambilBean.searchNilaiByNPM}"
+						update=":form_nilai_mahasiswa :growl" />
+				</h:form>
+				<p style="border-bottom: 1px solid #ccc;"></p>
+				<ul>
+					<li>Lupa Password</li>
+				</ul>
+			</div>
+		</section>
+
+		<section class="widget">
+			<div class="quick-links-widget">
+				<b>Berita</b>
+
+				<ul>
+					<li style="text-align: justify;">Situs ini dalam fase
+						pengembangan, untuk sementara mahasiswa hanya bisa mengakses data
+						transkrip nilai.</li>
+
+					<li style="text-align: justify;">Lorem Ipsum is simply dummy
+						text of the printing and typesetting industry. Lorem Ipsum has
+						been the industry's standard dummy text ever since the 1500s.</li>
+				</ul>
+
+			</div>
+		</section>
+
+
+
+	</aside>
+	<!-- end of sidebar -->
+
+</ui:composition>

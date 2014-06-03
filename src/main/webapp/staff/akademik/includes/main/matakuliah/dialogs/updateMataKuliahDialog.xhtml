@@ -1,0 +1,35 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+	<p:dialog header="Update Mata Kuliah"
+		widgetVar="mataKuliahUpdateDialogWidget" id="mataKuliahUpdateDialogId"
+		modal="false" closable="true" draggable="false" resizable="false"
+		showEffect="clip" hideEffect="clip">
+		<h:form id="mataKuliahUpdateDialogForm" prependId="false">
+			<h:panelGrid columns="2">
+
+				<p:outputLabel value="Nama : " />
+				<p:inputText id="add_mk_update_nama"
+					value="#{mataKuliahBean.mataKuliah.mkNamaMk}" required="true"
+					requiredMessage="Nama tidak boleh kosong"
+					label="add_mk_update_nama" />
+
+				<p:outputLabel value="SKS : " />
+				<p:inputText id="add_mk_update_sks"
+					value="#{mataKuliahBean.mataKuliah.mkSks}" required="true"
+					requiredMessage="SKS tidak boleh kosong" label="add_mk_update_sks" />
+
+			</h:panelGrid>
+			<p:commandButton value="Submit" icon="ui-icon-plus"
+				action="#{mataKuliahBean.update}"
+				update=":growl :form_mataKuliah:tbl_mataKuliah"
+				oncomplete="closeDialogIfSucess(xhr, status, args, mataKuliahUpdateDialogWidget, 'mataKuliahUpdateDialogId')" />
+		</h:form>
+	</p:dialog>
+</ui:composition>

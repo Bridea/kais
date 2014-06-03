@@ -1,0 +1,63 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+	<p:dialog header="mahasiswa Detail"
+		widgetVar="mahasiswaDialogShowWidget" resizable="false"
+		id="mahasiswaDlgShow" showEffect="clip" draggable="false"
+		hideEffect="clip" modal="false">
+		<p:panel>
+			<h:panelGrid id="display" columns="2" cellpadding="4"
+				style="margin:0 auto;">
+
+				<p:outputLabel value="NPM : " />
+				<p:outputLabel value="#{mahasiswaBean.mahasiswa.mhsNpm}"
+					style="font-weight:bold" />
+
+				<p:outputLabel value="Nama Lengkap : " />
+				<p:outputLabel value="#{mahasiswaBean.mahasiswa.mhsNamaLengkap}"
+					style="font-weight:bold" />
+
+				<p:outputLabel value="Tempat Lahir : " />
+				<p:outputLabel value="#{mahasiswaBean.mahasiswa.mhsTempatLahir}"
+					style="font-weight:bold" />
+
+				<p:outputLabel value="Tanggal Lahir : " />
+				<p:outputLabel value="#{mahasiswaBean.mahasiswa.mhsTanggalLahir}"
+					style="font-weight:bold" />
+
+				<p:outputLabel value="Jenis Kelamin : " />
+				<p:outputLabel value="#{mahasiswaBean.mahasiswa.mhsJnsKelamin}"
+					style="font-weight:bold" />
+
+				<p:outputLabel value="Asal Sekolah : " />
+				<p:outputLabel value="#{mahasiswaBean.mahasiswa.mhsAsalSekolah}"
+					style="font-weight:bold" />
+
+				<p:outputLabel value="Alamat : " />
+				<p:outputLabel value="#{mahasiswaBean.mahasiswa.mhsAlamat}"
+					style="font-weight:bold" />
+
+				<p:outputLabel value="Nama Orang Tua / Wali : " />
+				<p:outputLabel value="#{mahasiswaBean.mahasiswa.mhsNamaOrangTua}"
+					style="font-weight:bold" />
+
+				<p:outputLabel value="Pekerjaan Orang Tua / Wali : " />
+				<p:outputLabel
+					value="#{mahasiswaBean.mahasiswa.mhsPekerjaanOrangTua}"
+					style="font-weight:bold" />
+
+				<p:outputLabel value="Judul Penelitian : " />
+				<p:outputLabel value="#{mahasiswaBean.mahasiswa.mhsJudulPenelitian}"
+					style="font-weight:bold" />
+
+			</h:panelGrid>
+		</p:panel>
+	</p:dialog>
+
+</ui:composition>

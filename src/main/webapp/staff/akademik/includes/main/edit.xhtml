@@ -1,0 +1,97 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+</h:head>
+<h:body>
+	<h:form id="form">
+		<p:growl id="msgs" showDetail="true" />
+
+		<p:contextMenu for="kontrak" widgetVar="cMenu">
+			<p:menuitem value="Edit Nilai" icon="ui-icon-search"
+				onclick="PF('cellKontraks').showCellEditor();return false;" />
+			<p:menuitem value="Hide Menu" icon="ui-icon-close"
+				onclick="PF('cMenu').hide()" />
+		</p:contextMenu>
+
+		<br />
+		<h:panelGrid columns="7">
+			<p:outputLabel value="Matakuliah :" />
+			<p:selectOneMenu id="search_ambil_by_mk">
+				<f:selectItem itemLabel="-- Pilih Matakuliah --" />
+				<f:selectItems value="#{mataKuliahBean.listMataKuliahs}"
+					var="matakuliah" itemLabel="#{matakuliah.mkNamaMk}"
+					itemValue="#{matakuliah.mkNamaMk}" />
+			</p:selectOneMenu>
+			<p:outputLabel value="Dosen :" />
+			<p:selectOneMenu id="search_ambil_by_dsn">
+				<f:selectItem itemLabel="-- Pilih Dosen --" />
+				<f:selectItems value="#{dosenBean.listDosens}" var="dosen"
+					itemLabel="#{dosen.DNamaDosen}" itemValue="#{dosen.DKodeDosen}" />
+			</p:selectOneMenu>
+			<p:outputLabel value="Kelas :" />
+			<p:selectOneMenu>
+				<f:selectItem itemLabel="-- Pilih Kelas --" />
+				<f:selectItems value="#{kelasBean.listKelass}" var="kelas"
+					itemLabel="#{kelas.KNamaKelas}" itemValue="#{kelas.KIdKelas}" />
+			</p:selectOneMenu>
+
+			<p:commandButton value="Search" />
+		</h:panelGrid>
+		<br />
+
+		<p:dataTable id="kontrak" var="kontraks"
+			value="#{editNilai.listKontrakMatakuliah}" editable="true"
+			editMode="cell" widgetVar="cellKontraks">
+			<f:facet name="header">
+           Nilai Editing with DoubleClick and RightClick
+       </f:facet>
+
+			<p:ajax event="cellEdit" listener="#{editNilai.onCellEdit}"
+				update=":form:msgs" />
+
+			<p:column headerText="NPM">
+				<h:outputText value="#{kontraks.MMahasiswa.mhsNpm}" />
+			</p:column>
+			<p:column headerText="Mahasiswa">
+				<h:outputText value="#{kontraks.MMahasiswa.mhsNamaLengkap}" />
+			</p:column>
+			<p:column headerText="Kode MK">
+				<h:outputText value="#{kontraks.MJadwal.MMataKuliah.mkKodeMk}" />
+			</p:column>
+			<p:column headerText="MataKuliah">
+				<h:outputText value="#{kontraks.MJadwal.MMataKuliah.mkNamaMk}" />
+			</p:column>
+			<p:column headerText="SKS">
+				<h:outputText value="#{kontraks.MJadwal.MMataKuliah.mkSks}" />
+			</p:column>
+
+			<p:column headerText="Nilai" style="width:10%">
+				<p:cellEditor>
+					<f:facet name="output">
+						<h:outputText value="#{kontraks.ANilai}" />
+					</f:facet>
+					<f:facet name="input">
+						<!-- <p:inputText id="modelInput" value="#{kontraks.ANilai}"
+							style="width:26%" /> -->
+						<h:selectOneMenu id="modelInput" value="#{kontraks.ANilai}"
+							style="width:50%">
+							<f:selectItem itemLabel="A" itemValue="A" />
+							<f:selectItem itemLabel="B" itemValue="B" />
+							<f:selectItem itemLabel="C" itemValue="C" />
+							<f:selectItem itemLabel="D" itemValue="D" />
+							<f:selectItem itemLabel="E" itemValue="E" />
+						</h:selectOneMenu>
+					</f:facet>
+				</p:cellEditor>
+			</p:column>
+		</p:dataTable>
+	</h:form>
+</h:body>
+</html>

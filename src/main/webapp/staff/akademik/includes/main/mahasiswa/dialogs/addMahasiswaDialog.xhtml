@@ -1,0 +1,82 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+	<p:dialog header="Tambah Mahasiswa Baru"
+		widgetVar="mahasiswaCreateDialogWidget" id="mahasiswaCreateDialogId"
+		modal="false" closable="true" draggable="false" resizable="false"
+		showEffect="clip" hideEffect="clip">
+		<h:form id="mahasiswaCreateDialogForm">
+			<h:panelGrid columns="2" style="margin-bottom:20px" cellpadding="3">
+
+				<p:outputLabel value="NPM : " />
+				<p:inputText id="add_mhs_inp_npm"
+					value="#{mahasiswaBean.mahasiswa.mhsNpm}" required="true"
+					requiredMessage="NPM tidak boleh kosong" label="add_mhs_inp_npm" />
+
+				<p:outputLabel value="Nama Lengkap : " />
+				<p:inputText id="add_mhs_inp_nama_lengkap"
+					value="#{mahasiswaBean.mahasiswa.mhsNamaLengkap}" required="true"
+					requiredMessage="Nama tidak boleh kosong"
+					label="add_mhs_inp_nama_lengkap" />
+
+				<p:outputLabel value="Tempat Lahir : " />
+				<p:inputText id="add_mhs_inp_tempat_Lahir"
+					value="#{mahasiswaBean.mahasiswa.mhsTempatLahir}" required="true"
+					requiredMessage="Tempat Lahir tidak boleh kosong"
+					label="add_mhs_inp_tempat_Lahir" />
+
+				<p:outputLabel value="Tanggal Lahir : " />
+				<p:calendar id="add_mhs_inp_tanggal_Lahir"
+					value="#{mahasiswaBean.mahasiswa.mhsTanggalLahir}" required="true"
+					requiredMessage="Tempat Lahir tidak boleh kosong"
+					label="add_mhs_inp_tanggal_Lahir" />
+
+				<p:outputLabel value="Jenis Kelamin : " />
+				<p:selectOneRadio id="add_mhs_inp_jenis_kelamin"
+					value="#{mahasiswaBean.mahasiswa.mhsJnsKelamin}" required="true"
+					requiredMessage="Jenis Kelamin tidak boleh kosong"
+					label="add_mhs_inp_jenis_kelamin">
+					<f:selectItem itemLabel="Laki Laki" itemValue="L" />
+					<f:selectItem itemLabel="Perempuan" itemValue="P" />
+				</p:selectOneRadio>
+
+				<p:outputLabel value="Asal Sekolah : " />
+				<p:inputText id="add_mhs_inp_asal_sekolah"
+					value="#{mahasiswaBean.mahasiswa.mhsAsalSekolah}" required="true"
+					requiredMessage="Asal Sekolah tidak boleh kosong"
+					label="add_mhs_inp_asal_sekolah" />
+
+				<p:outputLabel value="Alamat : " />
+				<p:inputText id="add_mhs_inp_alamat"
+					value="#{mahasiswaBean.mahasiswa.mhsAlamat}" required="true"
+					requiredMessage="ALamat tidak boleh kosong"
+					label="add_mhs_inp_alamat" />
+
+				<p:outputLabel value="Nama Orang tua / Wali : " />
+				<p:inputText id="add_mhs_inp_nama_ortu"
+					value="#{mahasiswaBean.mahasiswa.mhsNamaOrangTua}" required="true"
+					requiredMessage="Nama Orang tua tidak boleh kosong"
+					label="add_mhs_inp_nama_ortu" />
+
+				<p:outputLabel value="Pekerjaan Orang tua / Wali : " />
+				<p:inputText id="add_mhs_inp_pekerjaan_ortu"
+					value="#{mahasiswaBean.mahasiswa.mhsPekerjaanOrangTua}"
+					required="true"
+					requiredMessage="Pekerjaan Orang tua tidak boleh kosong"
+					label="add_mhs_inp_pekerjaan_ortu" />
+
+
+			</h:panelGrid>
+			<p:commandButton value="Submit" icon="ui-icon-plus"
+				action="#{mahasiswaBean.insert}"
+				update=":growl :form_mahasiswa:tbl_mahasiswa"
+				oncomplete="closeDialogIfSucess(xhr, status, args, mahasiswaCreateDialogWidget, 'mahasiswaCreateDialogId')" />
+		</h:form>
+	</p:dialog>
+</ui:composition>

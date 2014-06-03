@@ -1,0 +1,29 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+	<p:dialog header="Delete ambil" widgetVar="ambilDeleteDialogWidget"
+		id="ambilDeleteDialogId" modal="false" closable="true"
+		draggable="false" resizable="false" showEffect="clip"
+		hideEffect="clip">
+		<h:form id="ambilDeleteDialogForm" prependId="false">
+			<h:outputText value="Yakin Akan Menghapus ambil : " />
+			<h:outputText value="#{ambilBean.ambil.AIdAmbil}" />
+			<br />
+			<br />
+
+			<p:commandButton value="Submit" icon="ui-icon-plus"
+				action="#{ambilBean.delete}" update=":growl :form_ambil:tbl_ambil"
+				oncomplete="closeDialogIfSucess(xhr, status, args, ambilDeleteDialogWidget, 'ambilDeleteDialogId')" />
+			<p:commandButton value="Cancel" icon="ui-icon-cancel"
+				actionListener="#{ambilBean.invalidateAmbil}"
+				onclick="ambilDeleteDialogWidget.hide();" type="button" />
+		</h:form>
+	</p:dialog>
+
+</ui:composition>

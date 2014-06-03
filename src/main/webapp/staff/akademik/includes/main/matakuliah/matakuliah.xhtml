@@ -1,0 +1,77 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+	<p:breadCrumb>
+		<p:menuitem value="Categories" url="#" />
+		<p:menuitem disabled="true" value="Pengelolaan mataKuliah" url="#" />
+	</p:breadCrumb>
+	<br />
+
+	<h:form id="form_mataKuliah">
+
+		<p:commandButton type="Button" value="Tambah" icon="ui-icon-plus"
+			update="
+				:mataKuliahCreateDialogForm"
+			actionListener="#{mataKuliahBean.invalidateMataKuliah}"
+			oncomplete="mataKuliahCreateDialogWidget.show()">
+		</p:commandButton>
+		<br />
+		<br />
+
+		<p:dataTable id="tbl_mataKuliah" widgetVar="mataKuliahTable"
+			value="#{mataKuliahBean.listMataKuliahs}" var="mataKuliahs"
+			paginator="true" rows="20"
+			paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+			rowsPerPageTemplate="20,50,100">
+
+			<p:column headerText="Kode MK">
+				<h:outputText value="#{mataKuliahs.mkKodeMk}" />
+			</p:column>
+
+			<p:column headerText="Nama">
+				<h:outputText value="#{mataKuliahs.mkNamaMk}" />
+			</p:column>
+
+			<p:column headerText="SKS">
+				<h:outputText value="#{mataKuliahs.mkSks}" />
+			</p:column>
+
+			<p:column headerText="Action" style="width:120px">
+				<p:commandButton id="view" icon="ui-icon-contact" update=":display"
+					onclick="mataKuliahDialogShowWidget.show()">
+					<f:setPropertyActionListener value="#{mataKuliahs}"
+						target="#{mataKuliahBean.mataKuliah}" />
+				</p:commandButton>
+				<p:tooltip for="view" value="view #{mataKuliahs.mkNamaMk}"
+					showEffect="fade" hideEffect="fade" />
+				<p:commandButton icon="ui-icon-pencil"
+					update=":mataKuliahUpdateDialogForm"
+					oncomplete="mataKuliahUpdateDialogWidget.show()">
+					<f:setPropertyActionListener value="#{mataKuliahs}"
+						target="#{mataKuliahBean.mataKuliah}" />
+				</p:commandButton>
+				<p:commandButton icon="ui-icon-trash"
+					update=":mataKuliahDeleteDialogForm"
+					onclick="mataKuliahDeleteDialogWidget.show();">
+					<f:setPropertyActionListener value="#{mataKuliahs}"
+						target="#{mataKuliahBean.mataKuliah}" />
+				</p:commandButton>
+			</p:column>
+		</p:dataTable>
+	</h:form>
+	<ui:include
+		src="/staff/akademik/includes/main/matakuliah/dialogs/addMataKuliahDialog.xhtml"></ui:include>
+	<ui:include
+		src="/staff/akademik/includes/main/matakuliah/dialogs/updateMataKuliahDialog.xhtml"></ui:include>
+	<ui:include
+		src="/staff/akademik/includes/main/matakuliah/dialogs/deleteMataKuliahDialog.xhtml"></ui:include>
+	<ui:include
+		src="/staff/akademik/includes/main/matakuliah/dialogs/detailMataKuliahDialog.xhtml"></ui:include>
+</ui:composition>

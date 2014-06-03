@@ -1,0 +1,31 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+	<p:dialog header="Delete Nilai"
+		widgetVar="settingNilaiDeleteDialogWidget"
+		id="settingNilaiDeleteDialogId" modal="false" closable="true"
+		draggable="false" resizable="false" showEffect="clip"
+		hideEffect="clip">
+		<h:form id="settingNilaiDeleteDialogForm" prependId="false">
+			<h:outputText value="Yakin Akan Menghapus Nilai : " />
+			<h:outputText value="#{settingNilaiBean.settingNilai.nilJenisNilai}" />
+			<br />
+			<br />
+
+			<p:commandButton value="Submit" icon="ui-icon-plus"
+				action="#{settingNilaiBean.delete}"
+				update=":growl :form_settingNilai:tbl_settingNilai"
+				oncomplete="closeDialogIfSucess(xhr, status, args, settingNilaiDeleteDialogWidget, 'settingNilaiDeleteDialogId')" />
+			<p:commandButton value="Cancel" icon="ui-icon-cancel"
+				actionListener="#{settingNilaiBean.invalidatesettingNilai}"
+				onclick="settingNilaiDeleteDialogWidget.hide();" type="button" />
+		</h:form>
+	</p:dialog>
+
+</ui:composition>

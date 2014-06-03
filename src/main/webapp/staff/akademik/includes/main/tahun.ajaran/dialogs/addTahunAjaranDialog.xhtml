@@ -1,0 +1,58 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+	<p:dialog header="Tambah Tahun Ajaran Baru"
+		widgetVar="tahunAjaranCreateDialogWidget"
+		id="tahunAjaranCreateDialogId" modal="false" closable="true"
+		draggable="false" resizable="false" showEffect="clip"
+		hideEffect="clip">
+		<h:form id="tahunAjaranCreateDialogForm">
+			<h:panelGrid columns="2" style="margin-bottom:20px" cellpadding="3">
+
+				<p:outputLabel value="Id Tahun Ajaran : " />
+				<p:inputText id="add_ta_inp_id_ta"
+					value="#{thnAjaranBean.thnAjaran.taIdThnAjaran}" required="true"
+					requiredMessage="Id Tahun Ajaran tidak boleh kosong"
+					label="add_ta_inp_id_ta" />
+
+				<p:outputLabel value="Kurikulum : " />
+				<p:selectOneMenu id="add_thn_inp_kurikulum"
+					value="#{thnAjaranBean.tempKodeKurikulum}" required="true"
+					requiredMessage="Kurikulum tidak boleh kosong"
+					label="add_thn_inp_kurikulum">
+					<f:selectItem itemLabel="-- Pilih Kurikulum --" itemValue=" " />
+					<f:selectItems value="#{kurikulumBean.listKurikulums}"
+						var="kurikulum" itemLabel="#{kurikulum.kurNamaKurikulum}"
+						itemValue="#{kurikulum.kurKodeKurikulum}" />
+				</p:selectOneMenu>
+
+				<p:outputLabel value="Tahun Ajaran : " />
+				<p:inputText id="add_ta_inp_thn_ajaran"
+					value="#{thnAjaranBean.thnAjaran.taTahunAjaran}" required="true"
+					requiredMessage="Tahun Ajaran tidak boleh kosong"
+					label="add_ta_inp_thn_ajaran" />
+
+				<p:outputLabel value="Semester : " />
+				<p:selectOneMenu id="add_ta_inp_semester"
+					value="#{thnAjaranBean.thnAjaran.taSemester}" required="true"
+					requiredMessage="Semester tidak boleh kosong"
+					label="add_ta_inp_semester">
+					<f:selectItem itemLabel="-- Pilih Semester --" itemValue="" />
+					<f:selectItem itemLabel="Ganjil" itemValue="Ganjil" />
+					<f:selectItem itemLabel="Genap" itemValue="Genap" />
+				</p:selectOneMenu>
+
+			</h:panelGrid>
+			<p:commandButton value="Submit" icon="ui-icon-plus"
+				action="#{thnAjaranBean.insert}"
+				update=":growl :form_tahunAjaran:tbl_tahunAjaran"
+				oncomplete="closeDialogIfSucess(xhr, status, args, tahunAjaranCreateDialogWidget, 'tahunAjaranCreateDialogId')" />
+		</h:form>
+	</p:dialog>
+</ui:composition>

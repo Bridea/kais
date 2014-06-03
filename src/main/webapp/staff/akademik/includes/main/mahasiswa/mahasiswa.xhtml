@@ -1,0 +1,96 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+	<p:breadCrumb>
+		<p:menuitem value="Categories" url="#" />
+		<p:menuitem disabled="true" value="Pengelolaan mahasiswa" url="#" />
+	</p:breadCrumb>
+	<br />
+
+	<h:form id="form_mahasiswa">
+
+		<p:commandButton type="Button" value="Tambah" icon="ui-icon-plus"
+			update="
+				:mahasiswaCreateDialogForm"
+			actionListener="#{mahasiswaBean.invalidateMahasiswa}"
+			oncomplete="mahasiswaCreateDialogWidget.show()">
+		</p:commandButton>
+		<br />
+		<br />
+
+		<p:dataTable id="tbl_mahasiswa" widgetVar="mahasiswaTable"
+			value="#{mahasiswaBean.listMahasiswas}" var="mahasiswas"
+			paginator="true" rows="20"
+			paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+			rowsPerPageTemplate="20,50,100">
+
+			<p:column headerText="NPM">
+				<h:outputText value="#{mahasiswas.mhsNpm}" />
+			</p:column>
+			<p:column headerText="Nama Lengkap">
+				<h:outputText value="#{mahasiswas.mhsNamaLengkap}" />
+			</p:column>
+			<p:column headerText="Tempat Lahir">
+				<h:outputText value="#{mahasiswas.mhsTempatLahir}" />
+			</p:column>
+			<p:column headerText="Tanggal Lahir">
+				<h:outputText value="#{mahasiswas.mhsTanggalLahir}" />
+			</p:column>
+			<p:column headerText="Jenis Kelamin">
+				<h:outputText value="#{mahasiswas.mhsJnsKelamin}" />
+			</p:column>
+			<p:column headerText="Asal Sekolah">
+				<h:outputText value="#{mahasiswas.mhsAsalSekolah}" />
+			</p:column>
+			<p:column headerText="Alamat">
+				<h:outputText value="#{mahasiswas.mhsAlamat}" />
+			</p:column>
+			<p:column headerText="Nama Orang Tua">
+				<h:outputText value="#{mahasiswas.mhsNamaOrangTua}" />
+			</p:column>
+			<p:column headerText="Pekerjaan Orang Tua">
+				<h:outputText value="#{mahasiswas.mhsPekerjaanOrangTua}" />
+			</p:column>
+			<p:column headerText="Judul Penelitian">
+				<h:outputText value="#{mahasiswas.mhsJudulPenelitian}" />
+			</p:column>
+
+			<p:column headerText="Action" style="width:120px">
+				<p:commandButton id="view" icon="ui-icon-contact" update=":display"
+					onclick="mahasiswaDialogShowWidget.show()">
+					<f:setPropertyActionListener value="#{mahasiswas}"
+						target="#{mahasiswaBean.mahasiswa}" />
+				</p:commandButton>
+				<p:tooltip for="view" value="view #{mahasiswas.mhsNamaLengkap}"
+					showEffect="fade" hideEffect="fade" />
+				<p:commandButton icon="ui-icon-pencil"
+					update=":mahasiswaUpdateDialogForm"
+					oncomplete="mahasiswaUpdateDialogWidget.show()">
+					<f:setPropertyActionListener value="#{mahasiswas}"
+						target="#{mahasiswaBean.mahasiswa}" />
+				</p:commandButton>
+				<p:commandButton icon="ui-icon-trash"
+					update=":mahasiswaDeleteDialogForm"
+					onclick="mahasiswaDeleteDialogWidget.show();">
+					<f:setPropertyActionListener value="#{mahasiswas}"
+						target="#{mahasiswaBean.mahasiswa}" />
+				</p:commandButton>
+			</p:column>
+		</p:dataTable>
+	</h:form>
+	<ui:include
+		src="/staff/akademik/includes/main/mahasiswa/dialogs/addMahasiswaDialog.xhtml"></ui:include>
+	<ui:include
+		src="/staff/akademik/includes/main/mahasiswa/dialogs/updateMahasiswaDialog.xhtml"></ui:include>
+	<ui:include
+		src="/staff/akademik/includes/main/mahasiswa/dialogs/deleteMahasiswaDialog.xhtml"></ui:include>
+	<ui:include
+		src="/staff/akademik/includes/main/mahasiswa/dialogs/detailMahasiswaDialog.xhtml"></ui:include>
+</ui:composition>

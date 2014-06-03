@@ -1,0 +1,45 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+	<p:dialog header="dosen Detail" widgetVar="dosenDialogShowWidget"
+		resizable="false" id="dosenDlgShow" draggable="false"
+		showEffect="clip" hideEffect="clip" modal="false">
+		<p:panel>
+			<h:panelGrid id="display" columns="2" cellpadding="4"
+				style="margin:0 auto;">
+
+				<p:outputLabel value="Kode : " />
+				<p:outputLabel value="#{dosenBean.dosen.DKodeDosen}"
+					style="font-weight:bold" />
+
+				<p:outputLabel value="Nama Lengkap : " />
+				<p:outputLabel value="#{dosenBean.dosen.DNamaDosen}"
+					style="font-weight:bold" />
+
+				<p:outputLabel value="Nidn : " />
+				<p:outputLabel value="#{dosenBean.dosen.DNidn}"
+					style="font-weight:bold" />
+
+				<p:outputLabel value="Riwayat Pemdidikan : " />
+				<p:outputLabel value="#{dosenBean.dosen.DRiwayatPendidikan}"
+					style="font-weight:bold" />
+
+				<p:outputLabel value="Alamat : " />
+				<p:outputLabel value="#{dosenBean.dosen.DAlamat}"
+					style="font-weight:bold" />
+
+				<p:outputLabel value="Kontak : " />
+				<p:outputLabel value="#{dosenBean.dosen.DKontak}"
+					style="font-weight:bold" />
+
+			</h:panelGrid>
+		</p:panel>
+	</p:dialog>
+
+</ui:composition>

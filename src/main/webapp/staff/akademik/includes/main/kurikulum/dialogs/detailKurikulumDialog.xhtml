@@ -1,0 +1,30 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+	<p:dialog header="kurikulum Detail"
+		widgetVar="kurikulumDialogShowWidget" resizable="false"
+		id="kurikulumDlgShow" showEffect="clip" draggable="false"
+		hideEffect="clip" modal="false">
+		<p:panel>
+			<h:panelGrid id="display" columns="2" cellpadding="4"
+				style="margin:0 auto;">
+
+				<p:outputLabel value="Kode Kurikulum : " />
+				<p:outputLabel value="#{kurikulumBean.kurikulum.kurKodeKurikulum}"
+					style="font-weight:bold" />
+
+				<p:outputLabel value="Nama kurikulum : " />
+				<p:outputLabel value="#{kurikulumBean.kurikulum.kurNamaKurikulum}"
+					style="font-weight:bold" />
+
+			</h:panelGrid>
+		</p:panel>
+	</p:dialog>
+
+</ui:composition>

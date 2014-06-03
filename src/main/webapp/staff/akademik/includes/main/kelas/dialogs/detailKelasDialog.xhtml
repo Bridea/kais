@@ -1,0 +1,29 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+	<p:dialog header="kelas Detail" widgetVar="kelasDialogShowWidget"
+		resizable="false" id="kelasDlgShow" draggable="false"
+		showEffect="clip" hideEffect="clip" modal="false">
+		<p:panel>
+			<h:panelGrid id="display" columns="2" cellpadding="4"
+				style="margin:0 auto;">
+
+				<p:outputLabel value="Nama Kelas : " />
+				<p:outputLabel value="#{kelasBean.kelas.KNamaKelas}"
+					style="font-weight:bold" />
+
+				<p:outputLabel value="Kapasitas : " />
+				<p:outputLabel value="#{kelasBean.kelas.KKapasitas}"
+					style="font-weight:bold" />
+
+			</h:panelGrid>
+		</p:panel>
+	</p:dialog>
+
+</ui:composition>

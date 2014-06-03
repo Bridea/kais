@@ -1,0 +1,53 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+	<p:dialog header="Update dosen" widgetVar="dosenUpdateDialogWidget"
+		id="dosenUpdateDialogId" modal="false" closable="true"
+		draggable="false" resizable="false" showEffect="clip"
+		hideEffect="clip">
+		<h:form id="dosenUpdateDialogForm" prependId="false">
+			<h:panelGrid columns="2">
+
+				<p:outputLabel value="Nama Lengkap : " />
+				<p:inputText id="add_dsn_update_nama_lengkap"
+					value="#{dosenBean.dosen.DNamaDosen}" required="true"
+					requiredMessage="Nama tidak boleh kosong"
+					label="add_dsn_update_nama_lengkap" />
+
+				<p:outputLabel value="Nidn : " />
+				<p:inputText id="add_dsn_update_nidn"
+					value="#{dosenBean.dosen.DNidn}" required="true"
+					requiredMessage="Nidn tidak boleh kosong"
+					label="add_dsn_update_nidn" />
+
+				<p:outputLabel value="Riwayat Pendidikan : " />
+				<p:inputText id="add_dsn_update_riwayat_pendidikan"
+					value="#{dosenBean.dosen.DRiwayatPendidikan}" required="true"
+					requiredMessage="Riwayat Pendidikan tidak boleh kosong"
+					label="add_dsn_update_riwayat_pendidikan" />
+
+				<p:outputLabel value="Alamat : " />
+				<p:inputText id="add_dsn_update_alamat"
+					value="#{dosenBean.dosen.DAlamat}" required="true"
+					requiredMessage="ALamat tidak boleh kosong"
+					label="add_dsn_update_alamat" />
+
+				<p:outputLabel value="Kontak : " />
+				<p:inputText id="add_dsn_update_kontak"
+					value="#{dosenBean.dosen.DKontak}" required="true"
+					requiredMessage="Kontak tidak boleh kosong"
+					label="add_dsn_update_kontak" />
+
+			</h:panelGrid>
+			<p:commandButton value="Submit" icon="ui-icon-plus"
+				action="#{dosenBean.update}" update=":growl :form_dosen:tbl_dosen"
+				oncomplete="closeDialogIfSucess(xhr, status, args, dosenUpdateDialogWidget, 'dosenUpdateDialogId')" />
+		</h:form>
+	</p:dialog>
+</ui:composition>
