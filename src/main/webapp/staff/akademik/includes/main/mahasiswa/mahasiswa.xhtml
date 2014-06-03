@@ -31,10 +31,21 @@
 			paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
 			rowsPerPageTemplate="20,50,100">
 
-			<p:column headerText="NPM">
+			<f:facet name="header">
+            <p:outputPanel>
+                <h:outputText value="Search all fields:" />
+                <p:inputText id="globalFilter"
+						onkeyup="PF('mahasiswaTable').filter()" style="width:150px"
+						placeholder="Enter keyword" />
+            </p:outputPanel>
+        	</f:facet>
+
+			<p:column headerText="NPM" filterBy="#{mahasiswas.mhsNpm}"
+				filterMatchMode="contains">
 				<h:outputText value="#{mahasiswas.mhsNpm}" />
 			</p:column>
-			<p:column headerText="Nama Lengkap">
+			<p:column headerText="Nama Lengkap"
+				filterBy="#{mahasiswas.mhsNamaLengkap}" filterMatchMode="contains">
 				<h:outputText value="#{mahasiswas.mhsNamaLengkap}" />
 			</p:column>
 			<p:column headerText="Tempat Lahir">
@@ -43,21 +54,24 @@
 			<p:column headerText="Tanggal Lahir">
 				<h:outputText value="#{mahasiswas.mhsTanggalLahir}" />
 			</p:column>
-			<p:column headerText="Jenis Kelamin">
+			<p:column headerText="Jenis Kelamin"
+				filterBy="#{mahasiswas.mhsJnsKelamin}" filterMatchMode="contains">
 				<h:outputText value="#{mahasiswas.mhsJnsKelamin}" />
 			</p:column>
-			<p:column headerText="Asal Sekolah">
+			<p:column headerText="Asal Sekolah"
+				filterBy="#{mahasiswas.mhsAsalSekolah}" filterMatchMode="contains">
 				<h:outputText value="#{mahasiswas.mhsAsalSekolah}" />
 			</p:column>
-			<p:column headerText="Alamat">
+			<p:column headerText="Alamat" filterBy="#{mahasiswas.mhsAlamat}"
+				filterMatchMode="contains">
 				<h:outputText value="#{mahasiswas.mhsAlamat}" />
 			</p:column>
-			<p:column headerText="Nama Orang Tua">
+			<!-- <p:column headerText="Nama Orang Tua">
 				<h:outputText value="#{mahasiswas.mhsNamaOrangTua}" />
 			</p:column>
 			<p:column headerText="Pekerjaan Orang Tua">
 				<h:outputText value="#{mahasiswas.mhsPekerjaanOrangTua}" />
-			</p:column>
+			</p:column> -->
 			<p:column headerText="Judul Penelitian">
 				<h:outputText value="#{mahasiswas.mhsJudulPenelitian}" />
 			</p:column>
