@@ -51,6 +51,8 @@
 
 	<bean class="com.bridea.siak.dao.HibernateGenericDAO"
 		c:persistentClass="com.bridea.siak.model.MMataKuliah" id="mataKuliahGenericDAO" />
+	<bean class="com.bridea.siak.dao.HibernateGenericDAO"
+		c:persistentClass="com.bridea.siak.model.MDosen" id="dosenGenericDAO" />
 
 
 
