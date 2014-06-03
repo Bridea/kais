@@ -7,7 +7,6 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui">
 
-<f:view>
 	<h:head>
 		<title>ADMIN NU PENTING FUNGSI</title>
 		<h:outputScript library="javascripts" name="jscodes.js" />
@@ -89,9 +88,9 @@
 
 						<li><h:commandLink id="Kontrak"
 								actionListener="#{navigationStaffAkademikBean.navigationPathChange}">
-								<span>Kontrak</span>
+								<span>Kontrak</span>s
 								<f:param name="includePath"
-									value="/staff/akademik/includes/main/ambil/ambil.xhtml" />
+									value="/staff/akademik/includes/main/ambil/ambil.xhtml"/>
 							</h:commandLink></li>
 					</ul>
 				</h:form>
@@ -110,5 +109,4 @@
 			</p:layoutUnit>
 		</p:layout>
 	</h:body>
-</f:view>
 </html>

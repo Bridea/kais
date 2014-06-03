@@ -10,6 +10,7 @@ import org.springframework.stereotype.Component;
 
 import com.bridea.siak.dao.GenericDAO;
 import com.bridea.siak.model.MAmbil;
+import com.bridea.siak.model.MMahasiswa;
 import com.bridea.siak.util.DialogBean;
 
 @Scope("session")
@@ -22,11 +23,15 @@ public class AmbilBean extends DialogBean {
 
 	@Autowired
 	private MahasiswaBean mahasiswaBean;
+	@Autowired
+	private MataKuliahBean mataKuliahBean;
+	@Autowired
+	private DosenBean dosenBean;
+	@Autowired
+	private KomponenNilaiBean komponenNilaiBean;
 
 	private MAmbil ambil;
 	private List<MAmbil> listAmbils;
-
-	private String tempNPM;
 
 	// Edit Nilai
 	private List<MAmbil> listAmbilsBy;
@@ -65,14 +70,6 @@ public class AmbilBean extends DialogBean {
 		this.ambil = ambil;
 	}
 
-	public String getTempNPM() {
-		return tempNPM;
-	}
-
-	public void setTempNPM(String tempNPM) {
-		this.tempNPM = tempNPM;
-	}
-
 	public String getTempNPMCariNilai() {
 		return tempNPMCariNilai;
 	}
@@ -108,10 +105,27 @@ public class AmbilBean extends DialogBean {
 
 	// insert
 	public void insert() {
-		System.out.println("Masuk Insert");
+		System.out.println("Masuk Insert : ambil");
 		try {
-			dao.save(ambil);
-			displayInfoMessageToUser("Insert Ambil Berhasil");
+			for (MMahasiswa mahasiswa : mahasiswaBean
+					.getListMahasiswasSelected()) {
+				System.out.println(mahasiswa.getMhsNpm());
+				MAmbil ambil = new MAmbil();
+				ambil.setMMahasiswa(mahasiswa);
+				ambil.setMMataKuliah(mataKuliahBean
+						.getMataKuliahByID(getTempKodeMK()));
+				ambil.setMDosen(dosenBean.getDosenByID(getTempKodeDosen()));
+				ambil.setALahanPraktek("-");
+				ambil.setAKelas(this.ambil.getAKelas());
+				System.out.println(ambil.getMMahasiswa().getMhsNpm() + ","
+						+ ambil.getAKelas() + "," + ambil.getALahanPraktek()
+						+ "," + ambil.getMDosen().getDKodeDosen() + ","
+						+ ambil.getMMataKuliah().getMkKodeMk());
+
+				dao.save(ambil);
+				komponenNilaiBean.insert(ambil);
+			}
+			displayInfoMessageToUser("Kontrak Matakuliah Berhasil");
 			invalidateAmbil();
 		} catch (Exception e) {
 			System.out.println("error Karena : " + e.getStackTrace());

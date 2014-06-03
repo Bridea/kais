@@ -15,7 +15,7 @@
 			<h:panelGrid columns="6" style="margin-bottom:20px" cellpadding="3">
 
 				<p:outputLabel value="MataKuliah : " />
-				<p:selectOneMenu>
+				<p:selectOneMenu value="#{ambilBean.tempKodeMK}">
 					<f:selectItem itemLabel="-- Pilih MataKuliah --" itemValue=" " />
 					<f:selectItems value="#{mataKuliahBean.listMataKuliahs}"
 						var="matakuliah" itemLabel="#{matakuliah.mkNamaMk}"
@@ -23,14 +23,14 @@
 				</p:selectOneMenu>
 
 				<p:outputLabel value="Dosen : " />
-				<p:selectOneMenu>
+				<p:selectOneMenu value="#{ambilBean.tempKodeDosen}">
 					<f:selectItem itemLabel="-- Pilih Dosen --" itemValue=" " />
 					<f:selectItems value="#{dosenBean.listDosens}" var="dosen"
 						itemLabel="#{dosen.DNamaDosen}" itemValue="#{dosen.DKodeDosen}" />
 				</p:selectOneMenu>
 
 				<p:outputLabel value="Kelas : " />
-				<p:selectOneMenu>
+				<p:selectOneMenu value="#{ambilBean.ambil.AKelas}">
 					<f:selectItem itemLabel="-- Pilih Kelas --" itemValue=" " />
 					<f:selectItem itemLabel="A Siang" itemValue="A Siang" />
 					<f:selectItem itemLabel="A Malam" itemValue="A Malam" />
@@ -40,9 +40,12 @@
 			</h:panelGrid>
 
 			<p:dataTable id="tbl_mahasiswa" widgetVar="mahasiswaTable"
-				value="#{mahasiswaBean.listMahasiswas}" var="mahasiswas"
-				paginator="true" rows="10"
+				value="#{mahasiswaBean.mahasiswaDataModel}" var="mahasiswas"
+				selection="#{mahasiswaBean.listMahasiswasSelected}" paginator="true"
+				rows="10"
 				paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}">
+
+				<p:column selectionMode="multiple" style="width:2%" />
 
 				<p:column filterBy="#{mahasiswas.mhsNpm}" filterMatchMode="contains">
 					<f:facet name="header">

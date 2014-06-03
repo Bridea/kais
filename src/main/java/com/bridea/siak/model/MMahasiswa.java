@@ -1,7 +1,7 @@
 package com.bridea.siak.model;
 
 // default package
-// Generated Jun 3, 2014 10:26:47 PM by Hibernate Tools 4.0.0
+// Generated Jun 4, 2014 2:32:41 AM by Hibernate Tools 4.0.0
 
 import java.util.Date;
 import java.util.HashSet;
@@ -176,7 +176,7 @@ public class MMahasiswa implements java.io.Serializable {
 		this.mhsStatus = mhsStatus;
 	}
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "MMahasiswa")
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "MMahasiswa")
 	public Set<MAmbil> getMAmbils() {
 		return this.MAmbils;
 	}

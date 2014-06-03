@@ -34,9 +34,25 @@
 			<p:column headerText="ID Ambil">
 				<h:outputText value="#{ambils.AIdAmbil}" />
 			</p:column>
-			<p:column headerText="Mahasiswa">
+			<p:column headerText="NPM">
+				<h:outputText value="#{ambils.MMahasiswa.mhsNpm}" />
+			</p:column>
+			<p:column headerText="Nama">
 				<h:outputText value="#{ambils.MMahasiswa.mhsNamaLengkap}" />
 			</p:column>
+			<p:column headerText="Matakuliah">
+				<h:outputText value="#{ambils.MMataKuliah.mkNamaMk}" />
+			</p:column>
+			<p:column headerText="Dosen">
+				<h:outputText value="#{ambils.MDosen.DNamaDosen}" />
+			</p:column>
+			<p:column headerText="Kelas">
+				<h:outputText value="#{ambils.AKelas}" />
+			</p:column>
+			<p:column headerText="Lahan Praktek">
+				<h:outputText value="#{ambils.ALahanPraktek}" />
+			</p:column>
+
 
 			<p:column headerText="Action" style="width:120px">
 				<p:commandButton id="view" icon="ui-icon-contact" update=":display"

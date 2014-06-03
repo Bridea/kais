@@ -20,11 +20,27 @@ public class MahasiswaBean extends DialogBean {
 	@Qualifier("mahasiswaGenericDAO")
 	private GenericDAO<MMahasiswa> dao;
 
-	
-
 	private MMahasiswa mahasiswa;
 	private List<MMahasiswa> listMahasiswas;
 	private HashMap<String, MMahasiswa> hashMapMahasiswa;
+
+	private MahasiswaDataModel mahasiswaDataModel;
+	private List<MMahasiswa> listMahasiswasSelected;
+
+	public List<MMahasiswa> getListMahasiswasSelected() {
+		return listMahasiswasSelected;
+	}
+
+	public void setListMahasiswasSelected(
+			List<MMahasiswa> listMahasiswasSelected) {
+		this.listMahasiswasSelected = listMahasiswasSelected;
+	}
+
+	public MahasiswaDataModel getMahasiswaDataModel() {
+		getListMahasiswas();
+		mahasiswaDataModel = new MahasiswaDataModel(listMahasiswas);
+		return mahasiswaDataModel;
+	}
 
 	public List<MMahasiswa> getListMahasiswas() {
 		listMahasiswas = new ArrayList<>();
@@ -59,13 +75,13 @@ public class MahasiswaBean extends DialogBean {
 	public void insert() {
 		System.out.println("Masuk Insert mahasiswa");
 		try {
-		
-				mahasiswa.setMhsJudulPenelitian("-");
-				mahasiswa.setMhsStatus(true);
-				dao.save(mahasiswa);
-				displayInfoMessageToUser("Insert Mahasiswa Berhasil");
-				invalidateMahasiswa();
-		
+
+			mahasiswa.setMhsJudulPenelitian("-");
+			mahasiswa.setMhsStatus(true);
+			dao.save(mahasiswa);
+			displayInfoMessageToUser("Insert Mahasiswa Berhasil");
+			invalidateMahasiswa();
+
 		} catch (Exception e) {
 			System.out.println("error Karena : " + e.getMessage());
 			// TODO: handle exception

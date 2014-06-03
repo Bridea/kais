@@ -14,14 +14,6 @@
 		<h:form id="ambilUpdateDialogForm" prependId="false">
 			<h:panelGrid columns="2">
 
-				<p:outputLabel value="Mahasiswa : " />
-				<p:selectOneMenu value="#{ambilBean.tempNPM}">
-					<f:selectItem itemLabel="-- Pilih Mahasiswa --" itemValue=" " />
-					<f:selectItems value="#{mahasiswaBean.listMahasiswas}"
-						var="mahasiswa" itemLabel="#{mahasiswa.mhsNamaLengkap}"
-						itemValue="#{mahasiswa.mhsNpm}" />
-				</p:selectOneMenu>
-
 			</h:panelGrid>
 			<p:commandButton value="Submit" icon="ui-icon-plus"
 				action="#{ambilBean.update}" update=":growl :form_ambil:tbl_ambil"

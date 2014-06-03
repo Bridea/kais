@@ -6,46 +6,70 @@ import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 
+import org.primefaces.component.datatable.DataTable;
 import org.primefaces.event.CellEditEvent;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 import com.bridea.siak.model.MAmbil;
+import com.bridea.siak.model.MKomponenNilai;
 
 @Component("editNilai")
 @Scope("session")
 public class EditNilai {
 
-	private List<MAmbil> listKontrakMatakuliah;
+	private List<MKomponenNilai> listNilaiMahasiswa;
 
 	@Autowired
-	private AmbilBean ambilBean;
+	private KomponenNilaiBean komponenNilaiBean;
+
+	private MKomponenNilai komponenNilai;
 
 	@PostConstruct
 	public void init() {
-		listKontrakMatakuliah = ambilBean.getAmbils();
+		listNilaiMahasiswa = komponenNilaiBean.getKomponenNilais();
 	}
 
-	public List<MAmbil> getListKontrakMatakuliah() {
-		return listKontrakMatakuliah;
+	public MKomponenNilai getKomponenNilai() {
+		if (komponenNilai == null) {
+			System.out.println("null");
+		}
+		return komponenNilai;
+	}
+
+	public void setKomponenNilai(MKomponenNilai komponenNilai) {
+		this.komponenNilai = komponenNilai;
+	}
+
+	public List<MKomponenNilai> getListNilaiMahasiswa() {
+		return listNilaiMahasiswa;
 	}
 
 	public void onCellEdit(CellEditEvent event) {
 		Object oldValue = event.getOldValue();
-		System.out.println(oldValue.toString().charAt(1));
+		System.out.println(oldValue);
 		Object newValue = event.getNewValue();
-		System.out.println(newValue.toString().charAt(1));
+		System.out.println(newValue);
 
-		MAmbil ambil = listKontrakMatakuliah.get(event.getRowIndex());
-		System.out.println(ambil.getAIdAmbil());
+		DataTable s = (DataTable) event.getSource();
+		System.out.println("s : " + s.getRowData());
+
+		Object object = s.getRowData();
+
+		komponenNilai = (MKomponenNilai) object;
+
+		System.out.println(komponenNilai.getKnIdKomponenNilai());
+		System.out.println(komponenNilai.getKnNilaiKehadiran());
+		System.out.println(komponenNilai.getKnNilaiTugas());
+		System.out.println(komponenNilai.getKnNilaiUts());
+		System.out.println(komponenNilai.getKnNilaiUas());
+		
+		komponenNilaiBean.update(komponenNilai);
 
 		if (newValue != null && !newValue.equals(oldValue)) {
 			FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO,
-					"Cell Changed", "Id Kontrak :" + ambil.getAIdAmbil()
-							+ ", Old: " + oldValue + ", New:" + newValue);
-			ambilBean.updateNilai(ambil, newValue.toString().charAt(1));
-			FacesContext.getCurrentInstance().addMessage(null, msg);
+					"Cell Changed", ", Old: " + oldValue + ", New:" + newValue);
 		}
 	}
 }

@@ -1,7 +1,7 @@
 package com.bridea.siak.model;
 
 // default package
-// Generated Jun 3, 2014 10:26:47 PM by Hibernate Tools 4.0.0
+// Generated Jun 4, 2014 2:32:41 AM by Hibernate Tools 4.0.0
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -11,6 +11,7 @@ import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 /**
@@ -22,24 +23,33 @@ public class MAmbil implements java.io.Serializable {
 
 	private Integer AIdAmbil;
 	private MMataKuliah MMataKuliah;
-	private MKomponenNilai MKomponenNilai;
 	private MDosen MDosen;
 	private MMahasiswa MMahasiswa;
 	private String AKelas;
 	private String ALahanPraktek;
+	private MKomponenNilai MKomponenNilai;
 
 	public MAmbil() {
 	}
 
-	public MAmbil(MMataKuliah MMataKuliah, MKomponenNilai MKomponenNilai,
-			MDosen MDosen, MMahasiswa MMahasiswa, String AKelas,
-			String ALahanPraktek) {
+	public MAmbil(MMataKuliah MMataKuliah, MDosen MDosen,
+			MMahasiswa MMahasiswa, String AKelas, String ALahanPraktek) {
 		this.MMataKuliah = MMataKuliah;
-		this.MKomponenNilai = MKomponenNilai;
 		this.MDosen = MDosen;
 		this.MMahasiswa = MMahasiswa;
 		this.AKelas = AKelas;
 		this.ALahanPraktek = ALahanPraktek;
+	}
+
+	public MAmbil(MMataKuliah MMataKuliah, MDosen MDosen,
+			MMahasiswa MMahasiswa, String AKelas, String ALahanPraktek,
+			MKomponenNilai MKomponenNilai) {
+		this.MMataKuliah = MMataKuliah;
+		this.MDosen = MDosen;
+		this.MMahasiswa = MMahasiswa;
+		this.AKelas = AKelas;
+		this.ALahanPraktek = ALahanPraktek;
+		this.MKomponenNilai = MKomponenNilai;
 	}
 
 	@Id
@@ -53,7 +63,7 @@ public class MAmbil implements java.io.Serializable {
 		this.AIdAmbil = AIdAmbil;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "a_kode_mk", nullable = false)
 	public MMataKuliah getMMataKuliah() {
 		return this.MMataKuliah;
@@ -63,17 +73,7 @@ public class MAmbil implements java.io.Serializable {
 		this.MMataKuliah = MMataKuliah;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "a_id_komponen_nilai", nullable = false)
-	public MKomponenNilai getMKomponenNilai() {
-		return this.MKomponenNilai;
-	}
-
-	public void setMKomponenNilai(MKomponenNilai MKomponenNilai) {
-		this.MKomponenNilai = MKomponenNilai;
-	}
-
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "a_kode_dosen", nullable = false)
 	public MDosen getMDosen() {
 		return this.MDosen;
@@ -83,7 +83,7 @@ public class MAmbil implements java.io.Serializable {
 		this.MDosen = MDosen;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "a_npm", nullable = false)
 	public MMahasiswa getMMahasiswa() {
 		return this.MMahasiswa;
@@ -109,6 +109,15 @@ public class MAmbil implements java.io.Serializable {
 
 	public void setALahanPraktek(String ALahanPraktek) {
 		this.ALahanPraktek = ALahanPraktek;
+	}
+
+	@OneToOne(fetch = FetchType.EAGER, mappedBy = "MAmbil")
+	public MKomponenNilai getMKomponenNilai() {
+		return this.MKomponenNilai;
+	}
+
+	public void setMKomponenNilai(MKomponenNilai MKomponenNilai) {
+		this.MKomponenNilai = MKomponenNilai;
 	}
 
 }

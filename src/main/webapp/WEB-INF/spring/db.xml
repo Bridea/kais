@@ -57,6 +57,8 @@
 		c:persistentClass="com.bridea.siak.model.MAmbil" id="ambilGenericDAO" />
 	<bean class="com.bridea.siak.dao.HibernateGenericDAO"
 		c:persistentClass="com.bridea.siak.model.MMahasiswa" id="mahasiswaGenericDAO" />
+	<bean class="com.bridea.siak.dao.HibernateGenericDAO"
+		c:persistentClass="com.bridea.siak.model.MKomponenNilai" id="komponenNilaiGenericDAO" />
 
 
 
