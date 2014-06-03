@@ -1,7 +1,7 @@
 package com.bridea.siak.model;
 
 // default package
-// Generated Jun 4, 2014 2:32:41 AM by Hibernate Tools 4.0.0
+// Generated Jun 4, 2014 4:51:01 AM by Hibernate Tools 4.0.0
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -24,15 +24,15 @@ public class MKomponenNilai implements java.io.Serializable {
 	private int knIdKomponenNilai;
 	private MAmbil MAmbil;
 	private byte knNilaiKehadiran;
-	private long knNilaiTugas;
-	private long knNilaiUts;
-	private long knNilaiUas;
+	private double knNilaiTugas;
+	private double knNilaiUts;
+	private double knNilaiUas;
 
 	public MKomponenNilai() {
 	}
 
 	public MKomponenNilai(MAmbil MAmbil, byte knNilaiKehadiran,
-			long knNilaiTugas, long knNilaiUts, long knNilaiUas) {
+			double knNilaiTugas, double knNilaiUts, double knNilaiUas) {
 		this.MAmbil = MAmbil;
 		this.knNilaiKehadiran = knNilaiKehadiran;
 		this.knNilaiTugas = knNilaiTugas;
@@ -71,30 +71,30 @@ public class MKomponenNilai implements java.io.Serializable {
 		this.knNilaiKehadiran = knNilaiKehadiran;
 	}
 
-	@Column(name = "kn_nilai_tugas", nullable = false, precision = 10, scale = 0)
-	public long getKnNilaiTugas() {
+	@Column(name = "kn_nilai_tugas", nullable = false, precision = 22, scale = 0)
+	public double getKnNilaiTugas() {
 		return this.knNilaiTugas;
 	}
 
-	public void setKnNilaiTugas(long knNilaiTugas) {
+	public void setKnNilaiTugas(double knNilaiTugas) {
 		this.knNilaiTugas = knNilaiTugas;
 	}
 
-	@Column(name = "kn_nilai_uts", nullable = false, precision = 10, scale = 0)
-	public long getKnNilaiUts() {
+	@Column(name = "kn_nilai_uts", nullable = false, precision = 22, scale = 0)
+	public double getKnNilaiUts() {
 		return this.knNilaiUts;
 	}
 
-	public void setKnNilaiUts(long knNilaiUts) {
+	public void setKnNilaiUts(double knNilaiUts) {
 		this.knNilaiUts = knNilaiUts;
 	}
 
-	@Column(name = "kn_nilai_uas", nullable = false, precision = 10, scale = 0)
-	public long getKnNilaiUas() {
+	@Column(name = "kn_nilai_uas", nullable = false, precision = 22, scale = 0)
+	public double getKnNilaiUas() {
 		return this.knNilaiUas;
 	}
 
-	public void setKnNilaiUas(long knNilaiUas) {
+	public void setKnNilaiUas(double knNilaiUas) {
 		this.knNilaiUas = knNilaiUas;
 	}
 
