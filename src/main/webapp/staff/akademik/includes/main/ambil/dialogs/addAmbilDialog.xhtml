@@ -12,17 +12,87 @@
 		modal="false" closable="true" draggable="false" resizable="false"
 		showEffect="clip" hideEffect="clip">
 		<h:form id="ambilCreateDialogForm">
-			<h:panelGrid columns="2" style="margin-bottom:20px" cellpadding="3">
+			<h:panelGrid columns="6" style="margin-bottom:20px" cellpadding="3">
 
-				<p:outputLabel value="Mahasiswa : " />
-				<p:selectOneMenu value="#{ambilBean.tempNPM}">
-					<f:selectItem itemLabel="-- Pilih Mahasiswa --" itemValue=" " />
-					<f:selectItems value="#{mahasiswaBean.listMahasiswas}"
-						var="mahasiswa" itemLabel="#{mahasiswa.mhsNamaLengkap}"
-						itemValue="#{mahasiswa.mhsNpm}" />
+				<p:outputLabel value="MataKuliah : " />
+				<p:selectOneMenu>
+					<f:selectItem itemLabel="-- Pilih MataKuliah --" itemValue=" " />
+					<f:selectItems value="#{mataKuliahBean.listMataKuliahs}"
+						var="matakuliah" itemLabel="#{matakuliah.mkNamaMk}"
+						itemValue="#{matakuliah.mkKodeMk}" />
 				</p:selectOneMenu>
 
+				<p:outputLabel value="Dosen : " />
+				<p:selectOneMenu>
+					<f:selectItem itemLabel="-- Pilih Dosen --" itemValue=" " />
+					<f:selectItems value="#{dosenBean.listDosens}" var="dosen"
+						itemLabel="#{dosen.DNamaDosen}" itemValue="#{dosen.DKodeDosen}" />
+				</p:selectOneMenu>
+
+				<p:outputLabel value="Kelas : " />
+				<p:selectOneMenu>
+					<f:selectItem itemLabel="-- Pilih Kelas --" itemValue=" " />
+					<f:selectItem itemLabel="A Siang" itemValue="A Siang" />
+					<f:selectItem itemLabel="A Malam" itemValue="A Malam" />
+					<f:selectItem itemLabel="B Siang" itemValue="B Siang" />
+					<f:selectItem itemLabel="B Malam" itemValue="B Malam" />
+				</p:selectOneMenu>
 			</h:panelGrid>
+
+			<p:dataTable id="tbl_mahasiswa" widgetVar="mahasiswaTable"
+				value="#{mahasiswaBean.listMahasiswas}" var="mahasiswas"
+				paginator="true" rows="10"
+				paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}">
+
+				<p:column filterBy="#{mahasiswas.mhsNpm}" filterMatchMode="contains">
+					<f:facet name="header">
+						<h:outputText value="NPM" />
+					</f:facet>
+					<h:outputText value="#{mahasiswas.mhsNpm}" />
+				</p:column>
+				<p:column>
+					<f:facet name="header">
+						<h:outputText value="Nama Lengkap" />
+					</f:facet>
+					<h:outputText value="#{mahasiswas.mhsNamaLengkap}" />
+				</p:column>
+				<p:column>
+					<f:facet name="header">
+						<h:outputText value="Tempat Lahir" />
+					</f:facet>
+					<h:outputText value="#{mahasiswas.mhsTempatLahir}" />
+				</p:column>
+				<p:column>
+					<f:facet name="header">
+						<h:outputText value="Tanggal Lahir" />
+					</f:facet>
+					<h:outputText value="#{mahasiswas.mhsTanggalLahir}" />
+				</p:column>
+				<p:column>
+					<f:facet name="header">
+						<h:outputText value="Jenis Kelamin" />
+					</f:facet>
+					<h:outputText value="#{mahasiswas.mhsJnsKelamin}" />
+				</p:column>
+				<p:column>
+					<f:facet name="header">
+						<h:outputText value="Asal Sekolah" />
+					</f:facet>
+					<h:outputText value="#{mahasiswas.mhsAsalSekolah}" />
+				</p:column>
+				<p:column>
+					<f:facet name="header">
+						<h:outputText value="Alamat" />
+					</f:facet>
+					<h:outputText value="#{mahasiswas.mhsAlamat}" />
+				</p:column>
+				<p:column>
+					<f:facet name="header">
+						<h:outputText value="Judul Penelitian" />
+					</f:facet>
+					<h:outputText value="#{mahasiswas.mhsJudulPenelitian}" />
+				</p:column>
+			</p:dataTable>
 			<p:commandButton value="Submit" icon="ui-icon-plus"
 				action="#{ambilBean.insert}" update=":growl :form_ambil:tbl_ambil"
 				oncomplete="closeDialogIfSucess(xhr, status, args, ambilCreateDialogWidget, 'ambilCreateDialogId')" />
