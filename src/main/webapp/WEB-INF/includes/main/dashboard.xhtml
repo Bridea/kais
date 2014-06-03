@@ -8,12 +8,99 @@
 	<div class="span8 page-content">
 
 		<!-- Basic Home Page Template -->
-		<div class="row separator offset1">
+		<div class="row separator" style="margin-left: 5%">
 			<p style="text-align: center; font-style: arial; font-size: 20px;">Selamat
 				Datang Di Situs Akademik</p>
 			<p style="border-bottom: 1px solid #ccc;"></p>
 
-			
+
+			<h:form>
+				<div id="pnlGrid">
+					<p:panelGrid style="margin-top:20px; background-color:white"
+						styleClass="table table-striped">
+						<f:facet name="header">
+							<p:row>
+								<p:column colspan="7">Transkrip Nilai</p:column>
+							</p:row>
+
+						</f:facet>
+
+
+						<p:row>
+							<p:column width="177">Nama :</p:column>
+							<p:column width="213" rowspan="6">Nilai :</p:column>
+							<p:column width="213">A = 4 (Amat Baik)</p:column>
+						</p:row>
+						<p:row>
+							<p:column>NPM :</p:column>
+							<p:column>B = 3 (Baik)</p:column>
+						</p:row>
+						<p:row>
+							<p:column rowspan="2">Tempat Tanggal Lahir :</p:column>
+							<p:column>C = 2 (Cukup)</p:column>
+						</p:row>
+						<p:row>
+							<p:column>D = 1 (Kurang)</p:column>
+						</p:row>
+						<p:row>
+							<p:column rowspan="2">Program Studi :</p:column>
+							<p:column>E = 0 (Kurang Sekali)</p:column>
+						</p:row>
+						<p:row>
+							<p:column>BL = (Belum Lengkap)</p:column>
+						</p:row>
+
+					</p:panelGrid>
+				</div>
+				<p:dataList type="ordered" value="#{dosenBean.listDosens}"
+					var="dosens">
+					<p:panelGrid id="tbl_dosen">
+
+						<p:column>
+							<f:facet name="header">
+								<h:outputText value="Kode Dosen" />
+							</f:facet>
+							<h:outputText value="#{dosens.DKodeDosen}" />
+						</p:column>
+
+						<p:column>
+							<f:facet name="header">
+								<h:outputText value="Nama Dosen" />
+							</f:facet>
+							<h:outputText value="#{dosens.DNamaDosen}" />
+						</p:column>
+
+						<p:column>
+							<f:facet name="header">
+								<h:outputText value="Nidn" />
+							</f:facet>
+							<h:outputText value="#{dosens.DNidn}" />
+						</p:column>
+
+						<p:column>
+							<f:facet name="header">
+								<h:outputText value="Riwayat Pendidikan" />
+							</f:facet>
+							<h:outputText value="#{dosens.DRiwayatPendidikan}" />
+						</p:column>
+
+						<p:column>
+							<f:facet name="header">
+								<h:outputText value="Alamat" />
+							</f:facet>
+							<h:outputText value="#{dosens.DAlamat}" />
+						</p:column>
+						<p:column>
+							<f:facet name="header">
+								<h:outputText value="Kontak" />
+							</f:facet>
+							<h:outputText value="#{dosens.DKontak}" />
+						</p:column>
+					</p:panelGrid>
+				</p:dataList>
+
+			</h:form>
+
 			<p style="border-bottom: 1px solid #ccc;"></p>
 		</div>
 	</div>

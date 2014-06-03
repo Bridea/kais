@@ -6,17 +6,44 @@
 
 
 
-	<!-- start of page content -->
-	<div class="span8 page-content">
-
-		<!-- Basic Home Page Template -->
-		<div class="row separator offset1">
-			<p style="text-align: center; font-style: arial; font-size: 20px;">Selamat
-				Datang Di Situs Akademik</p>
-		</div>
-	</div>
-	<!-- end of page content -->
-
+	<h:form>
+    <p:dataTable var="team" value="#{dtSubTableView.teams}">
+        <f:facet name="header">
+            Transkrip Nilai
+        </f:facet>
+ 
+        <p:columnGroup type="header">
+            <p:row>
+                <p:column  headerText="Nama : " />
+                <p:column  headerText="NPM : " />
+                <p:column headerText="Tempat Tanggal Lahir : " />
+                <p:column headerText="Program Studi : " />
+            </p:row>
+        </p:columnGroup>
+ 
+        <p:subTable>
+            <f:facet name="header">
+                <h:outputText value="x" />
+            </f:facet>
+            <p:column>
+                <h:outputText value="x" />
+            </p:column>
+            <p:column>
+                <h:outputText value="x" />
+            </p:column>
+            <p:column>
+                <h:outputText value="x" />
+            </p:column>
+            <p:columnGroup type="footer">
+                <p:row>
+                    <p:column footerText="Totals: " style="text-align:right"/>
+                    <p:column footerText="x" />
+                    <p:column footerText="x" />
+                </p:row>
+            </p:columnGroup>
+        </p:subTable>
+    </p:dataTable>
+</h:form>
 
 
 

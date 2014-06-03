@@ -132,20 +132,20 @@ jQuery(document).ready(function(e) {
 	/*	Scroll to Top
 	/*-----------------------------------------------------------------------------------*/	
     $(function() {
-        $(window).scroll(function () {
-            if(!$('body').hasClass('probably-mobile'))
-            {
-                if ($(this).scrollTop() > 50) {
-                    $('a#scroll-top').fadeIn();
-                } else {
-                    $('a#scroll-top').fadeOut();
-                }
-            }
-            else
-            {
-                $('a#scroll-top').fadeOut();
-            }
-        });
+//        $(window).scroll(function () {
+//            if(!$('body').hasClass('probably-mobile'))
+//            {
+//                if ($(this).scrollTop() > 50) {
+//                    $('a#scroll-top').fadeIn();
+//                } else {
+//                    $('a#scroll-top').fadeOut();
+//                }
+//            }
+//            else
+//            {
+//                $('a#scroll-top').fadeOut();
+//            }
+//        });
 
         $('a#scroll-top').on('click', function(){
             if(!$('body').hasClass('probably-mobile'))
