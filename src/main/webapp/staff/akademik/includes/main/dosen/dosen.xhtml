@@ -25,32 +25,71 @@
 		<br />
 		<br />
 
+
+		<h3>Export Page Data Only</h3>
+		<h:commandLink>
+			<p:graphicImage name="/demo/images/excel.png" />
+			<p:dataExporter type="xls" target="tbl_dosen" fileName="dosen"
+				pageOnly="true" />
+		</h:commandLink>
+
+		<h:commandLink>
+			<p:graphicImage name="/resources/icon/pdf.png" />
+			<p:dataExporter type="pdf" target="tbl_dosen" fileName="dosen"
+				pageOnly="true" datasetPadding="4" />
+		</h:commandLink>
+
+
 		<p:dataTable id="tbl_dosen" widgetVar="dosenTable"
 			value="#{dosenBean.listDosens}" var="dosens" paginator="true"
 			rows="20"
 			paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
 			rowsPerPageTemplate="20,50,100">
 
-			<p:column headerText="Kode">
+			<p:column filterBy="#{dosens.DKodeDosen}" filterMatchMode="contains">
+				<f:facet name="header">
+					<h:outputText value="Kode Dosen" />
+				</f:facet>
 				<h:outputText value="#{dosens.DKodeDosen}" />
 			</p:column>
-			<p:column headerText="Nama Lengkap">
+
+			<p:column filterBy="#{dosens.DNamaDosen}" filterMatchMode="contains">
+				<f:facet name="header">
+					<h:outputText value="Nama Dosen" />
+				</f:facet>
 				<h:outputText value="#{dosens.DNamaDosen}" />
 			</p:column>
-			<p:column headerText="Nidn">
+
+			<p:column filterBy="#{dosens.DNidn}" filterMatchMode="contains">
+				<f:facet name="header">
+					<h:outputText value="Nidn" />
+				</f:facet>
 				<h:outputText value="#{dosens.DNidn}" />
 			</p:column>
-			<p:column headerText="Riwayat Pendidikan">
+
+			<p:column filterBy="#{dosens.DRiwayatPendidikan}"
+				filterMatchMode="contains">
+				<f:facet name="header">
+					<h:outputText value="Riwayat Pendidikan" />
+				</f:facet>
 				<h:outputText value="#{dosens.DRiwayatPendidikan}" />
 			</p:column>
-			<p:column headerText="Alamat">
+
+			<p:column headerText="Alamat" filterBy="#{dosens.DAlamat}"
+				filterMatchMode="contains">
+				<f:facet name="header">
+					<h:outputText value="Alamat" />
+				</f:facet>
 				<h:outputText value="#{dosens.DAlamat}" />
 			</p:column>
-			<p:column headerText="Kontak">
+			<p:column>
+				<f:facet name="header">
+					<h:outputText value="Kontak" />
+				</f:facet>
 				<h:outputText value="#{dosens.DKontak}" />
 			</p:column>
 
-			<p:column headerText="Action" style="width:120px">
+			<p:column headerText="Action" style="width:120px" exportable="false">
 				<p:commandButton id="view" icon="ui-icon-contact" update=":display"
 					onclick="dosenDialogShowWidget.show()">
 					<f:setPropertyActionListener value="#{dosens}"
@@ -72,6 +111,7 @@
 				</p:commandButton>
 			</p:column>
 		</p:dataTable>
+
 	</h:form>
 	<ui:include
 		src="/staff/akademik/includes/main/dosen/dialogs/addDosenDialog.xhtml"></ui:include>
