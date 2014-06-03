@@ -22,21 +22,17 @@ public class AmbilBean extends DialogBean {
 
 	@Autowired
 	private MahasiswaBean mahasiswaBean;
-	@Autowired
-	private JadwalBean jadwalBean;
 
 	private MAmbil ambil;
 	private List<MAmbil> listAmbils;
 
 	private String tempNPM;
-	private int tempIdJadwal;
 
 	// Edit Nilai
 	private List<MAmbil> listAmbilsBy;
 
 	private String tempKodeMK;
 	private String tempKodeDosen;
-	private int tempIdKelas;
 
 	// Edit Nilai
 
@@ -77,14 +73,6 @@ public class AmbilBean extends DialogBean {
 		this.tempNPM = tempNPM;
 	}
 
-	public int getTempIdJadwal() {
-		return tempIdJadwal;
-	}
-
-	public void setTempIdJadwal(int tempIdJadwal) {
-		this.tempIdJadwal = tempIdJadwal;
-	}
-
 	public String getTempNPMCariNilai() {
 		return tempNPMCariNilai;
 	}
@@ -118,25 +106,10 @@ public class AmbilBean extends DialogBean {
 		this.tempKodeDosen = tempKodeDosen;
 	}
 
-	public int getTempIdKelas() {
-		return tempIdKelas;
-	}
-
-	public void setTempIdKelas(int tempIdKelas) {
-		this.tempIdKelas = tempIdKelas;
-	}
-
 	// insert
 	public void insert() {
 		System.out.println("Masuk Insert");
 		try {
-			ambil.setMMahasiswa(mahasiswaBean.getMahasiswaByID(getTempNPM()));
-			System.out.println("lewat mahasiswa");
-			ambil.setMJadwal(jadwalBean.getJadwalByID(getTempIdJadwal()));
-			ambil.setAStatus(true);
-			System.out.println("lewat status");
-			System.out.println(ambil.getMMahasiswa().getMhsNpm() + " "
-					+ ambil.getMJadwal().getJIdJadwal());
 			dao.save(ambil);
 			displayInfoMessageToUser("Insert Ambil Berhasil");
 			invalidateAmbil();
@@ -149,8 +122,6 @@ public class AmbilBean extends DialogBean {
 	// update
 	public void update() {
 		try {
-			ambil.setMMahasiswa(mahasiswaBean.getMahasiswaByID(getTempNPM()));
-			ambil.setMJadwal(jadwalBean.getJadwalByID(getTempIdJadwal()));
 			dao.update(ambil);
 			displayInfoMessageToUser("Update Ambil Berhasil");
 		} catch (Exception e) {
@@ -162,7 +133,6 @@ public class AmbilBean extends DialogBean {
 	// update
 	public void updateNilai(MAmbil pAmbil, char nilai) {
 		try {
-			pAmbil.setANilai(nilai);
 			dao.update(pAmbil);
 			displayInfoMessageToUser("Update Ambil Berhasil");
 		} catch (Exception e) {
@@ -180,43 +150,6 @@ public class AmbilBean extends DialogBean {
 			System.out.println("error Karena : " + e.getMessage());
 			// TODO: handle exception
 		}
-	}
-
-	/*
-	 * filter kontrak mahasiswa sesuai matakuliah , dosen , kelas untuk
-	 * pengisian nilai mahasiswa oleh staff
-	 */
-	public List<MAmbil> ambilsFilterBy() {
-		List<MAmbil> listAmbilsFilter = new ArrayList<>();
-		List<MAmbil> listAmbils = dao.getByCriteria();
-		for (MAmbil mAmbil : listAmbils) {
-			if (getTempKodeMK() != null && getTempKodeDosen() != null
-					&& getTempIdKelas() != 0) {
-				if (mAmbil.getMJadwal().getMMataKuliah().getMkKodeMk()
-						.equals(getTempKodeMK())
-						&& mAmbil.getMJadwal().getMDosen().getDKodeDosen()
-								.equals(getTempKodeDosen())
-						&& mAmbil.getMMahasiswa().getMhsNpm() == getTempNPM()) {
-
-					listAmbilsFilter.add(mAmbil);
-				}
-			} else if (getTempKodeMK() != null && getTempKodeDosen() != null
-					&& getTempIdKelas() == 0) {
-				if (mAmbil.getMJadwal().getMMataKuliah().getMkKodeMk()
-						.equals(getTempKodeMK())
-						&& mAmbil.getMJadwal().getMDosen().getDKodeDosen()
-								.equals(getTempKodeDosen())) {
-
-					listAmbilsFilter.add(mAmbil);
-				}
-			} else if (getTempKodeMK() != null && getTempKodeDosen() == null
-					&& getTempIdKelas() == 0) {
-
-			}
-
-		}
-
-		return listAmbilsFilter;
 	}
 
 	// load all

@@ -1,10 +1,8 @@
 package com.bridea.siak.model;
 
 // default package
-// Generated Jun 3, 2014 9:42:46 PM by Hibernate Tools 4.0.0
+// Generated Jun 3, 2014 10:26:47 PM by Hibernate Tools 4.0.0
 
-import java.util.HashSet;
-import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -13,7 +11,6 @@ import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
@@ -27,31 +24,22 @@ public class MAmbil implements java.io.Serializable {
 	private MMataKuliah MMataKuliah;
 	private MKomponenNilai MKomponenNilai;
 	private MDosen MDosen;
+	private MMahasiswa MMahasiswa;
 	private String AKelas;
 	private String ALahanPraktek;
-	private Set<MDetailAmbil> MDetailAmbils = new HashSet<MDetailAmbil>(0);
 
 	public MAmbil() {
 	}
 
 	public MAmbil(MMataKuliah MMataKuliah, MKomponenNilai MKomponenNilai,
-			MDosen MDosen, String AKelas, String ALahanPraktek) {
+			MDosen MDosen, MMahasiswa MMahasiswa, String AKelas,
+			String ALahanPraktek) {
 		this.MMataKuliah = MMataKuliah;
 		this.MKomponenNilai = MKomponenNilai;
 		this.MDosen = MDosen;
+		this.MMahasiswa = MMahasiswa;
 		this.AKelas = AKelas;
 		this.ALahanPraktek = ALahanPraktek;
-	}
-
-	public MAmbil(MMataKuliah MMataKuliah, MKomponenNilai MKomponenNilai,
-			MDosen MDosen, String AKelas, String ALahanPraktek,
-			Set<MDetailAmbil> MDetailAmbils) {
-		this.MMataKuliah = MMataKuliah;
-		this.MKomponenNilai = MKomponenNilai;
-		this.MDosen = MDosen;
-		this.AKelas = AKelas;
-		this.ALahanPraktek = ALahanPraktek;
-		this.MDetailAmbils = MDetailAmbils;
 	}
 
 	@Id
@@ -95,6 +83,16 @@ public class MAmbil implements java.io.Serializable {
 		this.MDosen = MDosen;
 	}
 
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "a_npm", nullable = false)
+	public MMahasiswa getMMahasiswa() {
+		return this.MMahasiswa;
+	}
+
+	public void setMMahasiswa(MMahasiswa MMahasiswa) {
+		this.MMahasiswa = MMahasiswa;
+	}
+
 	@Column(name = "a_kelas", nullable = false, length = 20)
 	public String getAKelas() {
 		return this.AKelas;
@@ -111,15 +109,6 @@ public class MAmbil implements java.io.Serializable {
 
 	public void setALahanPraktek(String ALahanPraktek) {
 		this.ALahanPraktek = ALahanPraktek;
-	}
-
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "MAmbil")
-	public Set<MDetailAmbil> getMDetailAmbils() {
-		return this.MDetailAmbils;
-	}
-
-	public void setMDetailAmbils(Set<MDetailAmbil> MDetailAmbils) {
-		this.MDetailAmbils = MDetailAmbils;
 	}
 
 }

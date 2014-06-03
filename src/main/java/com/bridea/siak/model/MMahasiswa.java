@@ -1,7 +1,7 @@
 package com.bridea.siak.model;
 
 // default package
-// Generated Jun 3, 2014 9:42:46 PM by Hibernate Tools 4.0.0
+// Generated Jun 3, 2014 10:26:47 PM by Hibernate Tools 4.0.0
 
 import java.util.Date;
 import java.util.HashSet;
@@ -33,7 +33,7 @@ public class MMahasiswa implements java.io.Serializable {
 	private String mhsPekerjaanOrangTua;
 	private String mhsJudulPenelitian;
 	private boolean mhsStatus;
-	private Set<MDetailAmbil> MDetailAmbils = new HashSet<MDetailAmbil>(0);
+	private Set<MAmbil> MAmbils = new HashSet<MAmbil>(0);
 
 	public MMahasiswa() {
 	}
@@ -60,7 +60,7 @@ public class MMahasiswa implements java.io.Serializable {
 			String mhsTempatLahir, Date mhsTanggalLahir, char mhsJnsKelamin,
 			String mhsAsalSekolah, String mhsAlamat, String mhsNamaOrangTua,
 			String mhsPekerjaanOrangTua, String mhsJudulPenelitian,
-			boolean mhsStatus, Set<MDetailAmbil> MDetailAmbils) {
+			boolean mhsStatus, Set<MAmbil> MAmbils) {
 		this.mhsNpm = mhsNpm;
 		this.mhsNamaLengkap = mhsNamaLengkap;
 		this.mhsTempatLahir = mhsTempatLahir;
@@ -72,7 +72,7 @@ public class MMahasiswa implements java.io.Serializable {
 		this.mhsPekerjaanOrangTua = mhsPekerjaanOrangTua;
 		this.mhsJudulPenelitian = mhsJudulPenelitian;
 		this.mhsStatus = mhsStatus;
-		this.MDetailAmbils = MDetailAmbils;
+		this.MAmbils = MAmbils;
 	}
 
 	@Id
@@ -177,12 +177,12 @@ public class MMahasiswa implements java.io.Serializable {
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "MMahasiswa")
-	public Set<MDetailAmbil> getMDetailAmbils() {
-		return this.MDetailAmbils;
+	public Set<MAmbil> getMAmbils() {
+		return this.MAmbils;
 	}
 
-	public void setMDetailAmbils(Set<MDetailAmbil> MDetailAmbils) {
-		this.MDetailAmbils = MDetailAmbils;
+	public void setMAmbils(Set<MAmbil> MAmbils) {
+		this.MAmbils = MAmbils;
 	}
 
 }
