@@ -22,19 +22,6 @@
 						itemValue="#{mahasiswa.mhsNpm}" />
 				</p:selectOneMenu>
 
-				<p:outputLabel value="Jadwal : " />
-				<p:selectOneMenu value="#{ambilBean.tempIdJadwal}">
-					<f:selectItem itemLabel="-- Pilih Jadwal --" itemValue=" " />
-					<f:selectItems value="#{jadwalBean.listJadwals}" var="jadwal"
-						itemLabel="#{jadwal.JIdJadwal}" itemValue="#{jadwal.JIdJadwal}" />
-				</p:selectOneMenu>
-
-				<p:outputLabel value="Nilai : " />
-				<p:inputText id="add_ambil_update_nilai"
-					value="#{ambilBean.ambil.ANilai}" required="true"
-					requiredMessage="Nilai tidak boleh kosong"
-					label="add_ambil_update_nilai" />
-
 			</h:panelGrid>
 			<p:commandButton value="Submit" icon="ui-icon-plus"
 				action="#{ambilBean.update}" update=":growl :form_ambil:tbl_ambil"
