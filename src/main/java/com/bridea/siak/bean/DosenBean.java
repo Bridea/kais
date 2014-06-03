@@ -11,7 +11,6 @@ import org.springframework.stereotype.Component;
 
 import com.bridea.siak.dao.GenericDAO;
 import com.bridea.siak.model.MDosen;
-import com.bridea.siak.model.MUsers;
 import com.bridea.siak.util.DialogBean;
 
 @Scope("session")
@@ -21,9 +20,6 @@ public class DosenBean extends DialogBean {
 	@Autowired
 	@Qualifier("dosenGenericDAO")
 	private GenericDAO<MDosen> dao;
-
-	@Autowired
-	private UsersBean usersBean;
 
 	private MDosen dosen;
 	private List<MDosen> listDosens;
@@ -66,17 +62,13 @@ public class DosenBean extends DialogBean {
 	public void insert() {
 		System.out.println("Masuk Insert");
 		try {
-			MUsers user = usersBean.insertUserDosen(dosen.getDKodeDosen());
-			if (user != null) {
-				dosen.setMUsers(user);
+			
 				dosen.setDStatus(true);
 				dao.save(dosen);
 				getListDosens();
 				displayInfoMessageToUser("Insert Dosen Berhasil");
 				invalidateDosen();
-			} else {
-				System.out.println("Users Null");
-			}
+			
 		} catch (Exception e) {
 			System.out.println("error Karena : " + e.getMessage());
 			// TODO: handle exception
