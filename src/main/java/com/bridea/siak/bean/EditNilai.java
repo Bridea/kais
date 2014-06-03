@@ -43,6 +43,7 @@ public class EditNilai {
 	}
 
 	public List<MKomponenNilai> getListNilaiMahasiswa() {
+		listNilaiMahasiswa = komponenNilaiBean.getKomponenNilais();
 		return listNilaiMahasiswa;
 	}
 
@@ -64,7 +65,7 @@ public class EditNilai {
 		System.out.println(komponenNilai.getKnNilaiTugas());
 		System.out.println(komponenNilai.getKnNilaiUts());
 		System.out.println(komponenNilai.getKnNilaiUas());
-		
+
 		komponenNilaiBean.update(komponenNilai);
 
 		if (newValue != null && !newValue.equals(oldValue)) {

@@ -43,7 +43,14 @@
 			<p:column headerText="Kode MK" style="width:3%">
 				<h:outputText value="#{kontraks.MAmbil.MMataKuliah.mkKodeMk}" />
 			</p:column>
-			<p:column headerText="Matakuliah" style="width:10%">
+			<p:column headerText="Dosen" style="width:7%"
+				filterBy="#{kontraks.MAmbil.MDosen.DNamaDosen}"
+				filterMatchMode="contains">
+				<h:outputText value="#{kontraks.MAmbil.MDosen.DNamaDosen}" />
+			</p:column>
+			<p:column headerText="Matakuliah" style="width:5%"
+				filterBy="#{kontraks.MAmbil.MMataKuliah.mkNamaMk}"
+				filterMatchMode="contains">
 				<h:outputText value="#{kontraks.MAmbil.MMataKuliah.mkNamaMk}" />
 			</p:column>
 			<p:column headerText="SKS" style="width:2%">

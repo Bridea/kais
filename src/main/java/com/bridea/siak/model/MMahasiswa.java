@@ -1,7 +1,7 @@
 package com.bridea.siak.model;
 
 // default package
-// Generated Jun 4, 2014 2:32:41 AM by Hibernate Tools 4.0.0
+// Generated Jun 4, 2014 4:51:01 AM by Hibernate Tools 4.0.0
 
 import java.util.Date;
 import java.util.HashSet;
