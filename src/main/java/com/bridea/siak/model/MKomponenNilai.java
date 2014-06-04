@@ -1,7 +1,7 @@
 package com.bridea.siak.model;
 
 // default package
-// Generated Jun 4, 2014 4:51:01 AM by Hibernate Tools 4.0.0
+// Generated Jun 4, 2014 1:41:50 PM by Hibernate Tools 4.0.0
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
