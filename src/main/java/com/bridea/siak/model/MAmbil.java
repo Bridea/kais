@@ -1,7 +1,7 @@
 package com.bridea.siak.model;
 
 // default package
-// Generated Jun 4, 2014 4:51:01 AM by Hibernate Tools 4.0.0
+// Generated Jun 4, 2014 1:41:50 PM by Hibernate Tools 4.0.0
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -27,28 +27,32 @@ public class MAmbil implements java.io.Serializable {
 	private MMahasiswa MMahasiswa;
 	private String AKelas;
 	private String ALahanPraktek;
+	private String AGradeNilai;
 	private MKomponenNilai MKomponenNilai;
 
 	public MAmbil() {
 	}
 
 	public MAmbil(MMataKuliah MMataKuliah, MDosen MDosen,
-			MMahasiswa MMahasiswa, String AKelas, String ALahanPraktek) {
+			MMahasiswa MMahasiswa, String AKelas, String ALahanPraktek,
+			String AGradeNilai) {
 		this.MMataKuliah = MMataKuliah;
 		this.MDosen = MDosen;
 		this.MMahasiswa = MMahasiswa;
 		this.AKelas = AKelas;
 		this.ALahanPraktek = ALahanPraktek;
+		this.AGradeNilai = AGradeNilai;
 	}
 
 	public MAmbil(MMataKuliah MMataKuliah, MDosen MDosen,
 			MMahasiswa MMahasiswa, String AKelas, String ALahanPraktek,
-			MKomponenNilai MKomponenNilai) {
+			String AGradeNilai, MKomponenNilai MKomponenNilai) {
 		this.MMataKuliah = MMataKuliah;
 		this.MDosen = MDosen;
 		this.MMahasiswa = MMahasiswa;
 		this.AKelas = AKelas;
 		this.ALahanPraktek = ALahanPraktek;
+		this.AGradeNilai = AGradeNilai;
 		this.MKomponenNilai = MKomponenNilai;
 	}
 
@@ -109,6 +113,15 @@ public class MAmbil implements java.io.Serializable {
 
 	public void setALahanPraktek(String ALahanPraktek) {
 		this.ALahanPraktek = ALahanPraktek;
+	}
+
+	@Column(name = "a_grade_nilai", nullable = false, length = 2)
+	public String getAGradeNilai() {
+		return this.AGradeNilai;
+	}
+
+	public void setAGradeNilai(String AGradeNilai) {
+		this.AGradeNilai = AGradeNilai;
 	}
 
 	@OneToOne(fetch = FetchType.EAGER, mappedBy = "MAmbil")

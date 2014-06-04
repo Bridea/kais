@@ -16,11 +16,21 @@
 				<h:form style="padding:0% 15% 0% 15%; margin:5%">
 					<p:inputText value="#{ambilBean.tempNPMCariNilai}"
 						style="width:90%" />
-					<p:commandButton value="Search"
-						action="#{ambilBean.searchNilaiByNPM}" />
+					<h:commandLink id="Search" action="#{ambilBean.searchNilaiByNPM}"
+						actionListener="#{navigationBean.navigationPathChange}">
+						<span>Search</span>
+						<f:param name="includePath"
+							value="/WEB-INF/includes/main/mahasiswa/transkrip.xhtml" />
+					</h:commandLink>
+					<h:commandLink id="dashboard"
+						actionListener="#{navigationBean.navigationPathChange}">
+						<span>Dashboard</span>
+						<f:param name="includePath"
+							value="/WEB-INF/includes/main/dashboard.xhtml" />
+					</h:commandLink>
 				</h:form>
 				<p style="border-bottom: 1px solid #ccc;"></p>
-			<!-- 	<ul>
+				<!-- 	<ul>
 					<li>Lupa Password</li>
 				</ul> -->
 			</div>
