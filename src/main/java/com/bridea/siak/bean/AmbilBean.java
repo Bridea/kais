@@ -47,12 +47,27 @@ public class AmbilBean extends DialogBean {
 
 	private List<MAmbil> listNilaiMahasiswaSesuaiNPM;
 
+	private MMahasiswa mahasiswa;
+
 	// USER (MAHASISWA)
 
 	public List<MAmbil> getListAmbils() {
 		listAmbils = new ArrayList<>();
 		listAmbils = getAmbils();
 		return listAmbils;
+	}
+
+	public MMahasiswa getMahasiswa() {
+		for (MMahasiswa tempMahasiswa : mahasiswaBean.getListMahasiswas()) {
+			if (tempMahasiswa.getMhsNpm().equals(tempNPMCariNilai)) {
+				return tempMahasiswa;
+			}
+		}
+		return mahasiswa;
+	}
+
+	public void setMahasiswa(MMahasiswa mahasiswa) {
+		this.mahasiswa = mahasiswa;
 	}
 
 	public List<MAmbil> getListAmbilsBy() {
@@ -205,6 +220,8 @@ public class AmbilBean extends DialogBean {
 
 		if (listNilaiMahasiswaSesuaiNPM.size() < 1) {
 			displayInfoMessageToUser("NPM Anda Tidak Terdaftar, Mohon Untuk Dicek kembali");
+		} else {
+			getMahasiswa();
 		}
 	}
 }

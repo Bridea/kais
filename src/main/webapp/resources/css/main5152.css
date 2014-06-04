@@ -3,10 +3,6 @@ body {
 	background-color: #fff;
 }
 
-#pnlGrid .ui-panelgrid td {
-background-color: white !important;
-}
-
 
 a:hover {
 	text-decoration: none;
