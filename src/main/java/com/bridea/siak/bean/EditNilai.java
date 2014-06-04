@@ -26,6 +26,7 @@ public class EditNilai {
 
 	@PostConstruct
 	public void init() {
+		System.out.println("Masuk Init");
 		listNilaiMahasiswa = komponenNilaiBean.getKomponenNilais();
 	}
 
@@ -41,6 +42,10 @@ public class EditNilai {
 	}
 
 	public List<MKomponenNilai> getListNilaiMahasiswa() {
+		if (listNilaiMahasiswa.size() != komponenNilaiBean.getKomponenNilais()
+				.size()) {
+			listNilaiMahasiswa = komponenNilaiBean.getKomponenNilais();
+		}
 		return listNilaiMahasiswa;
 	}
 

@@ -12,7 +12,8 @@
 		modal="false" closable="true" draggable="false" resizable="false"
 		showEffect="clip" hideEffect="clip">
 		<h:form id="ambilCreateDialogForm">
-			<h:panelGrid columns="6" style="margin-bottom:20px" cellpadding="3">
+			<h:panelGrid id="p_filter" columns="6" style="margin-bottom:20px"
+				cellpadding="3">
 
 				<p:outputLabel value="MataKuliah : " />
 				<p:selectOneMenu value="#{ambilBean.tempKodeMK}">
@@ -98,8 +99,8 @@
 			</p:dataTable>
 			<p:commandButton value="Submit" icon="ui-icon-plus"
 				action="#{ambilBean.insert}"
-				update=":growl :form_ambil:tbl_ambil :ambilCreateDialogForm:tbl_mahasiswa:select"
-				oncomplete="closeDialogIfSucess(xhr, status, args, ambilCreateDialogWidget, 'ambilCreateDialogId')" />
+				update=":growl :form_ambil:tbl_ambil"
+				oncomplete=" closeDialogIfSucess(xhr, status, args, ambilCreateDialogWidget, 'ambilCreateDialogId')" />
 		</h:form>
 	</p:dialog>
 </ui:composition>

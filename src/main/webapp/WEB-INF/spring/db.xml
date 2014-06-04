@@ -64,6 +64,4 @@
 	<bean class="com.bridea.siak.dao.HibernateGenericDAO"
 		c:persistentClass="com.bridea.siak.model.MKomponenNilai" id="komponenNilaiGenericDAO" />
 
-
-
 </beans>

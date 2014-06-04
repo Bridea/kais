@@ -1,0 +1,49 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<f:view charset="utf-8">
+	<h:head>
+		<title>Start Login - Admin</title>
+		<!-- Le styles -->
+		<link href="resources/login/css/twitter/bootstrap.css"
+			rel="stylesheet" />
+		<link href="resources/login/css/base.css" rel="stylesheet" />
+		<link href="resources/login/css/twitter/responsive.css"
+			rel="stylesheet" />
+		<link href="resources/login/css/jquery-ui-1.8.23.custom.css"
+			rel="stylesheet" />
+
+	</h:head>
+
+	<h:body>
+		<p:growl id="growl" />
+		<div id="login_page">
+			<!-- Login page -->
+			<div id="login">
+				<div class="row-fluid fluid">
+					<div class="span5">
+						<img src="resources/img/Logo Apikes.png" />
+					</div>
+					<div class="span7">
+						<div class="title">
+							<span class="name">ADMIN</span> <span class="subtitle">Locked</span>
+						</div>
+						<h:form id="form_login_admin">
+							<p:password value="#{loginBean.passwordAdmin}" />
+							<p:commandButton value="Login" action="#{loginBean.doLogin}"
+								update=":growl" />
+						</h:form>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- End #loading -->
+	</h:body>
+</f:view>
+</html>
