@@ -28,74 +28,73 @@
 
 						<p:row>
 							<p:column width="177">Nama :</p:column>
-							<p:column width="213" rowspan="6">Nilai :</p:column>
-							<p:column width="213">A = 4 (Amat Baik)</p:column>
+							<p:column width="213" rowspan="4">
+							Nilai :<br />
+							A = 4 (Amat Baik)<br />
+							B = 3 (Baik)<br />
+							C = 2 (Cukup)<br />
+							D = 1 (Kurang)<br />
+							E = 0 (Kurang Sekali)<br />
+							BL = (Belum Lengkap)
+							</p:column>
 						</p:row>
 						<p:row>
 							<p:column>NPM :</p:column>
-							<p:column>B = 3 (Baik)</p:column>
 						</p:row>
 						<p:row>
-							<p:column rowspan="2">Tempat Tanggal Lahir :</p:column>
-							<p:column>C = 2 (Cukup)</p:column>
+							<p:column>Tempat Tanggal Lahir :</p:column>
 						</p:row>
 						<p:row>
-							<p:column>D = 1 (Kurang)</p:column>
-						</p:row>
-						<p:row>
-							<p:column rowspan="2">Program Studi :</p:column>
-							<p:column>E = 0 (Kurang Sekali)</p:column>
-						</p:row>
-						<p:row>
-							<p:column>BL = (Belum Lengkap)</p:column>
+							<p:column>Program Studi :<br />
+							D-III Perekam Medis dan Informatika Kesehatan
+							</p:column>
 						</p:row>
 
 					</p:panelGrid>
 				</div>
-				<p:dataList type="ordered" value="#{dosenBean.listDosens}"
+				<p:dataList type="definition" value="#{dosenBean.listDosens}"
 					var="dosens">
-					<p:panelGrid id="tbl_dosen">
-
-						<p:column>
-							<f:facet name="header">
-								<h:outputText value="Kode Dosen" />
-							</f:facet>
-							<h:outputText value="#{dosens.DKodeDosen}" />
-						</p:column>
-
-						<p:column>
-							<f:facet name="header">
-								<h:outputText value="Nama Dosen" />
-							</f:facet>
-							<h:outputText value="#{dosens.DNamaDosen}" />
-						</p:column>
-
-						<p:column>
-							<f:facet name="header">
-								<h:outputText value="Nidn" />
-							</f:facet>
-							<h:outputText value="#{dosens.DNidn}" />
-						</p:column>
-
-						<p:column>
-							<f:facet name="header">
-								<h:outputText value="Riwayat Pendidikan" />
-							</f:facet>
-							<h:outputText value="#{dosens.DRiwayatPendidikan}" />
-						</p:column>
-
-						<p:column>
-							<f:facet name="header">
-								<h:outputText value="Alamat" />
-							</f:facet>
-							<h:outputText value="#{dosens.DAlamat}" />
-						</p:column>
-						<p:column>
+					<p:panelGrid id="tbl_dosen" styleClass="table table-striped">
+						<p:row>
+							<p:column>
+								<f:facet name="header">
+									<h:outputText value="Kode Dosen" />
+								</f:facet>
+								<h:outputText value="#{dosens.DKodeDosen}" />
+							</p:column>
+							<p:column>
+								<f:facet name="header">
+									<h:outputText value="Nama Dosen" />
+								</f:facet>
+								<h:outputText value="#{dosens.DNamaDosen}" />
+							</p:column>
+							<p:column>
+								<f:facet name="header">
+									<h:outputText value="Nidn" />
+								</f:facet>
+								<h:outputText value="#{dosens.DNidn}" />
+							</p:column>
+							<p:column>
+								<f:facet name="header">
+									<h:outputText value="Riwayat Pendidikan" />
+								</f:facet>
+								<h:outputText value="#{dosens.DRiwayatPendidikan}" />
+							</p:column>
+							<p:column>
+								<f:facet name="header">
+									<h:outputText value="Alamat" />
+								</f:facet>
+								<h:outputText value="#{dosens.DAlamat}" />
+							</p:column>
+							<p:column>
 							<f:facet name="header">
 								<h:outputText value="Kontak" />
 							</f:facet>
 							<h:outputText value="#{dosens.DKontak}" />
 						</p:column>
+						</p:row>
+						
+						
 					</p:panelGrid>
 				</p:dataList>
 
