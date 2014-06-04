@@ -10,7 +10,7 @@
 <f:view>
 	<h:head>
 		<title>SIAK | APIKES</title>
-		<link rel="shortcut icon" href="images/favicon.png" />
+		<!-- <link rel="shortcut icon" href="images/favicon.png" /> -->
 		<!-- Google Web Fonts-->
 		<link
 			href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800'
@@ -37,8 +37,8 @@
 		<link rel='stylesheet' id='custom-css-css'
 			href='resources/css/custom5152.html?ver=1.0' type='text/css'
 			media='all' />
-			
-			
+
+
 	</h:head>
 
 	<h:body>
@@ -51,15 +51,11 @@
 		<div class="page-container">
 			<div class="container">
 				<div class="row">
-
-					<ui:insert name="sidebar">
-						<ui:include src="/WEB-INF/includes/content/sidebar.xhtml"></ui:include>
-					</ui:insert>
-
 					<div id="wrapper">
 						<p:growl id="growl" />
 						<ui:insert name="page-content">
-							<ui:include src="/WEB-INF/includes/main/dashboard.xhtml"></ui:include>
+							<ui:include
+								src="/WEB-INF/includes/main/dashboard.xhtml"></ui:include>
 						</ui:insert>
 
 					</div>

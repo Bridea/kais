@@ -86,7 +86,6 @@ public class KomponenNilaiBean extends DialogBean {
 	public void delete() {
 		try {
 			dao.delete(komponenNilai);
-			displayInfoMessageToUser("Delete KomponenNilai Berhasil");
 		} catch (Exception e) {
 			System.out.println("error Karena : " + e.getMessage());
 			// TODO: handle exception
