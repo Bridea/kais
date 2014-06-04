@@ -4,7 +4,6 @@ import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
-import javax.faces.context.FacesContext;
 
 import org.primefaces.component.datatable.DataTable;
 import org.primefaces.event.CellEditEvent;
@@ -12,7 +11,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
-import com.bridea.siak.model.MAmbil;
 import com.bridea.siak.model.MKomponenNilai;
 
 @Component("editNilai")
@@ -43,7 +41,6 @@ public class EditNilai {
 	}
 
 	public List<MKomponenNilai> getListNilaiMahasiswa() {
-		listNilaiMahasiswa = komponenNilaiBean.getKomponenNilais();
 		return listNilaiMahasiswa;
 	}
 
@@ -73,4 +70,5 @@ public class EditNilai {
 					"Cell Changed", ", Old: " + oldValue + ", New:" + newValue);
 		}
 	}
+
 }

@@ -45,7 +45,7 @@
 				rows="10"
 				paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}">
 
-				<p:column selectionMode="multiple" style="width:2%" />
+				<p:column id="select" selectionMode="multiple" style="width:2%" />
 
 				<p:column filterBy="#{mahasiswas.mhsNpm}" filterMatchMode="contains">
 					<f:facet name="header">
@@ -97,7 +97,8 @@
 				</p:column>
 			</p:dataTable>
 			<p:commandButton value="Submit" icon="ui-icon-plus"
-				action="#{ambilBean.insert}" update=":growl :form_ambil:tbl_ambil"
+				action="#{ambilBean.insert}"
+				update=":growl :form_ambil:tbl_ambil :ambilCreateDialogForm:tbl_mahasiswa:select"
 				oncomplete="closeDialogIfSucess(xhr, status, args, ambilCreateDialogWidget, 'ambilCreateDialogId')" />
 		</h:form>
 	</p:dialog>
