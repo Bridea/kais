@@ -10,20 +10,24 @@
 
 	<div class="span8 page-content">
 		<h:form>
-			<!-- <div id="pnlGrid"> -->
-			<div>
-				<p:panelGrid
-					style="margin-top:20px; background-color:white; font-weight:normal;"
-					styleClass="table table-striped">
-					<f:facet name="header">
-						<p:row>
-							<p:column colspan="7">Transkrip Nilai</p:column>
-						</p:row>
-
-					</f:facet>
+			<h:commandLink id="dashboard"
+				actionListener="#{navigationBean.navigationPathChange}">
+				<span>Dashboard</span>
+				<f:param name="includePath"
+					value="/WEB-INF/includes/main/dashboard.xhtml" />
+			</h:commandLink>
+			<p:panelGrid
+				style="margin-top:20px; background-color:white; font-weight:normal;"
+				styleClass="table table-striped">
+				<f:facet name="header">
 					<p:row>
-						<p:column width="177">Nama : #{ambilBean.mahasiswa.mhsNamaLengkap}</p:column>
-						<p:column width="213" rowspan="4">
+						<p:column colspan="7">Transkrip Nilai</p:column>
+					</p:row>
+
+				</f:facet>
+				<p:row>
+					<p:column width="177">Nama : #{ambilBean.mahasiswa.mhsNamaLengkap}</p:column>
+					<p:column width="213" rowspan="4">
 							Bobot :<br />
 							A = 4 (Amat Baik)<br />
 							B = 3 (Baik)<br />
@@ -32,27 +36,27 @@
 							E = 0 (Kurang Sekali)<br />
 							BL = (Belum Lengkap)
 							</p:column>
-					</p:row>
-					<p:row>
-						<p:column>NPM : #{ambilBean.mahasiswa.mhsNpm}</p:column>
-					</p:row>
-					<p:row>
-						<p:column>Tempat Tanggal Lahir : #{ambilBean.mahasiswa.mhsTempatLahir},#{ambilBean.mahasiswa.mhsTanggalLahir}</p:column>
-					</p:row>
-					<p:row>
-						<p:column>Program Studi :<br />
+				</p:row>
+				<p:row>
+					<p:column>NPM : #{ambilBean.mahasiswa.mhsNpm}</p:column>
+				</p:row>
+				<p:row>
+					<p:column>Tempat Tanggal Lahir : #{ambilBean.mahasiswa.mhsTempatLahir},#{ambilBean.mahasiswa.mhsTanggalLahir}</p:column>
+				</p:row>
+				<p:row>
+					<p:column>Program Studi :<br />
 							D-III Perekam Medis dan Informatika Kesehatan
 							</p:column>
-					</p:row>
-				</p:panelGrid>
+				</p:row>
+			</p:panelGrid>
 
-			
 
-				<p:dataList type="definition"
-					value="#{ambilBean.listNilaiMahasiswaSesuaiNPM}" var="kontraks">
-					<p:panelGrid id="tbl_dosen" styleClass="table table-striped"
-						style="font-weight:normal;" >
-						<p:row>
+
+			<p:dataList type="definition"
+				value="#{ambilBean.listNilaiMahasiswaSesuaiNPM}" var="kontraks">
+				<p:panelGrid id="tbl_dosen" styleClass="table table-striped"
+					style="font-weight:normal;">
+					<p:row>
 						<p:column style="font-weight:bold; width:5%; text-align:center">
 							<f:facet name="header">
 								<h:outputText value="Kode MK" />
@@ -78,25 +82,23 @@
 							<h:outputText value="Grade" />
 						</p:column>
 					</p:row>
-						<p:row>
-							<p:column width="5px">
-								<h:outputText value="#{kontraks.MMataKuliah.mkKodeMk}" />
-							</p:column>
-							<p:column>
-								<h:outputText value="#{kontraks.MMataKuliah.mkNamaMk}" />
-							</p:column>
-							<p:column>
-								<h:outputText value="#{kontraks.MMataKuliah.mkSks}" />
-							</p:column>
-							<p:column>
-								<h:outputText value="#{kontraks.AGradeNilai}" />
-							</p:column>
+					<p:row>
+						<p:column width="5px">
+							<h:outputText value="#{kontraks.MMataKuliah.mkKodeMk}" />
+						</p:column>
+						<p:column>
+							<h:outputText value="#{kontraks.MMataKuliah.mkNamaMk}" />
+						</p:column>
+						<p:column>
+							<h:outputText value="#{kontraks.MMataKuliah.mkSks}" />
+						</p:column>
+						<p:column>
+							<h:outputText value="#{kontraks.AGradeNilai}" />
+						</p:column>
 
-						</p:row>
-					</p:panelGrid>
-				</p:dataList>
-			</div>
+					</p:row>
+				</p:panelGrid>
+			</p:dataList>
 		</h:form>
 	</div>
-
 </ui:composition>
