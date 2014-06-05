@@ -72,10 +72,17 @@ public class EditNilai {
 
 		PerhitunganNilaiBean pn = new PerhitunganNilaiBean();
 		char grade = pn.hitungGrade(kehadiran, tugas, uts, uas);
+		String gradeNilai = "";
+
+		if (grade == 'T') {
+			gradeNilai = "BL";
+		} else {
+			gradeNilai = String.valueOf(grade);
+		}
 
 		komponenNilaiBean.update(komponenNilai);
 
-		ambilBean.updateNilai(idKomponen, String.valueOf(grade));
+		ambilBean.updateNilai(idKomponen, gradeNilai);
 
 		if (newValue != null && !newValue.equals(oldValue)) {
 			FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO,

@@ -17,9 +17,10 @@
 					<p:inputMask id="npm" value="#{ambilBean.tempNPMCariNilai}"
 						label="npm" mask="99.999.999" style="width:90%" />
 					<p:watermark for="npm" value="Search with a NPM" id="watermark" />
-					<h:commandLink id="Search" action="#{ambilBean.searchNilaiByNPM}"
-						actionListener="#{navigationBean.navigationPathChange}">
-						<span>Search</span>
+					<h:commandLink value="Cari" id="Search"
+						action="#{ambilBean.searchNilaiByNPM}"
+						actionListener="#{navigationBean.navigationPathChange}"
+						styleClass="btn btn-success">
 						<f:param name="includePath"
 							value="/WEB-INF/includes/main/mahasiswa/transkrip.xhtml" />
 					</h:commandLink>

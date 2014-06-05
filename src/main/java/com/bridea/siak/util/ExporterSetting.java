@@ -71,25 +71,28 @@ public class ExporterSetting implements Serializable {
 					.getCurrentInstance().getExternalContext().getContext();
 			String logo = servletContext.getRealPath("") + File.separator
 					+ "resources" + File.separator + "img" + File.separator
-					+ "Logo Apikes.png";
-			Image.getInstance(logo).setAbsolutePosition(10, 10);
+					+ "header.png";
+			Image.getInstance(logo).setAbsolutePosition(0, 0);
 			pdf.add(Image.getInstance(logo));
 
 			// pdf.add(Image.getInstance(logo));
-			pdf.add(new Paragraph("DATA MAHASISWA", FontFactory.getFont(
-					FontFactory.HELVETICA, 22, Font.BOLD, new Color(0, 0, 0))));
+			Paragraph paragraph = new Paragraph("DATA MAHASISWA",
+					FontFactory.getFont(FontFactory.HELVETICA, 12, Font.BOLD,
+							new Color(0, 0, 0)));
+			paragraph.setSpacingBefore(10);
+			pdf.add(paragraph);
 			SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
 
 			pdf.add(new Phrase("Tanggal : " + formato.format(new Date())));
 			/* pdf.newPage(); */
 
-			/*HeaderFooter header = new HeaderFooter(
-					Phrase.getInstance("Data Mahasiswa"), true);
-
-			pdf.setHeader(header);
-			HeaderFooter footer = new HeaderFooter(new Phrase("This is page "),
-					new Phrase("."));
-			pdf.setFooter(footer);*/
+			/*
+			 * HeaderFooter header = new HeaderFooter(
+			 * Phrase.getInstance("Data Mahasiswa"), true);
+			 * 
+			 * pdf.setHeader(header); HeaderFooter footer = new HeaderFooter(new
+			 * Phrase("This is page "), new Phrase(".")); pdf.setFooter(footer);
+			 */
 
 		} catch (Exception e) {
 			e.printStackTrace();
