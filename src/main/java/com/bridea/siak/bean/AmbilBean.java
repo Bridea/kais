@@ -36,6 +36,7 @@ public class AmbilBean extends DialogBean {
 	// Edit Nilai
 	private List<MAmbil> listAmbilsBy;
 
+	private String tempNPM;
 	private String tempKodeMK;
 	private String tempKodeDosen;
 
@@ -118,6 +119,14 @@ public class AmbilBean extends DialogBean {
 		this.tempKodeDosen = tempKodeDosen;
 	}
 
+	public String getTempNPM() {
+		return tempNPM;
+	}
+
+	public void setTempNPM(String tempNPM) {
+		this.tempNPM = tempNPM;
+	}
+
 	// insert
 	public void insert() {
 		System.out.println("Masuk Insert : ambil");
@@ -152,6 +161,10 @@ public class AmbilBean extends DialogBean {
 	// update
 	public void update() {
 		try {
+			ambil.setMMahasiswa(mahasiswaBean.getMahasiswaByID(getTempNPM()));
+			ambil.setMMataKuliah(mataKuliahBean
+					.getMataKuliahByID(getTempKodeMK()));
+			ambil.setMDosen(dosenBean.getDosenByID(getTempKodeDosen()));
 			dao.update(ambil);
 			displayInfoMessageToUser("Update Ambil Berhasil");
 		} catch (Exception e) {
@@ -161,10 +174,11 @@ public class AmbilBean extends DialogBean {
 	}
 
 	// update
-	public void updateNilai(MAmbil pAmbil, char nilai) {
+	public void updateNilai(int idAmbil, String grade) {
 		try {
-			dao.update(pAmbil);
-			displayInfoMessageToUser("Update Ambil Berhasil");
+			ambil = getAmbilByID(idAmbil);
+			ambil.setAGradeNilai(grade);
+			dao.update(ambil);
 		} catch (Exception e) {
 			System.out.println("error Karena : " + e.getMessage());
 			// TODO: handle exception
@@ -193,8 +207,8 @@ public class AmbilBean extends DialogBean {
 	}
 
 	// getMahasiswa by id
-	public MAmbil getAmbilByID(Long idAmbil) {
-		return dao.getByIdLONG(idAmbil);
+	public MAmbil getAmbilByID(int idAmbil) {
+		return dao.getByIdINT(idAmbil);
 	}
 
 	// return object Ambil null

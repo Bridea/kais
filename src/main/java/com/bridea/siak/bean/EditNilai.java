@@ -21,6 +21,8 @@ public class EditNilai {
 
 	@Autowired
 	private KomponenNilaiBean komponenNilaiBean;
+	@Autowired
+	private AmbilBean ambilBean;
 
 	private MKomponenNilai komponenNilai;
 
@@ -62,18 +64,22 @@ public class EditNilai {
 
 		komponenNilai = (MKomponenNilai) object;
 
-		System.out.println(komponenNilai.getKnIdKomponenNilai());
-		System.out.println(komponenNilai.getKnNilaiKehadiran());
-		System.out.println(komponenNilai.getKnNilaiTugas());
-		System.out.println(komponenNilai.getKnNilaiUts());
-		System.out.println(komponenNilai.getKnNilaiUas());
+		int idKomponen = komponenNilai.getKnIdKomponenNilai();
+		double kehadiran = komponenNilai.getKnNilaiKehadiran();
+		double tugas = komponenNilai.getKnNilaiTugas();
+		double uts = komponenNilai.getKnNilaiUts();
+		double uas = komponenNilai.getKnNilaiUas();
+
+		PerhitunganNilaiBean pn = new PerhitunganNilaiBean();
+		char grade = pn.hitungGrade(kehadiran, tugas, uts, uas);
 
 		komponenNilaiBean.update(komponenNilai);
+
+		ambilBean.updateNilai(idKomponen, String.valueOf(grade));
 
 		if (newValue != null && !newValue.equals(oldValue)) {
 			FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO,
 					"Cell Changed", ", Old: " + oldValue + ", New:" + newValue);
 		}
 	}
-
 }

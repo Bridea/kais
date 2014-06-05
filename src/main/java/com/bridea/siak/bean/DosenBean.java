@@ -62,13 +62,10 @@ public class DosenBean extends DialogBean {
 	public void insert() {
 		System.out.println("Masuk Insert");
 		try {
-			
-				dosen.setDStatus(true);
-				dao.save(dosen);
-				getListDosens();
-				displayInfoMessageToUser("Insert Dosen Berhasil");
-				invalidateDosen();
-			
+			dosen.setDStatus(true);
+			dao.save(dosen);
+			displayInfoMessageToUser("Insert Dosen Berhasil");
+			invalidateDosen();
 		} catch (Exception e) {
 			System.out.println("error Karena : " + e.getMessage());
 			// TODO: handle exception

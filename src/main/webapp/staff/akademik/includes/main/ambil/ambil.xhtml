@@ -54,7 +54,7 @@
 			</p:column>
 
 
-			<p:column headerText="Action" style="width:120px">
+			<p:column headerText="Action" style="width:70px">
 				<p:commandButton id="view" icon="ui-icon-contact" update=":display"
 					onclick="ambilDialogShowWidget.show()">
 					<f:setPropertyActionListener value="#{ambils}"
@@ -62,12 +62,12 @@
 				</p:commandButton>
 				<p:tooltip for="view" value="view #{ambils.AIdAmbil}"
 					showEffect="fade" hideEffect="fade" />
-				<p:commandButton icon="ui-icon-pencil"
+				<!-- <p:commandButton icon="ui-icon-pencil"
 					update=":ambilUpdateDialogForm"
 					oncomplete="ambilUpdateDialogWidget.show()">
 					<f:setPropertyActionListener value="#{ambils}"
 						target="#{ambilBean.ambil}" />
-				</p:commandButton>
+				</p:commandButton> -->
 				<p:commandButton icon="ui-icon-trash"
 					update=":ambilDeleteDialogForm"
 					onclick="ambilDeleteDialogWidget.show();">

@@ -26,7 +26,7 @@
 		<br />
 
 
-		<h3>Export Page Data Only</h3>
+		<p:outputLabel value="Export Page Data Only" />
 		<h:commandLink>
 			<p:graphicImage value="/resources/icon/excel.png" />
 			<p:dataExporter type="xls" target="tbl_dosen" fileName="dosen" />
@@ -43,7 +43,21 @@
 			value="#{dosenBean.listDosens}" var="dosens" paginator="true"
 			rows="20"
 			paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-			rowsPerPageTemplate="20,50,100">
+			rowsPerPageTemplate="20,50,100" style="margin-bottom:20px">
+
+			<f:facet name="{Exporters}">
+				<h:commandLink>
+					<p:graphicImage value="/resources/icon/excel.png" width="100%"
+						height="100%" />
+					<p:dataExporter type="xls" target="tbl_dosen" fileName="dosen" />
+				</h:commandLink>
+
+				<h:commandLink>
+					<p:graphicImage value="/resources/icon/pdf.png" />
+					<p:dataExporter type="pdf" target="tbl_dosen" fileName="dosen"
+						datasetPadding="4" />
+				</h:commandLink>
+			</f:facet>
 
 			<p:column filterBy="#{dosens.DKodeDosen}" filterMatchMode="contains">
 				<f:facet name="header">

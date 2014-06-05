@@ -14,8 +14,9 @@
 				<p style="border-bottom: 1px solid #ccc;"></p>
 
 				<h:form style="padding:0% 15% 0% 15%; margin:5%">
-					<p:inputText value="#{ambilBean.tempNPMCariNilai}"
-						style="width:90%" />
+					<p:inputMask id="npm" value="#{ambilBean.tempNPMCariNilai}"
+						label="npm" mask="99.999.999" style="width:90%" />
+					<p:watermark for="npm" value="Search with a NPM" id="watermark" />
 					<h:commandLink id="Search" action="#{ambilBean.searchNilaiByNPM}"
 						actionListener="#{navigationBean.navigationPathChange}">
 						<span>Search</span>

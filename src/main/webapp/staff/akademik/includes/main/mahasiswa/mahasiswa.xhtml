@@ -29,13 +29,14 @@
 		<h:commandLink>
 			<p:graphicImage value="/resources/icon/excel.png" />
 			<p:dataExporter type="xls" target="tbl_mahasiswa"
-				fileName="mahasiswa" />
+				fileName="mahasiswa"
+				postProcessor="#{exporterSetting.postProcessXLS}" />
 		</h:commandLink>
 
 		<h:commandLink>
 			<p:graphicImage value="/resources/icon/pdf.png" />
 			<p:dataExporter type="pdf" target="tbl_mahasiswa"
-				fileName="mahasiswa" />
+				fileName="mahasiswa" preProcessor="#{exporterSetting.preProcessPDF}" />
 		</h:commandLink>
 
 		<p:dataTable id="tbl_mahasiswa" widgetVar="mahasiswaTable"
