@@ -247,13 +247,6 @@ public class AmbilBean extends DialogBean {
 
 	HashMap<Integer, HashMap<Integer, MAmbil>> mkHashMap = new HashMap<>();
 
-	/*
-	 * List<MAmbil> listMKS1 = new ArrayList<>(); List<MAmbil> listMKS2 = new
-	 * ArrayList<>(); List<MAmbil> listMKS3 = new ArrayList<>(); List<MAmbil>
-	 * listMKS4 = new ArrayList<>(); List<MAmbil> listMKS5 = new ArrayList<>();
-	 * List<MAmbil> listMKS6 = new ArrayList<>();
-	 */
-
 	HashMap<Integer, MAmbil> mapMKS1 = new HashMap<>();
 	HashMap<Integer, MAmbil> mapMKS2 = new HashMap<>();
 	HashMap<Integer, MAmbil> mapMKS3 = new HashMap<>();
@@ -271,7 +264,8 @@ public class AmbilBean extends DialogBean {
 	}
 
 	public void sortingMK() {
-		System.out.println("list mahasiswa : "+ getListNilaiMahasiswaSesuaiNPM().size());
+		System.out.println("list mahasiswa : "
+				+ getListNilaiMahasiswaSesuaiNPM().size());
 		for (MAmbil mAmbil : getListNilaiMahasiswaSesuaiNPM()) {
 			if (mAmbil.getMMataKuliah().getMkSemester() == 1) {
 				mapMKS1.put(mAmbil.getAIdAmbil(), mAmbil);
@@ -288,12 +282,6 @@ public class AmbilBean extends DialogBean {
 			}
 		}
 
-		System.out.println("map 1 size : " + mapMKS1.size());
-		System.out.println("map 2 size : " + mapMKS2.size());
-		System.out.println("map 3 size : " + mapMKS3.size());
-		System.out.println("map 4 size : " + mapMKS4.size());
-		System.out.println("map 5 size : " + mapMKS5.size());
-		System.out.println("map 6 size : " + mapMKS6.size());
 	}
 
 	public void clearListMap() {
@@ -304,15 +292,6 @@ public class AmbilBean extends DialogBean {
 		mapMKS5.clear();
 		mapMKS6.clear();
 
-		System.out
-				.println("========================================================================");
-
-		System.out.println("map 1 size : " + mapMKS1.size());
-		System.out.println("map 2 size : " + mapMKS2.size());
-		System.out.println("map 3 size : " + mapMKS3.size());
-		System.out.println("map 4 size : " + mapMKS4.size());
-		System.out.println("map 5 size : " + mapMKS5.size());
-		System.out.println("map 6 size : " + mapMKS6.size());
 	}
 
 	public void addListToHashMap() {
@@ -330,21 +309,37 @@ public class AmbilBean extends DialogBean {
 				+ mkHashMap.size());
 	}
 
+	private List<Double> listIPS = new ArrayList<>();
+	private double ipk = 0;
+
+	public List<Double> getListIPS() {
+		return listIPS;
+	}
+
+	public void setListIPS(List<Double> listIPS) {
+		this.listIPS = listIPS;
+	}
+
+	public double getIpk() {
+		return ipk;
+	}
+
+	public void setIpk(double ipk) {
+		this.ipk = ipk;
+	}
+
 	public void test() {
 		sortingMK();
 		addListToHashMap();
-//		clearListMap();
+		// clearListMap();
 
 		System.out.println("tampil IPS");
 
 		PerhitunganNilaiBean pn = new PerhitunganNilaiBean();
 
-		for (Iterator<HashMap<Integer, MAmbil>> iterator = mkHashMap.values()
-				.iterator(); iterator.hasNext();) {
-			HashMap<Integer, MAmbil> temAmbils = (HashMap<Integer, MAmbil>) iterator
-					.next();
-			pn.hitungIPS(temAmbils);
-		}
-		pn.hitungIPK();
+		listIPS = pn.hitungIPS(mkHashMap);
+		setListIPS(listIPS);
+		ipk = pn.hitungIPK(listIPS);
+		setIpk(ipk);
 	}
 }

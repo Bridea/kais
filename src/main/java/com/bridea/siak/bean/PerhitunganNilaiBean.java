@@ -5,64 +5,85 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
+
 import com.bridea.siak.model.MAmbil;
 
+@Component("perhitunganNilaiBean")
+@Scope("session")
 public class PerhitunganNilaiBean {
 
 	private static char grade;
-	private List<Double> listIPS = new ArrayList<>();
 	int pembagiIPK = 0;
 
-	public void hitungIPS(HashMap<Integer, MAmbil> listAmbilSemester) {
+	public List<Double> hitungIPS(
+			HashMap<Integer, HashMap<Integer, MAmbil>> listAmbilSemesterUtama) {
 		/* hitung IPS : total(sks * bobotYgDidapat) / totalSKS per semester */
 		int totalBobot = 0;
 		int totalSKS = 0;
-		int semesterNilaiKeluar = 0;
 		boolean statusNilai = false;
-		if (listAmbilSemester.size() > 0) {
-			for (Iterator<MAmbil> iterator = listAmbilSemester.values()
-					.iterator(); iterator.hasNext();) {
-				MAmbil mAmbil = (MAmbil) iterator.next();
-				System.out.println(mAmbil.getAGradeNilai());
-				if (mAmbil.getAGradeNilai().equals("A")
-						|| mAmbil.getAGradeNilai().equals("B")
-						|| mAmbil.getAGradeNilai().equals("C")
-						|| mAmbil.getAGradeNilai().equals("D")
-						|| mAmbil.getAGradeNilai().equals("E")) {
-					int tempTotalBobot = mAmbil.getMMataKuliah().getMkSks()
-							* hitungBobot((mAmbil.getAGradeNilai().charAt(0)));
-					int tempTotalSks = mAmbil.getMMataKuliah().getMkSks();
+		List<Double> listIPS = new ArrayList<>();
 
-					totalSKS += tempTotalSks;
-					totalBobot += tempTotalBobot;
+		for (Iterator<HashMap<Integer, MAmbil>> iterator1 = listAmbilSemesterUtama
+				.values().iterator(); iterator1.hasNext();) {
+			HashMap<Integer, MAmbil> listAmbilSemester = (HashMap<Integer, MAmbil>) iterator1
+					.next();
 
-					statusNilai = true;
+			if (listAmbilSemester.size() > 0) {
+				for (Iterator<MAmbil> iterator2 = listAmbilSemester.values()
+						.iterator(); iterator2.hasNext();) {
+					MAmbil mAmbil = (MAmbil) iterator2.next();
+					System.out.println(mAmbil.getAGradeNilai());
+					if (mAmbil.getAGradeNilai().equals("A")
+							|| mAmbil.getAGradeNilai().equals("B")
+							|| mAmbil.getAGradeNilai().equals("C")
+							|| mAmbil.getAGradeNilai().equals("D")
+							|| mAmbil.getAGradeNilai().equals("E")) {
+						int tempTotalBobot = mAmbil.getMMataKuliah().getMkSks()
+								* hitungBobot((mAmbil.getAGradeNilai()
+										.charAt(0)));
+						int tempTotalSks = mAmbil.getMMataKuliah().getMkSks();
+
+						totalSKS += tempTotalSks;
+						totalBobot += tempTotalBobot;
+
+						statusNilai = true;
+					}
+				}
+				if (statusNilai == true) {
+					pembagiIPK += 1;
+					statusNilai = false;
 				}
 			}
-			if (statusNilai == true) {
-				pembagiIPK += 1;
 
-				double ips = (double) totalBobot / (double) totalSKS;
+			double ips = 0;
+			if (totalBobot != 0 && totalSKS != 0) {
+				ips = (double) totalBobot / (double) totalSKS;
 				System.out.println("total bobot : " + totalBobot);
 				System.out.println("total sks : " + totalSKS);
 				System.out.println("Semester : " + listAmbilSemester.keySet()
 						+ " IPS : " + ips);
-
-				listIPS.add(ips);
+				totalBobot = 0;
+				totalSKS = 0;
 			}
+			listIPS.add(ips);
+
 		}
-		System.out
-				.println("============================================================================");
+
+		return listIPS;
+
 	}
 
-	public void hitungIPK() {
+	public double hitungIPK(List<Double> listIPS) {
 		/* hitung IPk : totalbobotYgDidapat / totalSKS */
-		double ipk = 0;
 		double tempTotalIPS = 0;
+		double ipk = 0;
 
 		System.out.println("list ips : " + listIPS);
 		for (double ips : listIPS) {
 			tempTotalIPS += ips;
+
 		}
 
 		System.out.println("total ips : " + tempTotalIPS);
@@ -71,6 +92,8 @@ public class PerhitunganNilaiBean {
 		ipk = tempTotalIPS / pembagiIPK;
 
 		System.out.println("IPK : " + ipk);
+
+		return ipk;
 	}
 
 	public int hitungBobot(char grades) {

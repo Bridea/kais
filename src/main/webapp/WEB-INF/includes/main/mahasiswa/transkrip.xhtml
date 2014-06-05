@@ -89,6 +89,8 @@
 					</p:row>
 				</p:panelGrid>
 
+
+
 				<ui:repeat value="#{entry.value.entrySet().toArray()}"
 					var="kontraks">
 					<p:panelGrid styleClass="table table-striped"
@@ -106,20 +108,25 @@
 							<p:column>
 								<h:outputText value="#{kontraks.value.AGradeNilai}" />
 							</p:column>
-						</p:row>	
+						</p:row>
 					</p:panelGrid>
-										
+
 				</ui:repeat>
 
-				<p:panel style="margin-top:-3%;margin-bottom:2%;width:20%; float:right;">
-					<p:outputLabel value="IPS:" />
-					</p:panel>
-			
+
+
+				<p:panel
+					style="margin-top:-3%;margin-bottom:2%;width:20%; float:right;">
+					<p:outputLabel value="IPS : #{ips}" />
+				</p:panel>
+
+				<!-- <ui:repeat value="#{ambilBean.listIPS}" var="ips"></ui:repeat> -->
+
 
 			</ui:repeat>
 			<p:panel style="margin-top:7%;margin-bottom:5%;">
-					<p:outputLabel value="IPK" />
-					</p:panel>
+				<p:outputLabel value="IPK : #{ambilBean.ipk}" />
+			</p:panel>
 		</h:form>
 	</div>
 </ui:composition>
