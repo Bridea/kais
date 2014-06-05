@@ -238,10 +238,13 @@ public class AmbilBean extends DialogBean {
 		if (listNilaiMahasiswaSesuaiNPM.size() < 1) {
 			displayInfoMessageToUser("NPM Anda Tidak Terdaftar, Mohon Untuk Dicek kembali");
 		}
+		System.out.println("setelah di clear : " + mkHashMap.size());
+		mkHashMap.clear();
+		System.out.println("setelah di clear : " + mkHashMap.size());
 		test();
 	}
 
-	HashMap<Integer, HashMap<Integer, MAmbil>> mkHashMap = new HashMap<>();
+	HashMap<Integer, HashMap<Integer, MAmbil>> mkHashMap;
 
 	/*
 	 * List<MAmbil> listMKS1 = new ArrayList<>(); List<MAmbil> listMKS2 = new
@@ -258,12 +261,6 @@ public class AmbilBean extends DialogBean {
 	HashMap<Integer, MAmbil> mapMKS6 = new HashMap<>();
 
 	public HashMap<Integer, HashMap<Integer, MAmbil>> getMkHashMap() {
-		mkHashMap.put(1, mapMKS1);
-		mkHashMap.put(2, mapMKS2);
-		mkHashMap.put(3, mapMKS3);
-		mkHashMap.put(4, mapMKS4);
-		mkHashMap.put(5, mapMKS5);
-		mkHashMap.put(6, mapMKS6);
 		return mkHashMap;
 	}
 
@@ -273,6 +270,7 @@ public class AmbilBean extends DialogBean {
 	}
 
 	public void sortingMK() {
+		System.out.println("Isikan Data Sesuai Semester Ke List");
 		for (MAmbil mAmbil : getListNilaiMahasiswaSesuaiNPM()) {
 			if (mAmbil.getMMataKuliah().getMkSemester() == 1) {
 				mapMKS1.put(mAmbil.getAIdAmbil(), mAmbil);
@@ -288,21 +286,63 @@ public class AmbilBean extends DialogBean {
 				mapMKS6.put(mAmbil.getAIdAmbil(), mAmbil);
 			}
 		}
+
+		System.out.println("map 1 size : " + mapMKS1.size());
+		System.out.println("map 2 size : " + mapMKS2.size());
+		System.out.println("map 3 size : " + mapMKS3.size());
+		System.out.println("map 4 size : " + mapMKS4.size());
+		System.out.println("map 5 size : " + mapMKS5.size());
+		System.out.println("map 6 size : " + mapMKS6.size());
+	}
+
+	public void clearListMap() {
+		mapMKS1.clear();
+		mapMKS2.clear();
+		mapMKS3.clear();
+		mapMKS4.clear();
+		mapMKS5.clear();
+		mapMKS6.clear();
+
+		System.out
+				.println("========================================================================");
+
+		System.out.println("map 1 size : " + mapMKS1.size());
+		System.out.println("map 2 size : " + mapMKS2.size());
+		System.out.println("map 3 size : " + mapMKS3.size());
+		System.out.println("map 4 size : " + mapMKS4.size());
+		System.out.println("map 5 size : " + mapMKS5.size());
+		System.out.println("map 6 size : " + mapMKS6.size());
+	}
+
+	public void addListToHashMap() {
+		System.out.println("Membuat New Hasmap Iduk");
+		mkHashMap = new HashMap<>();
+		System.out.println("Isi Hasmap Iduk sebelum add list : "
+				+ mkHashMap.size());
+		mkHashMap.put(1, mapMKS1);
+		mkHashMap.put(2, mapMKS2);
+		mkHashMap.put(3, mapMKS3);
+		mkHashMap.put(4, mapMKS4);
+		mkHashMap.put(5, mapMKS5);
+		mkHashMap.put(6, mapMKS6);
+		System.out.println("Isi Hasmap Iduk sesudah add list : "
+				+ mkHashMap.size());
 	}
 
 	public void test() {
-		getMkHashMap();
 		sortingMK();
+		addListToHashMap();
+		clearListMap();
 
-		for (Iterator<HashMap<Integer, MAmbil>> iterator = mkHashMap.values().iterator(); iterator
-				.hasNext();) {
+		System.out.println("tampil IPS");
+
+		PerhitunganNilaiBean pn = new PerhitunganNilaiBean();
+
+		for (Iterator<HashMap<Integer, MAmbil>> iterator = mkHashMap.values()
+				.iterator(); iterator.hasNext();) {
 			HashMap<Integer, MAmbil> temAmbils = (HashMap<Integer, MAmbil>) iterator
 					.next();
-
-			for (MAmbil mAmbil : temAmbils.values()) {
-				System.out.println("semester : "
-						+ mAmbil.getMMataKuliah().getMkSemester());
-			}
+			pn.hitungIPS(temAmbils);
 		}
 	}
 }

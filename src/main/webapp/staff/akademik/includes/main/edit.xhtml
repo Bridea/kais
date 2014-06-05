@@ -1,18 +1,13 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
-<html xmlns="http://www.w3.org/1999/xhtml"
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui">
 
-<h:head>
-</h:head>
-<h:body>
 	<h:form id="form">
-		<p:growl id="msgs" showDetail="true" />
-
 		<p:contextMenu for="kontrak" widgetVar="cMenu">
 			<p:menuitem value="Edit Nilai" icon="ui-icon-search"
 				onclick="PF('cellKontraks').showCellEditor();return false;" />
@@ -28,20 +23,23 @@
        </f:facet>
 
 			<p:ajax event="cellEdit" listener="#{editNilai.onCellEdit}"
-				update=":form:msgs">
+				update=":growl :form:kontrak">
 			</p:ajax>
 
 			<p:column headerText="ID" style="width:2%">
 				<h:outputText value="#{kontraks.knIdKomponenNilai}" />
 			</p:column>
 			<p:column headerText="NPM" style="width:3%"
-				filterBy="#{kontraks.MAmbil.MMahasiswa.mhsNpm}" filterMatchMode="contains">
+				filterBy="#{kontraks.MAmbil.MMahasiswa.mhsNpm}"
+				filterMatchMode="contains">
 				<h:outputText value="#{kontraks.MAmbil.MMahasiswa.mhsNpm}" />
 			</p:column>
 			<p:column headerText="Nama" style="width:10%">
 				<h:outputText value="#{kontraks.MAmbil.MMahasiswa.mhsNamaLengkap}" />
 			</p:column>
-			<p:column headerText="Kode MK" style="width:3%" filterBy="#{kontraks.MAmbil.MMataKuliah.mkKodeMk}" filterMatchMode="contains">
+			<p:column headerText="Kode MK" style="width:3%"
+				filterBy="#{kontraks.MAmbil.MMataKuliah.mkKodeMk}"
+				filterMatchMode="contains">
 				<h:outputText value="#{kontraks.MAmbil.MMataKuliah.mkKodeMk}" />
 			</p:column>
 			<p:column headerText="Dosen" style="width:7%"
@@ -100,10 +98,9 @@
 				</p:cellEditor>
 			</p:column>
 
-			<p:column headerText="Grade" style="width:3%">
+			<p:column id="grade_nilai" headerText="Grade" style="width:3%">
 				<h:outputText value="#{kontraks.MAmbil.AGradeNilai}" />
 			</p:column>
 		</p:dataTable>
 	</h:form>
-</h:body>
-</html>
+</ui:composition>

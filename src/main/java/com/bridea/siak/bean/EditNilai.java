@@ -83,6 +83,9 @@ public class EditNilai {
 		komponenNilaiBean.update(komponenNilai);
 
 		ambilBean.updateNilai(idKomponen, gradeNilai);
+		System.out.println("get deui");
+		listNilaiMahasiswa = komponenNilaiBean.getKomponenNilais();
+		/*new LoginBean().redirect("/staff.akademik.jsf");*/
 
 		if (newValue != null && !newValue.equals(oldValue)) {
 			FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO,
