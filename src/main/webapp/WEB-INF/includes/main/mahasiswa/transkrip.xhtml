@@ -50,14 +50,19 @@
 				</p:row>
 			</p:panelGrid>
 
+			<ui:repeat value="#{ambilBean.mkHashMap.entrySet().toArray()}"
+				var="entry">
 
-
-			<p:dataList type="definition"
-				value="#{ambilBean.listNilaiMahasiswaSesuaiNPM}" var="kontraks">
 				<p:panelGrid id="tbl_dosen" styleClass="table table-striped"
 					style="font-weight:normal;">
 					<p:row>
-						<p:column style="font-weight:bold; width:5%; text-align:center">
+						<p:column colspan="4">
+							<h5>SEMESTER #{entry.key}</h5>
+						</p:column>
+					</p:row>
+
+					<p:row>
+						<p:column style="font-weight:bold; width:10%; text-align:center">
 							<f:facet name="header">
 								<h:outputText value="Kode MK" />
 							</f:facet>
@@ -82,23 +87,29 @@
 							<h:outputText value="Grade" />
 						</p:column>
 					</p:row>
-					<p:row>
-						<p:column width="5px">
-							<h:outputText value="#{kontraks.MMataKuliah.mkKodeMk}" />
-						</p:column>
-						<p:column>
-							<h:outputText value="#{kontraks.MMataKuliah.mkNamaMk}" />
-						</p:column>
-						<p:column>
-							<h:outputText value="#{kontraks.MMataKuliah.mkSks}" />
-						</p:column>
-						<p:column>
-							<h:outputText value="#{kontraks.AGradeNilai}" />
-						</p:column>
-
-					</p:row>
 				</p:panelGrid>
-			</p:dataList>
+
+				<ui:repeat value="#{entry.value.entrySet().toArray()}"
+					var="kontraks">
+					<p:panelGrid styleClass="table table-striped"
+						style="font-weight:normal; margin-top:-3%">
+						<p:row>
+							<p:column style="width:10%">
+								<h:outputText value="#{kontraks.value.MMataKuliah.mkKodeMk}" />
+							</p:column>
+							<p:column style="width:75%">
+								<h:outputText value="#{kontraks.value.MMataKuliah.mkNamaMk}" />
+							</p:column>
+							<p:column style="width:6.4%">
+								<h:outputText value="#{kontraks.value.MMataKuliah.mkSks}" />
+							</p:column>
+							<p:column>
+								<h:outputText value="#{kontraks.value.AGradeNilai}" />
+							</p:column>
+						</p:row>
+					</p:panelGrid>
+				</ui:repeat>
+			</ui:repeat>
 		</h:form>
 	</div>
 </ui:composition>
