@@ -106,10 +106,17 @@
 							<p:column>
 								<h:outputText value="#{kontraks.value.AGradeNilai}" />
 							</p:column>
-						</p:row>
+						</p:row>	
 					</p:panelGrid>
+										
 				</ui:repeat>
+				<p:panel style="margin-top:-3%;margin-bottom:2%;width:20%; float:right;">
+					<p:outputLabel value="IPS:" />
+					</p:panel>
 			</ui:repeat>
+			<p:panel style="margin-top:7%;margin-bottom:5%;">
+					<p:outputLabel value="IPK" />
+					</p:panel>
 		</h:form>
 	</div>
 </ui:composition>
