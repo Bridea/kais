@@ -229,7 +229,8 @@ public class AmbilBean extends DialogBean {
 		listNilaiMahasiswaSesuaiNPM = new ArrayList<>();
 		List<MAmbil> listNilaiMhs = getAmbils();
 		for (MAmbil mAmbil : listNilaiMhs) {
-			if (mAmbil.getMMahasiswa().getMhsNpm().equals("12.001.128")) {
+			if (mAmbil.getMMahasiswa().getMhsNpm()
+					.equals(getTempNPMCariNilai())) {
 				listNilaiMahasiswaSesuaiNPM.add(mAmbil);
 			}
 		}
@@ -240,43 +241,51 @@ public class AmbilBean extends DialogBean {
 		test();
 	}
 
-	HashMap<Integer, List<MAmbil>> mkHashMap = new HashMap<>();
+	HashMap<Integer, HashMap<Integer, MAmbil>> mkHashMap = new HashMap<>();
 
-	List<MAmbil> listMKS1 = new ArrayList<>();
-	List<MAmbil> listMKS2 = new ArrayList<>();
-	List<MAmbil> listMKS3 = new ArrayList<>();
-	List<MAmbil> listMKS4 = new ArrayList<>();
-	List<MAmbil> listMKS5 = new ArrayList<>();
-	List<MAmbil> listMKS6 = new ArrayList<>();
+	/*
+	 * List<MAmbil> listMKS1 = new ArrayList<>(); List<MAmbil> listMKS2 = new
+	 * ArrayList<>(); List<MAmbil> listMKS3 = new ArrayList<>(); List<MAmbil>
+	 * listMKS4 = new ArrayList<>(); List<MAmbil> listMKS5 = new ArrayList<>();
+	 * List<MAmbil> listMKS6 = new ArrayList<>();
+	 */
 
-	public HashMap<Integer, List<MAmbil>> getMkHashMap() {
-		mkHashMap.put(1, listMKS1);
-		mkHashMap.put(2, listMKS2);
-		mkHashMap.put(3, listMKS3);
-		mkHashMap.put(4, listMKS4);
-		mkHashMap.put(5, listMKS5);
-		mkHashMap.put(6, listMKS6);
+	HashMap<Integer, MAmbil> mapMKS1 = new HashMap<>();
+	HashMap<Integer, MAmbil> mapMKS2 = new HashMap<>();
+	HashMap<Integer, MAmbil> mapMKS3 = new HashMap<>();
+	HashMap<Integer, MAmbil> mapMKS4 = new HashMap<>();
+	HashMap<Integer, MAmbil> mapMKS5 = new HashMap<>();
+	HashMap<Integer, MAmbil> mapMKS6 = new HashMap<>();
+
+	public HashMap<Integer, HashMap<Integer, MAmbil>> getMkHashMap() {
+		mkHashMap.put(1, mapMKS1);
+		mkHashMap.put(2, mapMKS2);
+		mkHashMap.put(3, mapMKS3);
+		mkHashMap.put(4, mapMKS4);
+		mkHashMap.put(5, mapMKS5);
+		mkHashMap.put(6, mapMKS6);
 		return mkHashMap;
 	}
 
-	public void setMkHashMap(HashMap<Integer, List<MAmbil>> mkHashMap) {
+	public void setMkHashMap(
+			HashMap<Integer, HashMap<Integer, MAmbil>> mkHashMap) {
 		this.mkHashMap = mkHashMap;
 	}
 
 	public void sortingMK() {
 		for (MAmbil mAmbil : getListNilaiMahasiswaSesuaiNPM()) {
 			if (mAmbil.getMMataKuliah().getMkSemester() == 1) {
-				listMKS1.add(mAmbil);
+				mapMKS1.put(mAmbil.getAIdAmbil(), mAmbil);
 			} else if (mAmbil.getMMataKuliah().getMkSemester() == 2) {
-				listMKS2.add(mAmbil);
+				mapMKS2.put(mAmbil.getAIdAmbil(), mAmbil);
 			} else if (mAmbil.getMMataKuliah().getMkSemester() == 3) {
-				listMKS3.add(mAmbil);
+				mapMKS3.put(mAmbil.getAIdAmbil(), mAmbil);
 			} else if (mAmbil.getMMataKuliah().getMkSemester() == 4) {
-				listMKS4.add(mAmbil);
+				mapMKS4.put(mAmbil.getAIdAmbil(), mAmbil);
 			} else if (mAmbil.getMMataKuliah().getMkSemester() == 5) {
-				listMKS5.add(mAmbil);
+				mapMKS5.put(mAmbil.getAIdAmbil(), mAmbil);
 			} else {
-				listMKS6.add(mAmbil);
+				mapMKS6.put(mAmbil.getAIdAmbil(), mAmbil);
 			}
 		}
 	}
@@ -285,11 +294,12 @@ public class AmbilBean extends DialogBean {
 		getMkHashMap();
 		sortingMK();
 
-		for (Iterator iterator = mkHashMap.values().iterator(); iterator
+		for (Iterator<HashMap<Integer, MAmbil>> iterator = mkHashMap.values().iterator(); iterator
 				.hasNext();) {
-			List<MAmbil> temAmbils = (List<MAmbil>) iterator.next();
+			HashMap<Integer, MAmbil> temAmbils = (HashMap<Integer, MAmbil>) iterator
+					.next();
 
-			for (MAmbil mAmbil : temAmbils) {
+			for (MAmbil mAmbil : temAmbils.values()) {
 				System.out.println("semester : "
 						+ mAmbil.getMMataKuliah().getMkSemester());
 			}

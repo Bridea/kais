@@ -16,23 +16,26 @@
 				cellpadding="3">
 
 				<p:outputLabel value="MataKuliah : " />
-				<p:selectOneMenu value="#{ambilBean.tempKodeMK}">
-					<f:selectItem itemLabel="-- Pilih MataKuliah --" itemValue=" " />
+				<p:selectOneMenu value="#{ambilBean.tempKodeMK}" required="true"
+					requiredMessage="Matakuliah Harus Di isi">
+					<f:selectItem itemLabel="-- Pilih MataKuliah --" itemValue="" />
 					<f:selectItems value="#{mataKuliahBean.listMataKuliahs}"
 						var="matakuliah" itemLabel="#{matakuliah.mkNamaMk}"
 						itemValue="#{matakuliah.mkKodeMk}" />
 				</p:selectOneMenu>
 
 				<p:outputLabel value="Dosen : " />
-				<p:selectOneMenu value="#{ambilBean.tempKodeDosen}">
-					<f:selectItem itemLabel="-- Pilih Dosen --" itemValue=" " />
+				<p:selectOneMenu value="#{ambilBean.tempKodeDosen}" required="true"
+					requiredMessage="Dosen harus Di isi">
+					<f:selectItem itemLabel="-- Pilih Dosen --" itemValue="" />
 					<f:selectItems value="#{dosenBean.listDosens}" var="dosen"
 						itemLabel="#{dosen.DNamaDosen}" itemValue="#{dosen.DKodeDosen}" />
 				</p:selectOneMenu>
 
 				<p:outputLabel value="Kelas : " />
-				<p:selectOneMenu value="#{ambilBean.ambil.AKelas}">
-					<f:selectItem itemLabel="-- Pilih Kelas --" itemValue=" " />
+				<p:selectOneMenu value="#{ambilBean.ambil.AKelas}" required="true"
+					requiredMessage="Kelas harus di isi">
+					<f:selectItem itemLabel="-- Pilih Kelas --" itemValue="" />
 					<f:selectItem itemLabel="A Siang" itemValue="A Siang" />
 					<f:selectItem itemLabel="A Malam" itemValue="A Malam" />
 					<f:selectItem itemLabel="B Siang" itemValue="B Siang" />
@@ -98,8 +101,7 @@
 				</p:column>
 			</p:dataTable>
 			<p:commandButton value="Submit" icon="ui-icon-plus"
-				action="#{ambilBean.insert}"
-				update=":growl :form_ambil:tbl_ambil"
+				action="#{ambilBean.insert}" update=":growl :form_ambil:tbl_ambil"
 				oncomplete=" closeDialogIfSucess(xhr, status, args, ambilCreateDialogWidget, 'ambilCreateDialogId')" />
 		</h:form>
 	</p:dialog>
