@@ -345,5 +345,6 @@ public class AmbilBean extends DialogBean {
 					.next();
 			pn.hitungIPS(temAmbils);
 		}
+		pn.hitungIPK();
 	}
 }
