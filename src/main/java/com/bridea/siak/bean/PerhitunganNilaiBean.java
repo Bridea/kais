@@ -1,40 +1,76 @@
 package com.bridea.siak.bean;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.List;
+
 import com.bridea.siak.model.MAmbil;
 
 public class PerhitunganNilaiBean {
 
 	private static char grade;
+	private List<Double> listIPS = new ArrayList<>();
+	int pembagiIPK = 0;
 
 	public void hitungIPS(HashMap<Integer, MAmbil> listAmbilSemester) {
 		/* hitung IPS : total(sks * bobotYgDidapat) / totalSKS per semester */
 		int totalBobot = 0;
 		int totalSKS = 0;
-		for (Iterator<MAmbil> iterator = listAmbilSemester.values().iterator(); iterator
-				.hasNext();) {
-			MAmbil mAmbil = (MAmbil) iterator.next();
-			int tempTotalBobot = mAmbil.getMMataKuliah().getMkSks()
-					* hitungBobot((mAmbil.getAGradeNilai().charAt(0)));
-			int tempTotalSks = mAmbil.getMMataKuliah().getMkSks();
+		int semesterNilaiKeluar = 0;
+		boolean statusNilai = false;
+		if (listAmbilSemester.size() > 0) {
+			for (Iterator<MAmbil> iterator = listAmbilSemester.values()
+					.iterator(); iterator.hasNext();) {
+				MAmbil mAmbil = (MAmbil) iterator.next();
+				System.out.println(mAmbil.getAGradeNilai());
+				if (mAmbil.getAGradeNilai().equals("A")
+						|| mAmbil.getAGradeNilai().equals("B")
+						|| mAmbil.getAGradeNilai().equals("C")
+						|| mAmbil.getAGradeNilai().equals("D")
+						|| mAmbil.getAGradeNilai().equals("E")) {
+					int tempTotalBobot = mAmbil.getMMataKuliah().getMkSks()
+							* hitungBobot((mAmbil.getAGradeNilai().charAt(0)));
+					int tempTotalSks = mAmbil.getMMataKuliah().getMkSks();
 
-			totalSKS += tempTotalSks;
-			totalBobot += tempTotalBobot;
+					totalSKS += tempTotalSks;
+					totalBobot += tempTotalBobot;
+
+					statusNilai = true;
+				}
+			}
+			if (statusNilai == true) {
+				pembagiIPK += 1;
+
+				double ips = (double) totalBobot / (double) totalSKS;
+				System.out.println("total bobot : " + totalBobot);
+				System.out.println("total sks : " + totalSKS);
+				System.out.println("Semester : " + listAmbilSemester.keySet()
+						+ " IPS : " + ips);
+
+				listIPS.add(ips);
+			}
 		}
-
-		double ips = (double) totalBobot / (double) totalSKS;
-		System.out.println("Semester : " + listAmbilSemester.keySet()
-				+ " IPS : " + ips);
-		
-		System.out.println("============================================================================");
+		System.out
+				.println("============================================================================");
 	}
 
 	public void hitungIPK() {
 		/* hitung IPk : totalbobotYgDidapat / totalSKS */
-		
-		
-		
+		double ipk = 0;
+		double tempTotalIPS = 0;
+
+		System.out.println("list ips : " + listIPS);
+		for (double ips : listIPS) {
+			tempTotalIPS += ips;
+		}
+
+		System.out.println("total ips : " + tempTotalIPS);
+		System.out.println("pembagi ipk : " + pembagiIPK);
+
+		ipk = tempTotalIPS / pembagiIPK;
+
+		System.out.println("IPK : " + ipk);
 	}
 
 	public int hitungBobot(char grades) {
