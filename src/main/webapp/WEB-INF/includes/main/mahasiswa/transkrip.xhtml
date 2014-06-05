@@ -1,0 +1,125 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+	<ui:insert name="sidebar">
+		<ui:include src="/WEB-INF/includes/content/sidebar.xhtml"></ui:include>
+	</ui:insert>
+
+	<div class="span8 page-content">
+		<h:form>
+			<h:commandLink id="dashboard" value="Dashboard"
+				actionListener="#{navigationBean.navigationPathChange}"
+				styleClass="btn btn-success">
+				<f:param name="includePath"
+					value="/WEB-INF/includes/main/dashboard.xhtml" />
+			</h:commandLink>
+			<p:panelGrid
+				style="margin-top:20px; background-color:white; font-weight:normal;"
+				styleClass="table table-striped">
+				<f:facet name="header">
+					<p:row>
+						<p:column colspan="7">Transkrip Nilai</p:column>
+					</p:row>
+
+				</f:facet>
+				<p:row>
+					<p:column width="177">Nama : #{ambilBean.mahasiswa.mhsNamaLengkap}</p:column>
+					<p:column width="213" rowspan="4">
+							Bobot :<br />
+							A = 4 (Amat Baik)<br />
+							B = 3 (Baik)<br />
+							C = 2 (Cukup)<br />
+							D = 1 (Kurang)<br />
+							E = 0 (Kurang Sekali)<br />
+							BL = (Belum Lengkap)
+							</p:column>
+				</p:row>
+				<p:row>
+					<p:column>NPM : #{ambilBean.mahasiswa.mhsNpm}</p:column>
+				</p:row>
+				<p:row>
+					<p:column>Tempat Tanggal Lahir : #{ambilBean.mahasiswa.mhsTempatLahir},#{ambilBean.mahasiswa.mhsTanggalLahir}</p:column>
+				</p:row>
+				<p:row>
+					<p:column>Program Studi :<br />
+							D-III Perekam Medis dan Informatika Kesehatan
+							</p:column>
+				</p:row>
+			</p:panelGrid>
+
+			<ui:repeat value="#{ambilBean.mkHashMap.entrySet().toArray()}"
+				var="entry">
+
+				<p:panelGrid id="tbl_dosen" styleClass="table table-striped"
+					style="font-weight:normal;">
+					<p:row>
+						<p:column colspan="4">
+							<h5>SEMESTER #{entry.key}</h5>
+						</p:column>
+					</p:row>
+
+					<p:row>
+						<p:column style="font-weight:bold; width:10%; text-align:center">
+							<f:facet name="header">
+								<h:outputText value="Kode MK" />
+							</f:facet>
+							<h:outputText value="Kode MK" />
+						</p:column>
+						<p:column style="font-weight:bold;width:75%; text-align:center">
+							<f:facet name="header">
+								<h:outputText value="Matakuliah" />
+							</f:facet>
+							<h:outputText value="Matakuliah" />
+						</p:column>
+						<p:column style="font-weight:bold; text-align:center">
+							<f:facet name="header">
+								<h:outputText value="SKS" />
+							</f:facet>
+							<h:outputText value="SKS" />
+						</p:column>
+						<p:column style="font-weight:bold; text-align:center">
+							<f:facet name="header">
+								<h:outputText value="Grade" />
+							</f:facet>
+							<h:outputText value="Grade" />
+						</p:column>
+					</p:row>
+				</p:panelGrid>
+
+				<ui:repeat value="#{entry.value.entrySet().toArray()}"
+					var="kontraks">
+					<p:panelGrid styleClass="table table-striped"
+						style="font-weight:normal; margin-top:-3%">
+						<p:row>
+							<p:column style="width:10%">
+								<h:outputText value="#{kontraks.value.MMataKuliah.mkKodeMk}" />
+							</p:column>
+							<p:column style="width:75%">
+								<h:outputText value="#{kontraks.value.MMataKuliah.mkNamaMk}" />
+							</p:column>
+							<p:column style="width:6.4%">
+								<h:outputText value="#{kontraks.value.MMataKuliah.mkSks}" />
+							</p:column>
+							<p:column>
+								<h:outputText value="#{kontraks.value.AGradeNilai}" />
+							</p:column>
+						</p:row>	
+					</p:panelGrid>
+										
+				</ui:repeat>
+
+				<p:panel style="margin-top:-3%;margin-bottom:2%;width:20%; float:right;">
+					<p:outputLabel value="IPS:" />
+					</p:panel>
+			
+
+			</ui:repeat>
+			<p:panel style="margin-top:7%;margin-bottom:5%;">
+					<p:outputLabel value="IPK" />
+					</p:panel>
+		</h:form>
+	</div>
+</ui:composition>
