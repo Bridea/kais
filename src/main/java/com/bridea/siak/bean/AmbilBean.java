@@ -241,10 +241,11 @@ public class AmbilBean extends DialogBean {
 		System.out.println("setelah di clear : " + mkHashMap.size());
 		mkHashMap.clear();
 		System.out.println("setelah di clear : " + mkHashMap.size());
+		clearListMap();
 		test();
 	}
 
-	HashMap<Integer, HashMap<Integer, MAmbil>> mkHashMap;
+	HashMap<Integer, HashMap<Integer, MAmbil>> mkHashMap = new HashMap<>();
 
 	/*
 	 * List<MAmbil> listMKS1 = new ArrayList<>(); List<MAmbil> listMKS2 = new
@@ -270,7 +271,7 @@ public class AmbilBean extends DialogBean {
 	}
 
 	public void sortingMK() {
-		System.out.println("Isikan Data Sesuai Semester Ke List");
+		System.out.println("list mahasiswa : "+ getListNilaiMahasiswaSesuaiNPM().size());
 		for (MAmbil mAmbil : getListNilaiMahasiswaSesuaiNPM()) {
 			if (mAmbil.getMMataKuliah().getMkSemester() == 1) {
 				mapMKS1.put(mAmbil.getAIdAmbil(), mAmbil);
@@ -332,7 +333,7 @@ public class AmbilBean extends DialogBean {
 	public void test() {
 		sortingMK();
 		addListToHashMap();
-		clearListMap();
+//		clearListMap();
 
 		System.out.println("tampil IPS");
 
