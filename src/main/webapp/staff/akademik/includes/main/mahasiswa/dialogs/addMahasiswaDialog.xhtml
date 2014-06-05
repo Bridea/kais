@@ -15,9 +15,10 @@
 			<h:panelGrid columns="2" style="margin-bottom:20px" cellpadding="3">
 
 				<p:outputLabel value="NPM : " />
-				<p:inputText id="add_mhs_inp_npm"
+				<p:inputMask id="add_mhs_inp_npm"
 					value="#{mahasiswaBean.mahasiswa.mhsNpm}" required="true"
-					requiredMessage="NPM tidak boleh kosong" label="add_mhs_inp_npm" />
+					requiredMessage="NPM tidak boleh kosong" label="add_mhs_inp_npm"
+					mask="99.999.999" />
 
 				<p:outputLabel value="Nama Lengkap : " />
 				<p:inputText id="add_mhs_inp_nama_lengkap"
@@ -35,7 +36,7 @@
 				<p:calendar id="add_mhs_inp_tanggal_Lahir"
 					value="#{mahasiswaBean.mahasiswa.mhsTanggalLahir}" required="true"
 					requiredMessage="Tempat Lahir tidak boleh kosong"
-					label="add_mhs_inp_tanggal_Lahir" />
+					label="add_mhs_inp_tanggal_Lahir" pattern="dd-MM-yyyy"/>
 
 				<p:outputLabel value="Jenis Kelamin : " />
 				<p:selectOneRadio id="add_mhs_inp_jenis_kelamin"

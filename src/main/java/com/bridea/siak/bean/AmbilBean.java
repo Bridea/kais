@@ -1,6 +1,8 @@
 package com.bridea.siak.bean;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +12,7 @@ import org.springframework.stereotype.Component;
 
 import com.bridea.siak.dao.GenericDAO;
 import com.bridea.siak.model.MAmbil;
+import com.bridea.siak.model.MKomponenNilai;
 import com.bridea.siak.model.MMahasiswa;
 import com.bridea.siak.util.DialogBean;
 
@@ -226,16 +229,70 @@ public class AmbilBean extends DialogBean {
 		listNilaiMahasiswaSesuaiNPM = new ArrayList<>();
 		List<MAmbil> listNilaiMhs = getAmbils();
 		for (MAmbil mAmbil : listNilaiMhs) {
-			if (mAmbil.getMMahasiswa().getMhsNpm()
-					.equals(getTempNPMCariNilai())) {
+			if (mAmbil.getMMahasiswa().getMhsNpm().equals("12.001.128")) {
 				listNilaiMahasiswaSesuaiNPM.add(mAmbil);
 			}
 		}
 
 		if (listNilaiMahasiswaSesuaiNPM.size() < 1) {
 			displayInfoMessageToUser("NPM Anda Tidak Terdaftar, Mohon Untuk Dicek kembali");
-		} else {
-			getMahasiswa();
+		}
+		test();
+	}
+
+	HashMap<Integer, List<MAmbil>> mkHashMap = new HashMap<>();
+
+	List<MAmbil> listMKS1 = new ArrayList<>();
+	List<MAmbil> listMKS2 = new ArrayList<>();
+	List<MAmbil> listMKS3 = new ArrayList<>();
+	List<MAmbil> listMKS4 = new ArrayList<>();
+	List<MAmbil> listMKS5 = new ArrayList<>();
+	List<MAmbil> listMKS6 = new ArrayList<>();
+
+	public HashMap<Integer, List<MAmbil>> getMkHashMap() {
+		mkHashMap.put(1, listMKS1);
+		mkHashMap.put(2, listMKS2);
+		mkHashMap.put(3, listMKS3);
+		mkHashMap.put(4, listMKS4);
+		mkHashMap.put(5, listMKS5);
+		mkHashMap.put(6, listMKS6);
+		return mkHashMap;
+	}
+
+	public void setMkHashMap(HashMap<Integer, List<MAmbil>> mkHashMap) {
+		this.mkHashMap = mkHashMap;
+	}
+
+	public void sortingMK() {
+		for (MAmbil mAmbil : getListNilaiMahasiswaSesuaiNPM()) {
+			if (mAmbil.getMMataKuliah().getMkSemester() == 1) {
+				listMKS1.add(mAmbil);
+			} else if (mAmbil.getMMataKuliah().getMkSemester() == 2) {
+				listMKS2.add(mAmbil);
+			} else if (mAmbil.getMMataKuliah().getMkSemester() == 3) {
+				listMKS3.add(mAmbil);
+			} else if (mAmbil.getMMataKuliah().getMkSemester() == 4) {
+				listMKS4.add(mAmbil);
+			} else if (mAmbil.getMMataKuliah().getMkSemester() == 5) {
+				listMKS5.add(mAmbil);
+			} else {
+				listMKS6.add(mAmbil);
+			}
+		}
+	}
+
+	public void test() {
+		getMkHashMap();
+		sortingMK();
+
+		for (Iterator iterator = mkHashMap.values().iterator(); iterator
+				.hasNext();) {
+			List<MAmbil> temAmbils = (List<MAmbil>) iterator.next();
+
+			for (MAmbil mAmbil : temAmbils) {
+				System.out.println("semester : "
+						+ mAmbil.getMMataKuliah().getMkSemester());
+			}
 		}
 	}
 }

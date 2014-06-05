@@ -63,8 +63,8 @@ public class ExporterSetting implements Serializable {
 
 		Document pdf = (Document) document;
 		try {
-			pdf.setPageSize(PageSize.A4.rotate());
-			pdf.setMargins(3, 3, 4, 4);
+			pdf.setPageSize(PageSize.A4);
+			pdf.setMargins(3, 3, 4, 10);
 
 			pdf.open();
 			ServletContext servletContext = (ServletContext) FacesContext
@@ -79,20 +79,10 @@ public class ExporterSetting implements Serializable {
 			Paragraph paragraph = new Paragraph("DATA MAHASISWA",
 					FontFactory.getFont(FontFactory.HELVETICA, 12, Font.BOLD,
 							new Color(0, 0, 0)));
-			paragraph.setSpacingBefore(10);
 			pdf.add(paragraph);
 			SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
 
 			pdf.add(new Phrase("Tanggal : " + formato.format(new Date())));
-			/* pdf.newPage(); */
-
-			/*
-			 * HeaderFooter header = new HeaderFooter(
-			 * Phrase.getInstance("Data Mahasiswa"), true);
-			 * 
-			 * pdf.setHeader(header); HeaderFooter footer = new HeaderFooter(new
-			 * Phrase("This is page "), new Phrase(".")); pdf.setFooter(footer);
-			 */
 
 		} catch (Exception e) {
 			e.printStackTrace();

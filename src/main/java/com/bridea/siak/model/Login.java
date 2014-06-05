@@ -1,6 +1,9 @@
 package com.bridea.siak.model;
 
-public class Login {
+import java.io.Serializable;
+
+public class Login implements Serializable {
+	
 	private String password;
 
 	public Login() {
