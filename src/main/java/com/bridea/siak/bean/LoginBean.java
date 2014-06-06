@@ -18,7 +18,7 @@ import com.bridea.siak.util.UtilBean;
 import com.bridea.siak.util.Visit;
 
 /*@ManagedBean(name = "loginBean")
-@SessionScoped*/
+ @SessionScoped*/
 @Component("loginBean")
 @Scope("session")
 public class LoginBean extends DialogBean {
@@ -102,7 +102,7 @@ public class LoginBean extends DialogBean {
 			visit.setCurrentPemiih(login);
 			System.out.println("Visit ==> " + visit);
 			UtilBean.setValueExpression("#{sessionScope.visit}", visit);
-			redirect("/staff.akademik.jsf");
+			redirect("/staff.akademik.jsf?faces-redirect=true");
 		} else {
 			System.out.println("Check Data False");
 		}
@@ -126,7 +126,7 @@ public class LoginBean extends DialogBean {
 		if (session != null) {
 			session.invalidate();
 		}
-		redirect("/login.jsf");
+		redirect("/login.jsf?faces-redirect=true");
 	}
 
 }

@@ -29,7 +29,7 @@
 
 	<filter-mapping>
 		<filter-name>AuthorizationFilter</filter-name>
-		<url-pattern>/staff.akademik.jsf</url-pattern>
+		<url-pattern>/staff.akademikkkkkkkkkkkkkkkkkkkkkkk.jsf</url-pattern>
 	</filter-mapping>
 
 	<context-param>

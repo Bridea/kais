@@ -79,6 +79,7 @@ public class DosenBean extends DialogBean {
 			displayInfoMessageToUser("Ubah Dosen Berhasil");
 		} catch (Exception e) {
 			System.out.println("error Karena : " + e.getMessage());
+			System.out.println(e.getStackTrace());
 			// TODO: handle exception
 		}
 	}

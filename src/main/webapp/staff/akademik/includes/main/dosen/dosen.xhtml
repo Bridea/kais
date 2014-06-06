@@ -108,24 +108,24 @@
 					<f:setPropertyActionListener value="#{dosens}"
 						target="#{dosenBean.dosen}" />
 				</p:commandButton>
-				<p:tooltip for="view" value="Lihat #{dosens.DNamaDosen}"
-					showEffect="fade" hideEffect="fade" />
+				<!-- <p:tooltip for="view" value="Lihat #{dosens.DNamaDosen}"
+					showEffect="fade" hideEffect="fade" /> -->
 				<p:commandButton id="update" icon="ui-icon-pencil"
 					update=":dosenUpdateDialogForm"
 					oncomplete="dosenUpdateDialogWidget.show()">
 					<f:setPropertyActionListener value="#{dosens}"
 						target="#{dosenBean.dosen}" />
 				</p:commandButton>
-				<p:tooltip for="update" value="Ubah #{dosens.DNamaDosen}"
-					showEffect="fade" hideEffect="fade" />
+				<!-- <p:tooltip for="update" value="Ubah #{dosens.DNamaDosen}"
+					showEffect="fade" hideEffect="fade" /> -->
 				<p:commandButton id="hapus" icon="ui-icon-trash"
 					update=":dosenDeleteDialogForm"
 					onclick="dosenDeleteDialogWidget.show();">
 					<f:setPropertyActionListener value="#{dosens}"
 						target="#{dosenBean.dosen}" />
 				</p:commandButton>
-				<p:tooltip for="hapus" value="Hapus #{dosens.DNamaDosen}"
-					showEffect="fade" hideEffect="fade" />
+			<!-- 	<p:tooltip for="hapus" value="Hapus #{dosens.DNamaDosen}"
+					showEffect="fade" hideEffect="fade" /> -->
 			</p:column>
 		</p:dataTable>
 
