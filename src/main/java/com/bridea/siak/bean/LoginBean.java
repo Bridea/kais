@@ -102,7 +102,7 @@ public class LoginBean extends DialogBean {
 			visit.setCurrentPemiih(login);
 			System.out.println("Visit ==> " + visit);
 			UtilBean.setValueExpression("#{sessionScope.visit}", visit);
-			redirect("/staff.akademik.jsf?faces-redirect=true");
+			redirect("/staff.akademik.jsf");
 		} else {
 			System.out.println("Check Data False");
 		}
@@ -126,7 +126,7 @@ public class LoginBean extends DialogBean {
 		if (session != null) {
 			session.invalidate();
 		}
-		redirect("/login.jsf?faces-redirect=true");
+		redirect("/login.jsf");
 	}
 
 }

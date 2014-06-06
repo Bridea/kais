@@ -9,6 +9,10 @@
 	</application>
 
 	<application>
+		<view-handler>com.bridea.siak.util.CustomViewHandler</view-handler>
+	</application>
+
+	<application>
 		<message-bundle>resources.application</message-bundle>
 		<locale-config>
 			<default-locale>en</default-locale>
