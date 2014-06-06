@@ -60,7 +60,7 @@ public class MataKuliahBean extends DialogBean {
 		System.out.println("Masuk Insert");
 		try {
 			dao.save(mataKuliah);
-			displayInfoMessageToUser("Insert MataKuliah Berhasil");
+			displayInfoMessageToUser("Tambah MataKuliah Berhasil");
 			invalidateMataKuliah();
 		} catch (Exception e) {
 			System.out.println("error Karena : " + e.getMessage());
@@ -72,7 +72,7 @@ public class MataKuliahBean extends DialogBean {
 	public void update() {
 		try {
 			dao.update(mataKuliah);
-			displayInfoMessageToUser("Update MataKuliah Berhasil");
+			displayInfoMessageToUser("Ubah MataKuliah Berhasil");
 		} catch (Exception e) {
 			System.out.println("error Karena : " + e.getMessage());
 			// TODO: handle exception
@@ -82,8 +82,9 @@ public class MataKuliahBean extends DialogBean {
 	// delete
 	public void delete() {
 		try {
-			dao.delete(mataKuliah);
-			displayInfoMessageToUser("Delete MataKuliah Berhasil");
+			mataKuliah.setMkStatus(false);
+			dao.update(mataKuliah);
+			displayInfoMessageToUser("Hapus MataKuliah Berhasil");
 		} catch (Exception e) {
 			System.out.println("error Karena : " + e.getMessage());
 			// TODO: handle exception
@@ -92,12 +93,18 @@ public class MataKuliahBean extends DialogBean {
 
 	// load all
 	public List<MMataKuliah> getMataKuliahs() {
+		List<MMataKuliah> listMataKuliahs = new ArrayList<>();
 		if (dao == null) {
 			System.out.println("dao null");
 		} else {
-			return dao.getByCriteria();
+			for (MMataKuliah mMataKuliah : dao.getByCriteria()) {
+				if (mMataKuliah.isMkStatus() == true) {
+					listMataKuliahs.add(mMataKuliah);
+				}
+			}
+
 		}
-		return new ArrayList<>();
+		return listMataKuliahs;
 	}
 
 	// getMataKuliah by id

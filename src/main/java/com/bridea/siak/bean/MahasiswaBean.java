@@ -79,7 +79,7 @@ public class MahasiswaBean extends DialogBean {
 			mahasiswa.setMhsJudulPenelitian("-");
 			mahasiswa.setMhsStatus(true);
 			dao.save(mahasiswa);
-			displayInfoMessageToUser("Insert Mahasiswa Berhasil");
+			displayInfoMessageToUser("Tambah Mahasiswa Berhasil");
 			invalidateMahasiswa();
 
 		} catch (Exception e) {
@@ -92,7 +92,7 @@ public class MahasiswaBean extends DialogBean {
 	public void update() {
 		try {
 			dao.update(mahasiswa);
-			displayInfoMessageToUser("Update Mahasiswa Berhasil");
+			displayInfoMessageToUser("Ubah Mahasiswa Berhasil");
 		} catch (Exception e) {
 			System.out.println("error Karena : " + e.getMessage());
 			// TODO: handle exception
@@ -102,8 +102,9 @@ public class MahasiswaBean extends DialogBean {
 	// delete
 	public void delete() {
 		try {
-			dao.delete(mahasiswa);
-			displayInfoMessageToUser("Delete Mahasiswa Berhasil");
+			mahasiswa.setMhsStatus(false);
+			dao.update(mahasiswa);
+			displayInfoMessageToUser("Hapus Mahasiswa Berhasil");
 		} catch (Exception e) {
 			System.out.println("error Karena : " + e.getMessage());
 			// TODO: handle exception
@@ -112,12 +113,18 @@ public class MahasiswaBean extends DialogBean {
 
 	// load all
 	public List<MMahasiswa> getMahasiswas() {
+		List<MMahasiswa> listMahasiswas = new ArrayList<>();
 		if (dao == null) {
 			System.out.println("dao null");
 		} else {
-			return dao.getByCriteria();
+			System.out.println("dao : " + dao.getByCriteria().size());
+			for (MMahasiswa mMahasiswa : dao.getByCriteria()) {
+				if (mMahasiswa.isMhsStatus() == true) {
+					listMahasiswas.add(mMahasiswa);
+				}
+			}
 		}
-		return new ArrayList<>();
+		return listMahasiswas;
 	}
 
 	// getMahasiswa by id

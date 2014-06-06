@@ -7,7 +7,7 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui">
 
-	<p:dialog header="Tambah ambil Baru"
+	<p:dialog header="Tambah Kontrak Baru"
 		widgetVar="ambilCreateDialogWidget" id="ambilCreateDialogId"
 		modal="false" closable="true" draggable="false" resizable="false"
 		showEffect="clip" hideEffect="clip">
@@ -42,7 +42,6 @@
 					<f:selectItem itemLabel="B Malam" itemValue="B Malam" />
 				</p:selectOneMenu>
 			</h:panelGrid>
-
 			<p:dataTable id="tbl_mahasiswa" widgetVar="mahasiswaTable"
 				value="#{mahasiswaBean.mahasiswaDataModel}" var="mahasiswas"
 				selection="#{mahasiswaBean.listMahasiswasSelected}" paginator="true"

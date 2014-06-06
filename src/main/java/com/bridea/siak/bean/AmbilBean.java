@@ -169,7 +169,7 @@ public class AmbilBean extends DialogBean {
 					.getMataKuliahByID(getTempKodeMK()));
 			ambil.setMDosen(dosenBean.getDosenByID(getTempKodeDosen()));
 			dao.update(ambil);
-			displayInfoMessageToUser("Update Ambil Berhasil");
+			displayInfoMessageToUser("Ubah Kontrak Berhasil");
 		} catch (Exception e) {
 			System.out.println("error Karena : " + e.getMessage());
 			// TODO: handle exception
@@ -192,7 +192,7 @@ public class AmbilBean extends DialogBean {
 	public void delete() {
 		try {
 			dao.delete(ambil);
-			displayInfoMessageToUser("Delete Ambil Berhasil");
+			displayInfoMessageToUser("Hapus Ambil Berhasil");
 		} catch (Exception e) {
 			System.out.println("error Karena : " + e.getMessage());
 			// TODO: handle exception

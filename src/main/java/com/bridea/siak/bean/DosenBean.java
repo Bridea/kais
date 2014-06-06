@@ -64,7 +64,7 @@ public class DosenBean extends DialogBean {
 		try {
 			dosen.setDStatus(true);
 			dao.save(dosen);
-			displayInfoMessageToUser("Insert Dosen Berhasil");
+			displayInfoMessageToUser("Tambah Dosen Berhasil");
 			invalidateDosen();
 		} catch (Exception e) {
 			System.out.println("error Karena : " + e.getMessage());
@@ -76,7 +76,7 @@ public class DosenBean extends DialogBean {
 	public void update() {
 		try {
 			dao.update(dosen);
-			displayInfoMessageToUser("Update Dosen Berhasil");
+			displayInfoMessageToUser("Ubah Dosen Berhasil");
 		} catch (Exception e) {
 			System.out.println("error Karena : " + e.getMessage());
 			// TODO: handle exception
@@ -86,8 +86,9 @@ public class DosenBean extends DialogBean {
 	// delete
 	public void delete() {
 		try {
-			dao.delete(dosen);
-			displayInfoMessageToUser("Delete Dosen Berhasil");
+			dosen.setDStatus(false);
+			dao.update(dosen);
+			displayInfoMessageToUser("Hapus Dosen Berhasil");
 		} catch (Exception e) {
 			System.out.println("error Karena : " + e.getMessage());
 			// TODO: handle exception
@@ -96,13 +97,18 @@ public class DosenBean extends DialogBean {
 
 	// load all
 	public List<MDosen> getDosens() {
+		List<MDosen> listDosens = new ArrayList<>();
 		if (dao == null) {
 			System.out.println("dao null");
 		} else {
 			System.out.println("dao : " + dao.getByCriteria().size());
-			return dao.getByCriteria();
+			for (MDosen mDosen : dao.getByCriteria()) {
+				if (mDosen.isDStatus() == true) {
+					listDosens.add(mDosen);
+				}
+			}
 		}
-		return new ArrayList<>();
+		return listDosens;
 	}
 
 	// getdosen by id

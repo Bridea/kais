@@ -10,7 +10,7 @@
 
 	<p:breadCrumb>
 		<p:menuitem value="Categories" url="#" />
-		<p:menuitem disabled="true" value="Pengelolaan mataKuliah" url="#" />
+		<p:menuitem disabled="true" value="Pengelolaan MataKuliah" url="#" />
 	</p:breadCrumb>
 	<br />
 
@@ -55,18 +55,22 @@
 				</p:commandButton>
 				<p:tooltip for="view" value="view #{mataKuliahs.mkNamaMk}"
 					showEffect="fade" hideEffect="fade" />
-				<p:commandButton icon="ui-icon-pencil"
+				<p:commandButton id="ubah" icon="ui-icon-pencil"
 					update=":mataKuliahUpdateDialogForm"
 					oncomplete="mataKuliahUpdateDialogWidget.show()">
 					<f:setPropertyActionListener value="#{mataKuliahs}"
 						target="#{mataKuliahBean.mataKuliah}" />
 				</p:commandButton>
-				<p:commandButton icon="ui-icon-trash"
+				<p:tooltip for="ubah" value="Ubah #{mataKuliahs.mkNamaMk}"
+					showEffect="fade" hideEffect="fade" />
+				<p:commandButton id="hapus" icon="ui-icon-trash"
 					update=":mataKuliahDeleteDialogForm"
 					onclick="mataKuliahDeleteDialogWidget.show();">
 					<f:setPropertyActionListener value="#{mataKuliahs}"
 						target="#{mataKuliahBean.mataKuliah}" />
 				</p:commandButton>
+				<p:tooltip for="hapus" value="Hapus #{mataKuliahs.mkNamaMk}"
+					showEffect="fade" hideEffect="fade" />
 			</p:column>
 		</p:dataTable>
 	</h:form>

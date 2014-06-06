@@ -10,7 +10,7 @@
 
 	<p:breadCrumb>
 		<p:menuitem value="Categories" url="#" />
-		<p:menuitem disabled="true" value="Pengelolaan ambil" url="#" />
+		<p:menuitem disabled="true" value="Pengelolaan Kontrak" url="#" />
 	</p:breadCrumb>
 	<br />
 
@@ -60,7 +60,7 @@
 					<f:setPropertyActionListener value="#{ambils}"
 						target="#{ambilBean.ambil}" />
 				</p:commandButton>
-				<p:tooltip for="view" value="view #{ambils.AIdAmbil}"
+				<p:tooltip for="view" value="Lihat #{ambils.AIdAmbil}"
 					showEffect="fade" hideEffect="fade" />
 				<!-- <p:commandButton icon="ui-icon-pencil"
 					update=":ambilUpdateDialogForm"
@@ -68,12 +68,14 @@
 					<f:setPropertyActionListener value="#{ambils}"
 						target="#{ambilBean.ambil}" />
 				</p:commandButton> -->
-				<p:commandButton icon="ui-icon-trash"
+				<p:commandButton id="delete" icon="ui-icon-trash"
 					update=":ambilDeleteDialogForm"
 					onclick="ambilDeleteDialogWidget.show();">
 					<f:setPropertyActionListener value="#{ambils}"
 						target="#{ambilBean.ambil}" />
 				</p:commandButton>
+				<p:tooltip for="delete" value="Hapus #{ambils.AIdAmbil}"
+					showEffect="fade" hideEffect="fade" />
 			</p:column>
 		</p:dataTable>
 	</h:form>

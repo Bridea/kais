@@ -89,7 +89,9 @@ public class PerhitunganNilaiBean {
 		System.out.println("total ips : " + tempTotalIPS);
 		System.out.println("pembagi ipk : " + pembagiIPK);
 
-		ipk = tempTotalIPS / pembagiIPK;
+		if (tempTotalIPS != 0 && pembagiIPK != 0) {
+			ipk = tempTotalIPS / pembagiIPK;
+		}
 
 		System.out.println("IPK : " + ipk);
 

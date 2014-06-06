@@ -10,7 +10,7 @@
 
 	<p:breadCrumb>
 		<p:menuitem value="Categories" url="#" />
-		<p:menuitem disabled="true" value="Pengelolaan dosen" url="#" />
+		<p:menuitem disabled="true" value="Pengelolaan Dosen" url="#" />
 	</p:breadCrumb>
 	<br />
 
@@ -108,20 +108,24 @@
 					<f:setPropertyActionListener value="#{dosens}"
 						target="#{dosenBean.dosen}" />
 				</p:commandButton>
-				<p:tooltip for="view" value="view #{dosens.DNamaDosen}"
+				<p:tooltip for="view" value="Lihat #{dosens.DNamaDosen}"
 					showEffect="fade" hideEffect="fade" />
-				<p:commandButton icon="ui-icon-pencil"
+				<p:commandButton id="update" icon="ui-icon-pencil"
 					update=":dosenUpdateDialogForm"
 					oncomplete="dosenUpdateDialogWidget.show()">
 					<f:setPropertyActionListener value="#{dosens}"
 						target="#{dosenBean.dosen}" />
 				</p:commandButton>
-				<p:commandButton icon="ui-icon-trash"
+				<p:tooltip for="update" value="Ubah #{dosens.DNamaDosen}"
+					showEffect="fade" hideEffect="fade" />
+				<p:commandButton id="hapus" icon="ui-icon-trash"
 					update=":dosenDeleteDialogForm"
 					onclick="dosenDeleteDialogWidget.show();">
 					<f:setPropertyActionListener value="#{dosens}"
 						target="#{dosenBean.dosen}" />
 				</p:commandButton>
+				<p:tooltip for="hapus" value="Hapus #{dosens.DNamaDosen}"
+					showEffect="fade" hideEffect="fade" />
 			</p:column>
 		</p:dataTable>
 

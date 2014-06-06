@@ -7,7 +7,7 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui">
 
-	<p:dialog header="Tambah Mata Kuliah Baru"
+	<p:dialog header="Tambah MataKuliah Baru"
 		widgetVar="mataKuliahCreateDialogWidget" id="mataKuliahCreateDialogId"
 		modal="false" closable="true" draggable="false" resizable="false"
 		showEffect="clip" hideEffect="clip">
@@ -29,6 +29,12 @@
 				<p:inputText id="add_mk_inp_sks"
 					value="#{mataKuliahBean.mataKuliah.mkSks}" required="true"
 					requiredMessage="SKS tidak boleh kosong" label="add_mk_inp_sks" />
+
+				<p:outputLabel value="Semester : " />
+				<p:inputText id="add_mk_inp_semester"
+					value="#{mataKuliahBean.mataKuliah.mkSemester}" required="true"
+					requiredMessage="Semester tidak boleh kosong"
+					label="add_mk_inp_semester" />
 
 			</h:panelGrid>
 			<p:commandButton value="Submit" icon="ui-icon-plus"

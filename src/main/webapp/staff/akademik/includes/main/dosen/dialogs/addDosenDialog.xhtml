@@ -44,10 +44,10 @@
 					label="add_dsn_inp_alamat" />
 
 				<p:outputLabel value="Kontak : " />
-				<p:inputText id="add_dsn_inp_kontak"
+				<p:inputMask id="add_dsn_inp_kontak"
 					value="#{dosenBean.dosen.DKontak}" required="true"
 					requiredMessage="Kontak tidak boleh kosong"
-					label="add_dsn_inp_kontak" />
+					label="add_dsn_inp_kontak" mask="9999.9999.9999" style="width:90%" />
 
 			</h:panelGrid>
 			<p:commandButton value="Submit" icon="ui-icon-plus"
