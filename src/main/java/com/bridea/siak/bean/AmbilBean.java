@@ -14,6 +14,7 @@ import com.bridea.siak.dao.GenericDAO;
 import com.bridea.siak.model.MAmbil;
 import com.bridea.siak.model.MMahasiswa;
 import com.bridea.siak.util.DialogBean;
+import com.sun.org.apache.regexp.internal.recompile;
 
 @Scope("session")
 @Component("ambilBean")
@@ -422,8 +423,6 @@ public class AmbilBean extends DialogBean {
 	}
 
 	public void setIpk(double ipk) {
-		// String tempIpk = String.valueOf(ipk).substring(0, 4);
-		// this.ipk = Double.parseDouble(tempIpk);
 		this.ipk = ipk;
 	}
 
@@ -441,8 +440,17 @@ public class AmbilBean extends DialogBean {
 
 		addListToHashMap();
 
-		ipk = pn.hitungIPK(listIPS);
-		setIpk(ipk);
+		double tempIpk = pn.hitungIPK(listIPS);
+
+		setIpk(checkIpk(tempIpk));
 	}
 
+	public double checkIpk(double ipk) {
+		String tempIpk = String.valueOf(ipk);
+		if (tempIpk.length() > 4) {
+			String subStringIpk = tempIpk.substring(0, 4);
+			return Double.parseDouble(subStringIpk);
+		}
+		return ipk;
+	}
 }

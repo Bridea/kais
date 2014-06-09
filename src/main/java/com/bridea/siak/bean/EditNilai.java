@@ -1,6 +1,6 @@
 package com.bridea.siak.bean;
 
-import java.util.List; 
+import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
@@ -52,6 +52,16 @@ public class EditNilai {
 		return listNilaiMahasiswa;
 	}
 
+	public double checkNilai(double nilai) {
+		String tempNilai = String.valueOf(nilai);
+		System.out.println("tempNilai.length() : "+tempNilai.length());
+		if (tempNilai.length() > 5) {
+			String subStringNilai = tempNilai.substring(0, 5);
+			return Double.parseDouble(subStringNilai);
+		}
+		return nilai;
+	}
+
 	public void onCellEdit(CellEditEvent event) {
 		Object oldValue = event.getOldValue();
 		System.out.println(oldValue);
@@ -84,7 +94,7 @@ public class EditNilai {
 
 		komponenNilaiBean.update(komponenNilai);
 
-		ambilBean.updateNilai(idKomponen, nilai, gradeNilai);
+		ambilBean.updateNilai(idKomponen, checkNilai(nilai), gradeNilai);
 
 		System.out.println(gradeNilai);
 		System.out.println("get deui");
