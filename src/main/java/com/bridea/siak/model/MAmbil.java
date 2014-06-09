@@ -1,7 +1,7 @@
 package com.bridea.siak.model;
 
 // default package
-// Generated Jun 9, 2014 10:29:45 PM by Hibernate Tools 4.0.0
+// Generated Jun 9, 2014 11:11:32 PM by Hibernate Tools 4.0.0
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -28,6 +28,7 @@ public class MAmbil implements java.io.Serializable {
 	private String AKelas;
 	private String AWaktu;
 	private String ALahanPraktek;
+	private double ANilai;
 	private String AGradeNilai;
 	private MKomponenNilai MKomponenNilai;
 
@@ -36,19 +37,20 @@ public class MAmbil implements java.io.Serializable {
 
 	public MAmbil(MMataKuliah MMataKuliah, MDosen MDosen,
 			MMahasiswa MMahasiswa, String AKelas, String AWaktu,
-			String ALahanPraktek, String AGradeNilai) {
+			String ALahanPraktek, double ANilai, String AGradeNilai) {
 		this.MMataKuliah = MMataKuliah;
 		this.MDosen = MDosen;
 		this.MMahasiswa = MMahasiswa;
 		this.AKelas = AKelas;
 		this.AWaktu = AWaktu;
 		this.ALahanPraktek = ALahanPraktek;
+		this.ANilai = ANilai;
 		this.AGradeNilai = AGradeNilai;
 	}
 
 	public MAmbil(MMataKuliah MMataKuliah, MDosen MDosen,
 			MMahasiswa MMahasiswa, String AKelas, String AWaktu,
-			String ALahanPraktek, String AGradeNilai,
+			String ALahanPraktek, double ANilai, String AGradeNilai,
 			MKomponenNilai MKomponenNilai) {
 		this.MMataKuliah = MMataKuliah;
 		this.MDosen = MDosen;
@@ -56,6 +58,7 @@ public class MAmbil implements java.io.Serializable {
 		this.AKelas = AKelas;
 		this.AWaktu = AWaktu;
 		this.ALahanPraktek = ALahanPraktek;
+		this.ANilai = ANilai;
 		this.AGradeNilai = AGradeNilai;
 		this.MKomponenNilai = MKomponenNilai;
 	}
@@ -126,6 +129,15 @@ public class MAmbil implements java.io.Serializable {
 
 	public void setALahanPraktek(String ALahanPraktek) {
 		this.ALahanPraktek = ALahanPraktek;
+	}
+
+	@Column(name = "a_nilai", nullable = false, precision = 22, scale = 0)
+	public double getANilai() {
+		return this.ANilai;
+	}
+
+	public void setANilai(double ANilai) {
+		this.ANilai = ANilai;
 	}
 
 	@Column(name = "a_grade_nilai", nullable = false, length = 2)
