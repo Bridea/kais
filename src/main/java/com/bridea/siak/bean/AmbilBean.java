@@ -1,6 +1,5 @@
 package com.bridea.siak.bean;
 
-import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -271,6 +270,7 @@ public class AmbilBean extends DialogBean {
 
 	TreeMap<String, HashMap<Integer, MAmbil>> mkTreeMap = new TreeMap<>();
 	HashMap<Integer, HashMap<Integer, MAmbil>> tempMKHashMap = new HashMap<>();
+	int semesterTerakhir = 0;
 
 	HashMap<Integer, MAmbil> mapMKS1 = new HashMap<>();
 	HashMap<Integer, MAmbil> mapMKS2 = new HashMap<>();
@@ -278,6 +278,14 @@ public class AmbilBean extends DialogBean {
 	HashMap<Integer, MAmbil> mapMKS4 = new HashMap<>();
 	HashMap<Integer, MAmbil> mapMKS5 = new HashMap<>();
 	HashMap<Integer, MAmbil> mapMKS6 = new HashMap<>();
+
+	public int getSemesterTerakhir() {
+		return semesterTerakhir;
+	}
+
+	public void setSemesterTerakhir(int semesterTerakhir) {
+		this.semesterTerakhir = semesterTerakhir;
+	}
 
 	public HashMap<Integer, HashMap<Integer, MAmbil>> getTempMKHashMap() {
 		return tempMKHashMap;
@@ -301,16 +309,34 @@ public class AmbilBean extends DialogBean {
 				+ getListNilaiMahasiswaSesuaiNPM().size());
 		for (MAmbil mAmbil : getListNilaiMahasiswaSesuaiNPM()) {
 			if (mAmbil.getMMataKuliah().getMkSemester() == 1) {
+				if (semesterTerakhir < 1) {
+					semesterTerakhir = 1;
+				}
 				mapMKS1.put(mAmbil.getAIdAmbil(), mAmbil);
 			} else if (mAmbil.getMMataKuliah().getMkSemester() == 2) {
+				if (semesterTerakhir < 2) {
+					semesterTerakhir = 2;
+				}
 				mapMKS2.put(mAmbil.getAIdAmbil(), mAmbil);
 			} else if (mAmbil.getMMataKuliah().getMkSemester() == 3) {
+				if (semesterTerakhir < 3) {
+					semesterTerakhir = 3;
+				}
 				mapMKS3.put(mAmbil.getAIdAmbil(), mAmbil);
 			} else if (mAmbil.getMMataKuliah().getMkSemester() == 4) {
+				if (semesterTerakhir < 4) {
+					semesterTerakhir = 4;
+				}
 				mapMKS4.put(mAmbil.getAIdAmbil(), mAmbil);
 			} else if (mAmbil.getMMataKuliah().getMkSemester() == 5) {
+				if (semesterTerakhir < 5) {
+					semesterTerakhir = 5;
+				}
 				mapMKS5.put(mAmbil.getAIdAmbil(), mAmbil);
 			} else {
+				if (semesterTerakhir < 6) {
+					semesterTerakhir = 6;
+				}
 				mapMKS6.put(mAmbil.getAIdAmbil(), mAmbil);
 			}
 		}
@@ -339,12 +365,44 @@ public class AmbilBean extends DialogBean {
 
 	public void addListToHashMap() {
 		mkTreeMap = new TreeMap<>();
-		mkTreeMap.put(1 + " : " + listIPS.get(0), mapMKS1);
-		mkTreeMap.put(2 + " : " + listIPS.get(1), mapMKS2);
-		mkTreeMap.put(3 + " : " + listIPS.get(2), mapMKS3);
-		mkTreeMap.put(4 + " : " + listIPS.get(3), mapMKS4);
-		mkTreeMap.put(5 + " : " + listIPS.get(4), mapMKS5);
-		mkTreeMap.put(6 + " : " + listIPS.get(5), mapMKS6);
+		switch (semesterTerakhir) {
+		case 0:
+			mkTreeMap = new TreeMap<>();
+			break;
+		case 1:
+			mkTreeMap.put(1 + " : " + listIPS.get(0), mapMKS1);
+			break;
+		case 2:
+			mkTreeMap.put(1 + " : " + listIPS.get(0), mapMKS1);
+			mkTreeMap.put(2 + " : " + listIPS.get(1), mapMKS2);
+			break;
+		case 3:
+			mkTreeMap.put(1 + " : " + listIPS.get(0), mapMKS1);
+			mkTreeMap.put(2 + " : " + listIPS.get(1), mapMKS2);
+			mkTreeMap.put(3 + " : " + listIPS.get(2), mapMKS3);
+			break;
+		case 4:
+			mkTreeMap.put(1 + " : " + listIPS.get(0), mapMKS1);
+			mkTreeMap.put(2 + " : " + listIPS.get(1), mapMKS2);
+			mkTreeMap.put(3 + " : " + listIPS.get(2), mapMKS3);
+			mkTreeMap.put(4 + " : " + listIPS.get(3), mapMKS4);
+			break;
+		case 5:
+			mkTreeMap.put(1 + " : " + listIPS.get(0), mapMKS1);
+			mkTreeMap.put(2 + " : " + listIPS.get(1), mapMKS2);
+			mkTreeMap.put(3 + " : " + listIPS.get(2), mapMKS3);
+			mkTreeMap.put(4 + " : " + listIPS.get(3), mapMKS4);
+			mkTreeMap.put(5 + " : " + listIPS.get(4), mapMKS5);
+			break;
+		case 6:
+			mkTreeMap.put(1 + " : " + listIPS.get(0), mapMKS1);
+			mkTreeMap.put(2 + " : " + listIPS.get(1), mapMKS2);
+			mkTreeMap.put(3 + " : " + listIPS.get(2), mapMKS3);
+			mkTreeMap.put(4 + " : " + listIPS.get(3), mapMKS4);
+			mkTreeMap.put(5 + " : " + listIPS.get(4), mapMKS5);
+			mkTreeMap.put(6 + " : " + listIPS.get(5), mapMKS6);
+			break;
+		}
 	}
 
 	private List<Double> listIPS = new ArrayList<>();
