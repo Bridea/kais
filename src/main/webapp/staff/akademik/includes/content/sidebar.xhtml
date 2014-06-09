@@ -1,0 +1,56 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+	<!-- start of sidebar -->
+	<aside class="span4 page-sidebar" style="width: 20%; margin-left: -2%">
+
+		<section class="widget">
+			<div class="quick-links-widget">
+				<h:form id="menu_sidebar">
+					<b>MENU :</b>
+					<ul>
+						<li><h:commandLink id="Mahasiswa"
+								actionListener="#{navigationStaffAkademikBean.navigationPathChange}">
+								<span>Mahasiswa</span>
+								<f:param name="includePath"
+									value="/staff/akademik/includes/main/mahasiswa/mahasiswa.xhtml" />
+							</h:commandLink></li>
+						<li><h:commandLink id="Dosen"
+								actionListener="#{navigationStaffAkademikBean.navigationPathChange}">
+								<span>Dosen</span>
+								<f:param name="includePath"
+									value="/staff/akademik/includes/main/dosen/dosen.xhtml" />
+							</h:commandLink></li>
+						<li><h:commandLink id="MataKuliah"
+								actionListener="#{navigationStaffAkademikBean.navigationPathChange}">
+								<span>MataKuliah</span>
+								<f:param name="includePath"
+									value="/staff/akademik/includes/main/matakuliah/matakuliah.xhtml" />
+							</h:commandLink></li>
+						<li><h:commandLink id="Kontrak"
+								actionListener="#{navigationStaffAkademikBean.navigationPathChange}">
+								<span>Kontrak</span>s
+								<f:param name="includePath"
+									value="/staff/akademik/includes/main/ambil/ambil.xhtml" />
+							</h:commandLink></li>
+						<li><h:commandLink id="editNilai"
+								actionListener="#{navigationStaffAkademikBean.navigationPathChange}">
+								<span>Edit Nilai</span>
+								<f:param name="includePath"
+									value="/staff/akademik/includes/main/edit.xhtml" />
+							</h:commandLink></li>
+						<li><h:commandLink id="logout" action="#{loginBean.doLogout}">
+								<span>Logout</span>
+							</h:commandLink></li>
+					</ul>
+				</h:form>
+			</div>
+		</section>
+
+	</aside>
+	<!-- end of sidebar -->
+
+</ui:composition>
