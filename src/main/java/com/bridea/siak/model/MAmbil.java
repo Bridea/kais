@@ -1,7 +1,7 @@
 package com.bridea.siak.model;
 
 // default package
-// Generated Jun 4, 2014 1:41:50 PM by Hibernate Tools 4.0.0
+// Generated Jun 9, 2014 10:29:45 PM by Hibernate Tools 4.0.0
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -26,6 +26,7 @@ public class MAmbil implements java.io.Serializable {
 	private MDosen MDosen;
 	private MMahasiswa MMahasiswa;
 	private String AKelas;
+	private String AWaktu;
 	private String ALahanPraktek;
 	private String AGradeNilai;
 	private MKomponenNilai MKomponenNilai;
@@ -34,23 +35,26 @@ public class MAmbil implements java.io.Serializable {
 	}
 
 	public MAmbil(MMataKuliah MMataKuliah, MDosen MDosen,
-			MMahasiswa MMahasiswa, String AKelas, String ALahanPraktek,
-			String AGradeNilai) {
+			MMahasiswa MMahasiswa, String AKelas, String AWaktu,
+			String ALahanPraktek, String AGradeNilai) {
 		this.MMataKuliah = MMataKuliah;
 		this.MDosen = MDosen;
 		this.MMahasiswa = MMahasiswa;
 		this.AKelas = AKelas;
+		this.AWaktu = AWaktu;
 		this.ALahanPraktek = ALahanPraktek;
 		this.AGradeNilai = AGradeNilai;
 	}
 
 	public MAmbil(MMataKuliah MMataKuliah, MDosen MDosen,
-			MMahasiswa MMahasiswa, String AKelas, String ALahanPraktek,
-			String AGradeNilai, MKomponenNilai MKomponenNilai) {
+			MMahasiswa MMahasiswa, String AKelas, String AWaktu,
+			String ALahanPraktek, String AGradeNilai,
+			MKomponenNilai MKomponenNilai) {
 		this.MMataKuliah = MMataKuliah;
 		this.MDosen = MDosen;
 		this.MMahasiswa = MMahasiswa;
 		this.AKelas = AKelas;
+		this.AWaktu = AWaktu;
 		this.ALahanPraktek = ALahanPraktek;
 		this.AGradeNilai = AGradeNilai;
 		this.MKomponenNilai = MKomponenNilai;
@@ -104,6 +108,15 @@ public class MAmbil implements java.io.Serializable {
 
 	public void setAKelas(String AKelas) {
 		this.AKelas = AKelas;
+	}
+
+	@Column(name = "a_waktu", nullable = false, length = 10)
+	public String getAWaktu() {
+		return this.AWaktu;
+	}
+
+	public void setAWaktu(String AWaktu) {
+		this.AWaktu = AWaktu;
 	}
 
 	@Column(name = "a_lahan_praktek", nullable = false, length = 65535)

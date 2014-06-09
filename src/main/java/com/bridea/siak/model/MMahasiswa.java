@@ -1,7 +1,7 @@
 package com.bridea.siak.model;
 
 // default package
-// Generated Jun 4, 2014 1:41:50 PM by Hibernate Tools 4.0.0
+// Generated Jun 9, 2014 10:29:45 PM by Hibernate Tools 4.0.0
 
 import java.util.Date;
 import java.util.HashSet;
@@ -27,6 +27,7 @@ public class MMahasiswa implements java.io.Serializable {
 	private String mhsTempatLahir;
 	private Date mhsTanggalLahir;
 	private char mhsJnsKelamin;
+	private String mhsAgama;
 	private String mhsAsalSekolah;
 	private String mhsAlamat;
 	private String mhsNamaOrangTua;
@@ -40,14 +41,15 @@ public class MMahasiswa implements java.io.Serializable {
 
 	public MMahasiswa(String mhsNpm, String mhsNamaLengkap,
 			String mhsTempatLahir, Date mhsTanggalLahir, char mhsJnsKelamin,
-			String mhsAsalSekolah, String mhsAlamat, String mhsNamaOrangTua,
-			String mhsPekerjaanOrangTua, String mhsJudulPenelitian,
-			boolean mhsStatus) {
+			String mhsAgama, String mhsAsalSekolah, String mhsAlamat,
+			String mhsNamaOrangTua, String mhsPekerjaanOrangTua,
+			String mhsJudulPenelitian, boolean mhsStatus) {
 		this.mhsNpm = mhsNpm;
 		this.mhsNamaLengkap = mhsNamaLengkap;
 		this.mhsTempatLahir = mhsTempatLahir;
 		this.mhsTanggalLahir = mhsTanggalLahir;
 		this.mhsJnsKelamin = mhsJnsKelamin;
+		this.mhsAgama = mhsAgama;
 		this.mhsAsalSekolah = mhsAsalSekolah;
 		this.mhsAlamat = mhsAlamat;
 		this.mhsNamaOrangTua = mhsNamaOrangTua;
@@ -58,14 +60,15 @@ public class MMahasiswa implements java.io.Serializable {
 
 	public MMahasiswa(String mhsNpm, String mhsNamaLengkap,
 			String mhsTempatLahir, Date mhsTanggalLahir, char mhsJnsKelamin,
-			String mhsAsalSekolah, String mhsAlamat, String mhsNamaOrangTua,
-			String mhsPekerjaanOrangTua, String mhsJudulPenelitian,
-			boolean mhsStatus, Set<MAmbil> MAmbils) {
+			String mhsAgama, String mhsAsalSekolah, String mhsAlamat,
+			String mhsNamaOrangTua, String mhsPekerjaanOrangTua,
+			String mhsJudulPenelitian, boolean mhsStatus, Set<MAmbil> MAmbils) {
 		this.mhsNpm = mhsNpm;
 		this.mhsNamaLengkap = mhsNamaLengkap;
 		this.mhsTempatLahir = mhsTempatLahir;
 		this.mhsTanggalLahir = mhsTanggalLahir;
 		this.mhsJnsKelamin = mhsJnsKelamin;
+		this.mhsAgama = mhsAgama;
 		this.mhsAsalSekolah = mhsAsalSekolah;
 		this.mhsAlamat = mhsAlamat;
 		this.mhsNamaOrangTua = mhsNamaOrangTua;
@@ -120,6 +123,15 @@ public class MMahasiswa implements java.io.Serializable {
 
 	public void setMhsJnsKelamin(char mhsJnsKelamin) {
 		this.mhsJnsKelamin = mhsJnsKelamin;
+	}
+
+	@Column(name = "mhs_agama", nullable = false, length = 15)
+	public String getMhsAgama() {
+		return this.mhsAgama;
+	}
+
+	public void setMhsAgama(String mhsAgama) {
+		this.mhsAgama = mhsAgama;
 	}
 
 	@Column(name = "mhs_asal_sekolah", nullable = false, length = 60)

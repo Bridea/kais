@@ -36,7 +36,7 @@
 				<p:calendar id="add_mhs_inp_tanggal_Lahir"
 					value="#{mahasiswaBean.mahasiswa.mhsTanggalLahir}" required="true"
 					requiredMessage="Tempat Lahir tidak boleh kosong"
-					label="add_mhs_inp_tanggal_Lahir" pattern="dd-MM-yyyy"/>
+					label="add_mhs_inp_tanggal_Lahir" pattern="dd-MM-yyyy" />
 
 				<p:outputLabel value="Jenis Kelamin : " />
 				<p:selectOneRadio id="add_mhs_inp_jenis_kelamin"
@@ -45,6 +45,17 @@
 					label="add_mhs_inp_jenis_kelamin">
 					<f:selectItem itemLabel="Laki Laki" itemValue="L" />
 					<f:selectItem itemLabel="Perempuan" itemValue="P" />
+				</p:selectOneRadio>
+
+				<p:outputLabel value="Agama : " />
+				<p:selectOneRadio id="add_mhs_inp_agama"
+					value="#{mahasiswaBean.mahasiswa.mhsAgama}" required="true"
+					requiredMessage="Agama tidak boleh kosong"
+					label="add_mhs_inp_agama">
+					<f:selectItem itemLabel="Islam" itemValue="Islam" />
+					<f:selectItem itemLabel="Hindu" itemValue="Hindu" />
+					<f:selectItem itemLabel="Budha" itemValue="Budha" />
+					<f:selectItem itemLabel="Khatolik" itemValue="Khatolik" />
 				</p:selectOneRadio>
 
 				<p:outputLabel value="Asal Sekolah : " />

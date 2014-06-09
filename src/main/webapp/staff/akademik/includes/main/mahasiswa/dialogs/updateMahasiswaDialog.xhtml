@@ -35,6 +35,17 @@
 					<f:selectItem itemLabel="Perempuan" itemValue="P" />
 				</p:selectOneRadio>
 
+				<p:outputLabel value="Agama : " />
+				<p:selectOneRadio id="add_mhs_update_agama"
+					value="#{mahasiswaBean.mahasiswa.mhsAgama}" required="true"
+					requiredMessage="Agama tidak boleh kosong"
+					label="add_mhs_update_agama">
+					<f:selectItem itemLabel="Islam" itemValue="Islam" />
+					<f:selectItem itemLabel="Hindu" itemValue="Hindu" />
+					<f:selectItem itemLabel="Budha" itemValue="Budha" />
+					<f:selectItem itemLabel="Khatolik" itemValue="Khatolik" />
+				</p:selectOneRadio>
+
 				<p:outputLabel value="Asal Sekolah : " />
 				<p:inputText id="add_mhs_update_asal_sekolah"
 					value="#{mahasiswaBean.mahasiswa.mhsAsalSekolah}" required="true"

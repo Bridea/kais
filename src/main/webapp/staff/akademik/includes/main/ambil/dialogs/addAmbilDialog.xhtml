@@ -12,11 +12,12 @@
 		modal="true" closable="true" draggable="false" resizable="false"
 		showEffect="clip" hideEffect="clip">
 		<h:form id="ambilCreateDialogForm">
-			<h:panelGrid id="p_filter" columns="8" style="margin-bottom:20px"
+			<h:panelGrid id="p_filter" columns="10" style="margin-bottom:20px"
 				cellpadding="3">
 
 				<h:outputText value="Semester" />
-				<p:selectOneMenu id="semester" value="#{mataKuliahBean.semester}" styleClass="width:-5%">
+				<p:selectOneMenu id="semester" value="#{mataKuliahBean.semester}"
+					styleClass="width:-5%">
 					<f:selectItem itemLabel="--Semester--" itemValue="" />
 					<f:selectItem itemLabel="1" itemValue="1" />
 					<f:selectItem itemLabel="2" itemValue="2" />
@@ -49,10 +50,18 @@
 				<p:selectOneMenu value="#{ambilBean.ambil.AKelas}" required="true"
 					requiredMessage="Kelas harus di isi">
 					<f:selectItem itemLabel="-- Pilih Kelas --" itemValue="" />
-					<f:selectItem itemLabel="A Siang" itemValue="A Siang" />
-					<f:selectItem itemLabel="A Malam" itemValue="A Malam" />
-					<f:selectItem itemLabel="B Siang" itemValue="B Siang" />
-					<f:selectItem itemLabel="B Malam" itemValue="B Malam" />
+					<f:selectItem itemLabel="A" itemValue="A" />
+					<f:selectItem itemLabel="B" itemValue="B" />
+					<f:selectItem itemLabel="C" itemValue="C" />
+					<f:selectItem itemLabel="D" itemValue="D" />
+				</p:selectOneMenu>
+
+				<p:outputLabel value="Waktu : " />
+				<p:selectOneMenu value="#{ambilBean.ambil.AWaktu}" required="true"
+					requiredMessage="Waktu harus di isi">
+					<f:selectItem itemLabel="-- Pilih Waktu --" itemValue="" />
+					<f:selectItem itemLabel="Pagi" itemValue="Pagi" />
+					<f:selectItem itemLabel="Siang" itemValue="Siang" />
 				</p:selectOneMenu>
 			</h:panelGrid>
 			<p:dataTable id="tbl_mahasiswa" widgetVar="mahasiswaTable"

@@ -147,6 +147,7 @@ public class AmbilBean extends DialogBean {
 				ambil.setMDosen(dosenBean.getDosenByID(getTempKodeDosen()));
 				ambil.setALahanPraktek("-");
 				ambil.setAKelas(this.ambil.getAKelas());
+				ambil.setAWaktu(this.ambil.getAWaktu());
 				ambil.setAGradeNilai("-");
 				System.out.println(ambil.getMMahasiswa().getMhsNpm() + ","
 						+ ambil.getAKelas() + "," + ambil.getALahanPraktek()
