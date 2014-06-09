@@ -63,7 +63,7 @@ public class KomponenNilaiBean extends DialogBean {
 		try {
 			komponenNilai = new MKomponenNilai(mAmbil, (byte) 0, 0, 0, 0);
 			dao.save(komponenNilai);
-			displayInfoMessageToUser("Tambah Komponen Nilai Berhasil");
+//			displayInfoMessageToUser("Tambah Komponen Nilai Berhasil");
 			invalidateKomponenNilai();
 		} catch (Exception e) {
 			System.out.println("error Karena : " + e.getMessage());

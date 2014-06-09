@@ -8,6 +8,7 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui">
 
+
 	<p:breadCrumb>
 		<p:menuitem value="Categories" url="#" />
 		<p:menuitem disabled="true" value="Pengelolaan Dosen" url="#" />
@@ -102,30 +103,30 @@
 				<h:outputText value="#{dosens.DKontak}" />
 			</p:column>
 
-			<p:column headerText="Action" style="width:120px" exportable="false">
+			<p:column headerText="Action" style="width:110px" exportable="false">
 				<p:commandButton id="view" icon="ui-icon-contact" update=":display"
 					onclick="dosenDialogShowWidget.show()">
 					<f:setPropertyActionListener value="#{dosens}"
 						target="#{dosenBean.dosen}" />
 				</p:commandButton>
-				<!-- <p:tooltip for="view" value="Lihat #{dosens.DNamaDosen}"
-					showEffect="fade" hideEffect="fade" /> -->
+				<p:tooltip for="view" value="Lihat #{dosens.DNamaDosen}"
+					showEffect="fade" hideEffect="fade" />
 				<p:commandButton id="update" icon="ui-icon-pencil"
 					update=":dosenUpdateDialogForm"
 					oncomplete="dosenUpdateDialogWidget.show()">
 					<f:setPropertyActionListener value="#{dosens}"
 						target="#{dosenBean.dosen}" />
 				</p:commandButton>
-				<!-- <p:tooltip for="update" value="Ubah #{dosens.DNamaDosen}"
-					showEffect="fade" hideEffect="fade" /> -->
+				<p:tooltip for="update" value="Ubah #{dosens.DNamaDosen}"
+					showEffect="fade" hideEffect="fade" />
 				<p:commandButton id="hapus" icon="ui-icon-trash"
 					update=":dosenDeleteDialogForm"
 					onclick="dosenDeleteDialogWidget.show();">
 					<f:setPropertyActionListener value="#{dosens}"
 						target="#{dosenBean.dosen}" />
 				</p:commandButton>
-			<!-- 	<p:tooltip for="hapus" value="Hapus #{dosens.DNamaDosen}"
-					showEffect="fade" hideEffect="fade" /> -->
+				<p:tooltip for="hapus" value="Hapus #{dosens.DNamaDosen}"
+					showEffect="fade" hideEffect="fade" />
 			</p:column>
 		</p:dataTable>
 

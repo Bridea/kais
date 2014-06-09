@@ -2,7 +2,8 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:p="http://primefaces.org/ui">
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:fn="http://java.sun.com/jsp/jstl/functions">
 
 	<ui:insert name="sidebar">
 		<ui:include src="/WEB-INF/includes/content/sidebar.xhtml"></ui:include>
@@ -50,14 +51,14 @@
 				</p:row>
 			</p:panelGrid>
 
-			<ui:repeat value="#{ambilBean.mkHashMap.entrySet().toArray()}"
-				var="entry">
+			<ui:repeat value="#{ambilBean.mkTreeMap.entrySet().toArray()}"
+				var="entry" varStatus="status" step="1">
 
 				<p:panelGrid id="tbl_dosen" styleClass="table table-striped"
 					style="font-weight:normal;">
 					<p:row>
 						<p:column colspan="4">
-							<h5>SEMESTER #{entry.key}</h5>
+							<h5>SEMESTER #{status.index + 1}</h5>
 						</p:column>
 					</p:row>
 
@@ -114,18 +115,14 @@
 				</ui:repeat>
 
 
-
-				<!-- <p:panel
+				<p:panel
 					style="margin-top:-3%;margin-bottom:2%;width:20%; float:right;">
-					<p:outputLabel value="IPS : #{ips}" />
-				</p:panel> -->
-
-				<!-- <ui:repeat value="#{ambilBean.listIPS}" var="ips"></ui:repeat> -->
-
+					<h5>IPS : #{fn:substring(entry.key, 4, 8)}</h5>
+				</p:panel>
 
 			</ui:repeat>
-			<p:panel style="margin-bottom:5%;">
-				<p:outputLabel value="IPS : #{ambilBean.ipk}" />
+			<p:panel style="margin-bottom:5%; margin-top: 10%;">
+				<p:outputLabel value="IPK : #{ambilBean.ipk}" />
 			</p:panel>
 		</h:form>
 	</div>

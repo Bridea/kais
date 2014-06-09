@@ -13,13 +13,15 @@
 	</p:breadCrumb>
 	<br />
 
-	<h:form id="form">
+	<h:form id="form" prependId="true">
 		<p:contextMenu for="kontrak" widgetVar="cMenu">
 			<p:menuitem value="Edit Nilai" icon="ui-icon-search"
 				onclick="PF('cellKontraks').showCellEditor();return false;" />
 			<p:menuitem value="Hide Menu" icon="ui-icon-close"
 				onclick="PF('cMenu').hide()" />
 		</p:contextMenu>
+
+		<p:remoteCommand name="rc" update=":form:kontrak" />
 
 		<p:dataTable id="kontrak" var="kontraks"
 			value="#{editNilai.listNilaiMahasiswa}" editable="true"
@@ -29,20 +31,23 @@
        </f:facet>
 
 			<p:ajax event="cellEdit" listener="#{editNilai.onCellEdit}"
-				update=":growl">
+				update=":growl" oncomplete="rc()">
 			</p:ajax>
 
 			<!-- <p:column headerText="ID" style="width:2%">
 				<h:outputText value="#{kontraks.knIdKomponenNilai}" />
 			</p:column> -->
+
 			<p:column headerText="NPM" style="width:3%"
 				filterBy="#{kontraks.MAmbil.MMahasiswa.mhsNpm}"
 				filterMatchMode="contains">
 				<h:outputText value="#{kontraks.MAmbil.MMahasiswa.mhsNpm}" />
 			</p:column>
-			<p:column headerText="Nama" style="width:10%">
-				<h:outputText value="#{kontraks.MAmbil.MMahasiswa.mhsNamaLengkap}" />
-			</p:column>
+
+			<!-- <p:column headerText="Nama" style="width:10%">
+					<h:outputText value="#{kontraks.MAmbil.MMahasiswa.mhsNamaLengkap}" />
+				</p:column> -->
+
 			<!-- <p:column headerText="Kode MK" style="width:3%"
 				filterBy="#{kontraks.MAmbil.MMataKuliah.mkKodeMk}"
 				filterMatchMode="contains">
@@ -65,40 +70,47 @@
 				filterBy="#{kontraks.MAmbil.AKelas}" filterMatchMode="contains">
 				<h:outputText value="#{kontraks.MAmbil.AKelas}" />
 			</p:column>
+
 			<p:column headerText="SKS" style="width:2%">
 				<h:outputText value="#{kontraks.MAmbil.MMataKuliah.mkSks}" />
 			</p:column>
+
 			<p:column headerText="Semester" style="width:2%">
 				<h:outputText value="#{kontraks.MAmbil.MMataKuliah.mkSemester}" />
 			</p:column>
+
 			<p:column headerText="Nilai Kehadiran" style="width:3%">
 				<p:cellEditor>
 					<f:facet name="output">
 						<h:outputText value="#{kontraks.knNilaiKehadiran}" />
 					</f:facet>
 					<f:facet name="input">
-						<p:inputText value="#{kontraks.knNilaiKehadiran}"
-							style="width:30%" />
+						<p:inputMask value="#{kontraks.knNilaiKehadiran}"
+							style="width:30%" mask="99" />
 					</f:facet>
 				</p:cellEditor>
 			</p:column>
+
 			<p:column headerText="Nilai Tugas" style="width:3%">
 				<p:cellEditor>
 					<f:facet name="output">
 						<h:outputText value="#{kontraks.knNilaiTugas}" />
 					</f:facet>
 					<f:facet name="input">
-						<p:inputText value="#{kontraks.knNilaiTugas}" style="width:30%" />
+						<p:inputMask value="#{kontraks.knNilaiTugas}" style="width:30%"
+							mask="99" />
 					</f:facet>
 				</p:cellEditor>
 			</p:column>
+
 			<p:column headerText="Nilai UTS" style="width:3%">
 				<p:cellEditor>
 					<f:facet name="output">
 						<h:outputText value="#{kontraks.knNilaiUts}" />
 					</f:facet>
 					<f:facet name="input">
-						<p:inputText value="#{kontraks.knNilaiUts}" style="width:30%" />
+						<p:inputMask value="#{kontraks.knNilaiUts}" style="width:30%"
+							mask="99" />
 					</f:facet>
 				</p:cellEditor>
 			</p:column>
@@ -109,14 +121,18 @@
 						<h:outputText value="#{kontraks.knNilaiUas}" />
 					</f:facet>
 					<f:facet name="input">
-						<p:inputText value="#{kontraks.knNilaiUas}" style="width:30%" />
+						<p:inputMask value="#{kontraks.knNilaiUas}" style="width:30%"
+							mask="99" />
 					</f:facet>
 				</p:cellEditor>
 			</p:column>
 
-			<!-- <p:column id="grade_nilai" headerText="Grade" style="width:3%">
+			<p:column id="grade_nilai" headerText="Grade" style="width:3%">
 				<h:outputText value="#{kontraks.MAmbil.AGradeNilai}" />
-			</p:column> -->
+			</p:column>
+			<p:column>
+				<p:commandButton icon="ui-icon-refresh" />
+			</p:column>
 		</p:dataTable>
 	</h:form>
 </ui:composition>

@@ -1,9 +1,10 @@
 package com.bridea.siak.bean;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
+import java.util.TreeMap;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -12,7 +13,6 @@ import org.springframework.stereotype.Component;
 
 import com.bridea.siak.dao.GenericDAO;
 import com.bridea.siak.model.MAmbil;
-import com.bridea.siak.model.MKomponenNilai;
 import com.bridea.siak.model.MMahasiswa;
 import com.bridea.siak.util.DialogBean;
 
@@ -47,7 +47,7 @@ public class AmbilBean extends DialogBean {
 
 	// USER (MAHASISWA)
 	// Temp User memasukan NPM Untuk Melihat Nilai
-	private String tempNPMCariNilai;
+	private String tempNPMCariNilai = "";
 
 	private List<MAmbil> listNilaiMahasiswaSesuaiNPM;
 
@@ -86,6 +86,9 @@ public class AmbilBean extends DialogBean {
 	}
 
 	public void setAmbil(MAmbil ambil) {
+		tempKodeDosen = ambil.getMDosen().getDKodeDosen();
+		tempKodeMK = ambil.getMMataKuliah().getMkKodeMk();
+		tempNPM = ambil.getMMahasiswa().getMhsNpm();
 		this.ambil = ambil;
 	}
 
@@ -153,6 +156,8 @@ public class AmbilBean extends DialogBean {
 				dao.save(ambil);
 				komponenNilaiBean.insert(ambil);
 			}
+			mahasiswaBean
+					.setListMahasiswasSelected(new ArrayList<MMahasiswa>());
 			displayInfoMessageToUser("Kontrak Matakuliah Berhasil");
 			invalidateAmbil();
 		} catch (Exception e) {
@@ -217,6 +222,8 @@ public class AmbilBean extends DialogBean {
 	// return object Ambil null
 	public void invalidateAmbil() {
 		ambil = new MAmbil();
+		tempKodeDosen = "";
+		tempKodeMK = "";
 	}
 
 	/*
@@ -224,6 +231,25 @@ public class AmbilBean extends DialogBean {
 	 * FUNGSI USER
 	 * ========================================================================
 	 */
+
+	public boolean checkNPM() {
+		boolean status = true;
+		System.out.println("masuk check NPM");
+		if (!getTempNPMCariNilai().equals("")) {
+			if ((mahasiswaBean.getMahasiswaByID(getTempNPMCariNilai())) == null) {
+				displayInfoMessageToUser("NPM Anda Tidak Terdaftar, Mohon Untuk Dicek kembali");
+				status = false;
+			}
+		} else {
+			status = false;
+			displayInfoMessageToUser("NPM Tidak Boleh Kosong");
+		}
+
+		if (status) {
+			searchNilaiByNPM();
+		}
+		return status;
+	}
 
 	public void searchNilaiByNPM() {
 		listNilaiMahasiswaSesuaiNPM = new ArrayList<>();
@@ -235,17 +261,15 @@ public class AmbilBean extends DialogBean {
 			}
 		}
 
-		if (listNilaiMahasiswaSesuaiNPM.size() < 1) {
-			displayInfoMessageToUser("NPM Anda Tidak Terdaftar, Mohon Untuk Dicek kembali");
-		}
-		System.out.println("setelah di clear : " + mkHashMap.size());
-		mkHashMap.clear();
-		System.out.println("setelah di clear : " + mkHashMap.size());
+		System.out.println("setelah di clear : " + mkTreeMap.size());
+		mkTreeMap.clear();
+		System.out.println("setelah di clear : " + mkTreeMap.size());
 		clearListMap();
 		test();
 	}
 
-	HashMap<Integer, HashMap<Integer, MAmbil>> mkHashMap = new HashMap<>();
+	TreeMap<String, HashMap<Integer, MAmbil>> mkTreeMap = new TreeMap<>();
+	HashMap<Integer, HashMap<Integer, MAmbil>> tempMKHashMap = new HashMap<>();
 
 	HashMap<Integer, MAmbil> mapMKS1 = new HashMap<>();
 	HashMap<Integer, MAmbil> mapMKS2 = new HashMap<>();
@@ -254,13 +278,21 @@ public class AmbilBean extends DialogBean {
 	HashMap<Integer, MAmbil> mapMKS5 = new HashMap<>();
 	HashMap<Integer, MAmbil> mapMKS6 = new HashMap<>();
 
-	public HashMap<Integer, HashMap<Integer, MAmbil>> getMkHashMap() {
-		return mkHashMap;
+	public HashMap<Integer, HashMap<Integer, MAmbil>> getTempMKHashMap() {
+		return tempMKHashMap;
 	}
 
-	public void setMkHashMap(
-			HashMap<Integer, HashMap<Integer, MAmbil>> mkHashMap) {
-		this.mkHashMap = mkHashMap;
+	public void setTempMKHashMap(
+			HashMap<Integer, HashMap<Integer, MAmbil>> tempMKHashMap) {
+		this.tempMKHashMap = tempMKHashMap;
+	}
+
+	public TreeMap<String, HashMap<Integer, MAmbil>> getMkTreeMap() {
+		return mkTreeMap;
+	}
+
+	public void setMkTreeMap(TreeMap<String, HashMap<Integer, MAmbil>> mkTreeMap) {
+		this.mkTreeMap = mkTreeMap;
 	}
 
 	public void sortingMK() {
@@ -294,19 +326,24 @@ public class AmbilBean extends DialogBean {
 
 	}
 
+	public void addTempListToHashMap() {
+		tempMKHashMap = new HashMap<>();
+		tempMKHashMap.put(1, mapMKS1);
+		tempMKHashMap.put(2, mapMKS2);
+		tempMKHashMap.put(3, mapMKS3);
+		tempMKHashMap.put(4, mapMKS4);
+		tempMKHashMap.put(5, mapMKS5);
+		tempMKHashMap.put(6, mapMKS6);
+	}
+
 	public void addListToHashMap() {
-		System.out.println("Membuat New Hasmap Iduk");
-		mkHashMap = new HashMap<>();
-		System.out.println("Isi Hasmap Iduk sebelum add list : "
-				+ mkHashMap.size());
-		mkHashMap.put(1, mapMKS1);
-		mkHashMap.put(2, mapMKS2);
-		mkHashMap.put(3, mapMKS3);
-		mkHashMap.put(4, mapMKS4);
-		mkHashMap.put(5, mapMKS5);
-		mkHashMap.put(6, mapMKS6);
-		System.out.println("Isi Hasmap Iduk sesudah add list : "
-				+ mkHashMap.size());
+		mkTreeMap = new TreeMap<>();
+		mkTreeMap.put(1 + " : " + listIPS.get(0), mapMKS1);
+		mkTreeMap.put(2 + " : " + listIPS.get(1), mapMKS2);
+		mkTreeMap.put(3 + " : " + listIPS.get(2), mapMKS3);
+		mkTreeMap.put(4 + " : " + listIPS.get(3), mapMKS4);
+		mkTreeMap.put(5 + " : " + listIPS.get(4), mapMKS5);
+		mkTreeMap.put(6 + " : " + listIPS.get(5), mapMKS6);
 	}
 
 	private List<Double> listIPS = new ArrayList<>();
@@ -325,21 +362,27 @@ public class AmbilBean extends DialogBean {
 	}
 
 	public void setIpk(double ipk) {
+		// String tempIpk = String.valueOf(ipk).substring(0, 4);
+		// this.ipk = Double.parseDouble(tempIpk);
 		this.ipk = ipk;
 	}
 
 	public void test() {
 		sortingMK();
-		addListToHashMap();
+		addTempListToHashMap();
 		// clearListMap();
 
 		System.out.println("tampil IPS");
 
 		PerhitunganNilaiBean pn = new PerhitunganNilaiBean();
 
-		listIPS = pn.hitungIPS(mkHashMap);
+		listIPS = pn.hitungIPS(tempMKHashMap);
 		setListIPS(listIPS);
+
+		addListToHashMap();
+
 		ipk = pn.hitungIPK(listIPS);
 		setIpk(ipk);
 	}
+
 }

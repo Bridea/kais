@@ -35,19 +35,22 @@
 				<h:outputText value="#{mataKuliahs.mkKodeMk}" />
 			</p:column>
 
-			<p:column headerText="Nama">
+			<p:column headerText="Nama" filterBy="#{mataKuliahs.mkNamaMk}"
+				filterMatchMode="contains">
 				<h:outputText value="#{mataKuliahs.mkNamaMk}" />
 			</p:column>
 
-			<p:column headerText="SKS">
+			<p:column headerText="SKS" filterBy="#{mataKuliahs.mkSks}"
+				filterMatchMode="contains">
 				<h:outputText value="#{mataKuliahs.mkSks}" />
 			</p:column>
 
-			<p:column headerText="Semester">
+			<p:column headerText="Semester" filterBy="#{mataKuliahs.mkSemester}"
+				filterMatchMode="contains">
 				<h:outputText value="#{mataKuliahs.mkSemester}" />
 			</p:column>
 
-			<p:column headerText="Action" style="width:120px">
+			<p:column headerText="Action" style="width:100px">
 				<p:commandButton id="view" icon="ui-icon-contact" update=":display"
 					onclick="mataKuliahDialogShowWidget.show()">
 					<f:setPropertyActionListener value="#{mataKuliahs}"

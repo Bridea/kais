@@ -4,8 +4,13 @@ import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
+import javax.faces.application.ViewHandler;
+import javax.faces.component.UIViewRoot;
+import javax.faces.context.FacesContext;
 
+import org.primefaces.component.api.UIData;
 import org.primefaces.component.datatable.DataTable;
+import org.primefaces.context.RequestContext;
 import org.primefaces.event.CellEditEvent;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
@@ -48,6 +53,7 @@ public class EditNilai {
 				.size()) {
 			listNilaiMahasiswa = komponenNilaiBean.getKomponenNilais();
 		}
+
 		return listNilaiMahasiswa;
 	}
 
@@ -83,13 +89,28 @@ public class EditNilai {
 		komponenNilaiBean.update(komponenNilai);
 
 		ambilBean.updateNilai(idKomponen, gradeNilai);
+
+		System.out.println(gradeNilai);
 		System.out.println("get deui");
 		listNilaiMahasiswa = komponenNilaiBean.getKomponenNilais();
-	/*	new LoginBean().redirect("/staff.akademik.jsf");*/
+		getListNilaiMahasiswa();
+
+		/*
+		 * UIData table = (UIData) event.getComponent();
+		 * System.out.println(table.getClientId() + ":" + table.getRowIndex() +
+		 * ":grade_nilai"); String updateClientId = table.getClientId() + ":" +
+		 * table.getRowIndex() + ":grade_nilai";
+		 * FacesContext.getCurrentInstance().getPartialViewContext()
+		 * .getRenderIds().add(updateClientId);
+		 */
+
+		/* new LoginBean().redirect("/staff.akademik.jsf"); */
 
 		if (newValue != null && !newValue.equals(oldValue)) {
 			FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO,
-					"Cell Changed", ", Old: " + oldValue + ", New:" + newValue);
+					"Cell Changed", ", Old: " + oldValue + ", New:" + newValue
+							+ "Grade Nilai : " + gradeNilai);
 		}
+
 	}
 }

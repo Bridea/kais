@@ -28,7 +28,7 @@ public class NavigationStaffAkademikBean implements Serializable {
 	private boolean layoutRender = false;
 
 	// selected include contents.
-	private String selectedIncludePath = "/staff/akademik/includes/main/dosen/dosen.xhtml";
+	private String selectedIncludePath = "/staff/akademik/includes/main/mahasiswa/mahasiswa.xhtml";
 
 	/**
 	 * Gets the currently selected content include path.

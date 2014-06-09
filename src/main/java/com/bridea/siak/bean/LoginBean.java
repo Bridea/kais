@@ -87,7 +87,6 @@ public class LoginBean extends DialogBean {
 	private boolean cekData() {
 		// pengecekan id pemilih yang finger dengan data pemilih
 		if (getPasswordAdmin().equals("admin")) {
-			login = new Login("admin");
 			return true;
 		}
 

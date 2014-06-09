@@ -6,22 +6,28 @@ package com.bridea.siak.util;
  * @time 19.20.56
  **/
 
-import java.io.Serializable;
 import java.util.Map;
 
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
 
-@ManagedBean(name = "navigationBean")
-@SessionScoped
-public class NavigationBean implements Serializable {
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
 
+import com.bridea.siak.bean.AmbilBean;
+
+/*@ManagedBean(name = "navigationBean")
+ @SessionScoped*/
+@Component("navigationBean")
+@Scope("session")
+public class NavigationBean extends DialogBean {
+
+	@Autowired
+	private AmbilBean ambilBean;
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
 	private boolean extendedRender = false;
 	private boolean customRender = true;
 	private boolean tableRender = false;
@@ -35,15 +41,15 @@ public class NavigationBean implements Serializable {
 	 * 
 	 * @return currently selected content include path.
 	 */
-	@SuppressWarnings("rawtypes")
 	public String getSelectedIncludePath() {
 		// check for a currently selected path to be ready for ui:include
 		FacesContext context = FacesContext.getCurrentInstance();
 		Map map = context.getExternalContext().getRequestParameterMap();
-		String requestedPath = (String) map.get("includePath");
-		if ((null != requestedPath) && (requestedPath.length() > 0)) {
-			selectedIncludePath = requestedPath;
-		}
+		/*
+		 * String requestedPath = (String) map.get("includePath"); if ((null !=
+		 * requestedPath) && (requestedPath.length() > 0)) { selectedIncludePath
+		 * = requestedPath; }
+		 */
 		return selectedIncludePath;
 	}
 
@@ -64,14 +70,25 @@ public class NavigationBean implements Serializable {
 	 * @param event
 	 *            JSF Action Event.
 	 */
-	@SuppressWarnings("rawtypes")
 	public void navigationPathChange(ActionEvent event) {
-
 		// get from the context content include path to show as well
 		// as the title associated with the link.
 		FacesContext context = FacesContext.getCurrentInstance();
 		Map map = context.getExternalContext().getRequestParameterMap();
 		selectedIncludePath = (String) map.get("includePath");
+		System.out.println("Masuk Navigation Path Change : "
+				+ selectedIncludePath);
+		if (selectedIncludePath
+				.equals("/WEB-INF/includes/main/mahasiswa/transkrip.xhtml")) {
+			if (ambilBean.checkNPM()) {
+				selectedIncludePath = "/WEB-INF/includes/main/mahasiswa/transkrip.xhtml";
+			} else {
+				selectedIncludePath = "/WEB-INF/includes/main/dashboard.xhtml";
+			}
+		} else {
+			ambilBean.setTempNPMCariNilai("");
+			System.out.println(ambilBean.getTempNPMCariNilai());
+		}
 	}
 
 	public boolean getExtendedRender() {

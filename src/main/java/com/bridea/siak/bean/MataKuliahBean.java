@@ -24,6 +24,34 @@ public class MataKuliahBean extends DialogBean {
 	private MMataKuliah mataKuliah;
 	private List<MMataKuliah> listMataKuliahs;
 	private HashMap<String, MMataKuliah> hashMapMatakuliah;
+	private List<MMataKuliah> tempListMataKuliahs;
+	private HashMap<String, MMataKuliah> tempHashMapKuliahs;
+	private byte semester;
+
+	public HashMap<String, MMataKuliah> getTempHashMapKuliahs() {
+		return tempHashMapKuliahs;
+	}
+
+	public void setTempHashMapKuliahs(
+			HashMap<String, MMataKuliah> tempHashMapKuliahs) {
+		this.tempHashMapKuliahs = tempHashMapKuliahs;
+	}
+
+	public List<MMataKuliah> getTempListMataKuliahs() {
+		return tempListMataKuliahs;
+	}
+
+	public void setTempListMataKuliahs(List<MMataKuliah> tempListMataKuliahs) {
+		this.tempListMataKuliahs = tempListMataKuliahs;
+	}
+
+	public byte getSemester() {
+		return semester;
+	}
+
+	public void setSemester(byte semester) {
+		this.semester = semester;
+	}
 
 	public List<MMataKuliah> getListMataKuliahs() {
 		listMataKuliahs = new ArrayList<>();
@@ -115,5 +143,37 @@ public class MataKuliahBean extends DialogBean {
 	// return object MataKuliah null
 	public void invalidateMataKuliah() {
 		mataKuliah = new MMataKuliah();
+	}
+
+	public void listMataKuliahFilter(byte semester) {
+		tempHashMapKuliahs = new HashMap<>();
+		for (MMataKuliah mMataKuliah : getMataKuliahs()) {
+			if (mMataKuliah.getMkSemester() == semester) {
+				tempHashMapKuliahs.put(mMataKuliah.getMkKodeMk(), mMataKuliah);
+			}
+		}
+
+		tempListMataKuliahs = new ArrayList<>();
+		for (MMataKuliah mMataKuliah : getTempHashMapKuliahs().values()) {
+			tempListMataKuliahs.add(mMataKuliah);
+		}
+
+		semester = 0;
+	}
+
+	public void handleSemesterChange() {
+		if (semester == 1) {
+			listMataKuliahFilter((byte) 1);
+		} else if (semester == 2) {
+			listMataKuliahFilter((byte) 2);
+		} else if (semester == 3) {
+			listMataKuliahFilter((byte) 3);
+		} else if (semester == 4) {
+			listMataKuliahFilter((byte) 4);
+		} else if (semester == 5) {
+			listMataKuliahFilter((byte) 5);
+		} else {
+			listMataKuliahFilter((byte) 6);
+		}
 	}
 }

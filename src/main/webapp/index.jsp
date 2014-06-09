@@ -1,4 +1,4 @@
 
 <%
-	response.sendRedirect("staff.akademik.jsf");
+	response.sendRedirect("index.jsf");
 %>

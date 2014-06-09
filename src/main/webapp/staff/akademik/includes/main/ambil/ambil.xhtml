@@ -31,22 +31,26 @@
 			paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
 			rowsPerPageTemplate="20,50,100">
 
-			<p:column headerText="ID Ambil">
+			<p:column headerText="Id Kontrak">
 				<h:outputText value="#{ambils.AIdAmbil}" />
 			</p:column>
-			<p:column headerText="NPM">
+			<p:column headerText="NPM" filterBy="#{ambils.MMahasiswa.mhsNpm}"
+				filterMatchMode="contains">
 				<h:outputText value="#{ambils.MMahasiswa.mhsNpm}" />
 			</p:column>
-			<p:column headerText="Nama">
+			<p:column headerText="Nama Mahasiswa">
 				<h:outputText value="#{ambils.MMahasiswa.mhsNamaLengkap}" />
 			</p:column>
-			<p:column headerText="Matakuliah">
+			<p:column headerText="Matakuliah"
+				filterBy="#{ambils.MMataKuliah.mkNamaMk}" filterMatchMode="contains">
 				<h:outputText value="#{ambils.MMataKuliah.mkNamaMk}" />
 			</p:column>
-			<p:column headerText="Dosen">
+			<p:column headerText="Dosen" filterBy="#{ambils.MDosen.DNamaDosen}"
+				filterMatchMode="contains">
 				<h:outputText value="#{ambils.MDosen.DNamaDosen}" />
 			</p:column>
-			<p:column headerText="Kelas">
+			<p:column headerText="Kelas" filterBy="#{ambils.AKelas}"
+				filterMatchMode="contains">
 				<h:outputText value="#{ambils.AKelas}" />
 			</p:column>
 			<p:column headerText="Lahan Praktek">
@@ -54,7 +58,7 @@
 			</p:column>
 
 
-			<p:column headerText="Action" style="width:70px">
+			<p:column headerText="Action" style="width:100px">
 				<p:commandButton id="view" icon="ui-icon-contact" update=":display"
 					onclick="ambilDialogShowWidget.show()">
 					<f:setPropertyActionListener value="#{ambils}"
@@ -62,12 +66,14 @@
 				</p:commandButton>
 				<p:tooltip for="view" value="Lihat #{ambils.AIdAmbil}"
 					showEffect="fade" hideEffect="fade" />
-				<!-- <p:commandButton icon="ui-icon-pencil"
+				<p:commandButton id="update" icon="ui-icon-pencil"
 					update=":ambilUpdateDialogForm"
 					oncomplete="ambilUpdateDialogWidget.show()">
 					<f:setPropertyActionListener value="#{ambils}"
 						target="#{ambilBean.ambil}" />
-				</p:commandButton> -->
+				</p:commandButton>
+				<p:tooltip for="update" value="Hapus #{ambils.AIdAmbil}"
+					showEffect="fade" hideEffect="fade" />
 				<p:commandButton id="delete" icon="ui-icon-trash"
 					update=":ambilDeleteDialogForm"
 					onclick="ambilDeleteDialogWidget.show();">
