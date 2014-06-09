@@ -182,9 +182,10 @@ public class AmbilBean extends DialogBean {
 	}
 
 	// update
-	public void updateNilai(int idAmbil, String grade) {
+	public void updateNilai(int idAmbil, double nilai, String grade) {
 		try {
 			ambil = getAmbilByID(idAmbil);
+			ambil.setANilai(nilai);
 			ambil.setAGradeNilai(grade);
 			dao.update(ambil);
 		} catch (Exception e) {

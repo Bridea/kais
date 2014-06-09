@@ -1,16 +1,11 @@
 package com.bridea.siak.bean;
 
-import java.util.List;
+import java.util.List; 
 
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
-import javax.faces.application.ViewHandler;
-import javax.faces.component.UIViewRoot;
-import javax.faces.context.FacesContext;
 
-import org.primefaces.component.api.UIData;
 import org.primefaces.component.datatable.DataTable;
-import org.primefaces.context.RequestContext;
 import org.primefaces.event.CellEditEvent;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
@@ -77,7 +72,8 @@ public class EditNilai {
 		double uas = komponenNilai.getKnNilaiUas();
 
 		PerhitunganNilaiBean pn = new PerhitunganNilaiBean();
-		char grade = pn.hitungGrade(kehadiran, tugas, uts, uas);
+		double nilai = pn.hitungTotalNilai(kehadiran, tugas, uts, uas);
+		char grade = pn.hitungGrade(nilai);
 		String gradeNilai = "";
 
 		if (grade == 'T') {
@@ -88,7 +84,7 @@ public class EditNilai {
 
 		komponenNilaiBean.update(komponenNilai);
 
-		ambilBean.updateNilai(idKomponen, gradeNilai);
+		ambilBean.updateNilai(idKomponen, nilai, gradeNilai);
 
 		System.out.println(gradeNilai);
 		System.out.println("get deui");

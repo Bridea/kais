@@ -57,7 +57,7 @@
 				<p:panelGrid id="tbl_dosen" styleClass="table table-striped"
 					style="font-weight:normal;">
 					<p:row>
-						<p:column colspan="4">
+						<p:column colspan="5">
 							<h5>SEMESTER #{status.index + 1}</h5>
 						</p:column>
 					</p:row>
@@ -83,6 +83,12 @@
 						</p:column>
 						<p:column style="font-weight:bold; text-align:center">
 							<f:facet name="header">
+								<h:outputText value="Nilai" />
+							</f:facet>
+							<h:outputText value="Nilai" />
+						</p:column>
+						<p:column style="font-weight:bold; text-align:center">
+							<f:facet name="header">
 								<h:outputText value="Grade" />
 							</f:facet>
 							<h:outputText value="Grade" />
@@ -105,6 +111,9 @@
 							</p:column>
 							<p:column style="width:6.4%">
 								<h:outputText value="#{kontraks.value.MMataKuliah.mkSks}" />
+							</p:column>
+							<p:column>
+								<h:outputText value="#{kontraks.value.ANilai}" />
 							</p:column>
 							<p:column>
 								<h:outputText value="#{kontraks.value.AGradeNilai}" />
