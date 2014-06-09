@@ -14,6 +14,20 @@
 	<br />
 
 	<h:form id="form" prependId="true">
+
+		<p:outputLabel value="Export Page Data Only" />
+		<h:commandLink>
+			<p:graphicImage value="/resources/icon/excel.png" />
+			<p:dataExporter type="xls" target="kontrak" fileName="Nilai"
+				postProcessor="#{exporterSetting.postProcessXLS}" />
+		</h:commandLink>
+
+		<h:commandLink>
+			<p:graphicImage value="/resources/icon/pdf.png" />
+			<p:dataExporter type="pdf" target="kontrak" fileName="Nilai"
+				preProcessor="#{exporterSetting.preProcessPDF}" />
+		</h:commandLink>
+
 		<p:contextMenu for="kontrak" widgetVar="cMenu">
 			<p:menuitem value="Edit Nilai" icon="ui-icon-search"
 				onclick="PF('cellKontraks').showCellEditor();return false;" />
@@ -75,7 +89,9 @@
 				<h:outputText value="#{kontraks.MAmbil.MMataKuliah.mkSks}" />
 			</p:column>
 
-			<p:column headerText="Semester" style="width:2%">
+			<p:column headerText="Semester" style="width:2%"
+				filterBy="#{kontraks.MAmbil.MMataKuliah.mkSemester}"
+				filterMatchMode="contains">
 				<h:outputText value="#{kontraks.MAmbil.MMataKuliah.mkSemester}" />
 			</p:column>
 
