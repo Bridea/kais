@@ -87,6 +87,11 @@ public class MataKuliahBean extends DialogBean {
 	public void insert() {
 		System.out.println("Masuk Insert");
 		try {
+			mataKuliah.setMkStatus(true);
+			System.out.println(mataKuliah.getMkKodeMk() + ","
+					+ mataKuliah.getMkNamaMk() + "," + mataKuliah.getMkSks()
+					+ "," + mataKuliah.getMkSemester() + ","
+					+ mataKuliah.isMkStatus());
 			dao.save(mataKuliah);
 			displayInfoMessageToUser("Tambah MataKuliah Berhasil");
 			invalidateMataKuliah();

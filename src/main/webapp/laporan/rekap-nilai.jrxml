@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="rekap-nilai" pageWidth="595" pageHeight="842" columnWidth="515" leftMargin="40" rightMargin="40" topMargin="50" bottomMargin="50" uuid="741043a7-6531-41da-9bb7-373e9b17867e">
+	<property name="ireport.scriptlethandling" value="0"/>
+	<property name="ireport.encoding" value="UTF-8"/>
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="15"/>
+	<import value="net.sf.jasperreports.engine.*"/>
+	<import value="java.util.*"/>
+	<import value="net.sf.jasperreports.engine.data.*"/>
+	<style name="Arial_Normal" isDefault="true" fontName="Arial" fontSize="12" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfFontName="Helvetica" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+	<style name="Arial_Bold" fontName="Arial" fontSize="12" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfFontName="Helvetica-Bold" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+	<style name="Arial_Italic" fontName="Arial" fontSize="12" isBold="false" isItalic="true" isUnderline="false" isStrikeThrough="false" pdfFontName="Helvetica-Oblique" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+	<style name="pageHeader" style="Arial_Bold" forecolor="#FFFFFF" backcolor="#333333"/>
+	<parameter name="ReportTitle" class="java.lang.String"/>
+	<parameter name="BaseDir" class="java.io.File"/>
+	<field name="AIdAmbil" class="java.lang.Integer"/>
+	<field name="matakuliah" class="java.lang.String"/>
+	<field name="dosen" class="java.lang.String"/>
+	<field name="kelas" class="java.lang.String"/>
+	<field name="waktu" class="java.lang.String"/>
+	<field name="npm" class="java.lang.String"/>
+	<field name="kehadiran" class="java.lang.Number"/>
+	<field name="tugas" class="java.lang.Number"/>
+	<field name="uts" class="java.lang.Number"/>
+	<field name="uas" class="java.lang.Number"/>
+	<field name="nilai" class="java.lang.Number"/>
+	<field name="grade" class="java.lang.String"/>
+	<variable name="AllCities" class="java.lang.String" calculation="System"/>
+	<variable name="matakuliah_1" class="java.lang.Integer" calculation="Count">
+		<variableExpression><![CDATA[$F{matakuliah}]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="208" splitType="Stretch">
+			<frame>
+				<reportElement uuid="ab4cb1ac-1fa3-4be5-9bf9-308c313274f6" key="frame" x="0" y="0" width="515" height="109" backcolor="#E0E0E0"/>
+				<box>
+					<topPen lineWidth="1.0" lineColor="#FFFFFF"/>
+					<bottomPen lineWidth="1.0" lineColor="#000000"/>
+				</box>
+				<frame>
+					<reportElement uuid="49b7eebb-e334-4b47-8c58-3e9f533faa61" x="270" y="0" width="245" height="99"/>
+					<image>
+						<reportElement uuid="18d65005-bec0-418e-af5a-01493c860289" x="98" y="0" width="53" height="54"/>
+						<imageExpression><![CDATA["C:\\Users\\WahyudinScatt\\git\\kais\\src\\main\\webapp\\resources\\img\\Logo Apikes.png"]]></imageExpression>
+					</image>
+					<staticText>
+						<reportElement uuid="c4c7649e-7e57-435e-87a5-2fe78985566d" x="0" y="58" width="245" height="41"/>
+						<textElement textAlignment="Center">
+							<font size="11"/>
+						</textElement>
+						<text><![CDATA[Akademi Perekam Medis
+dan Informatika Kesehatan (APIKES) Bandung
+Jalan W.R. Supratman No. 100blk Bandung]]></text>
+					</staticText>
+				</frame>
+			</frame>
+			<staticText>
+				<reportElement uuid="4c66eff3-5ca8-40cf-9c9e-46db2344a4ef" x="0" y="161" width="100" height="20"/>
+				<textElement/>
+				<text><![CDATA[Kelas                   :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="6c05b6e2-b540-4753-b5e1-ef43832269f8" x="0" y="139" width="100" height="20"/>
+				<textElement/>
+				<text><![CDATA[Dosen                 :]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="27fd6d5d-ed4e-4722-9fb5-4955c6f306ea" x="100" y="139" width="170" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{dosen}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="1e67a2bb-3e36-4f50-85e7-70510d823fa5" x="100" y="161" width="170" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{kelas}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="4c66eff3-5ca8-40cf-9c9e-46db2344a4ef" x="1" y="181" width="100" height="20"/>
+				<textElement/>
+				<text><![CDATA[Waktu                  :]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="89aba753-a426-45b3-b4ea-77a09fca7a06" x="101" y="181" width="169" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{waktu}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="6c05b6e2-b540-4753-b5e1-ef43832269f8" x="0" y="119" width="100" height="20"/>
+				<textElement/>
+				<text><![CDATA[Matakuliah          :]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="9d988f0c-be27-47a4-8717-32c94d64afbe" x="100" y="119" width="170" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{matakuliah}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="27" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="df96bc32-1fa0-4bb2-86c3-3a6c00ca4d2e" key="staticText" style="pageHeader" mode="Opaque" x="0" y="5" width="86" height="15"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[NPM]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="2871a306-912f-4ae7-91bd-eca63272682e" key="staticText" style="pageHeader" mode="Opaque" x="86" y="5" width="101" height="15"/>
+				<textElement/>
+				<text><![CDATA[Nilai Kehadiran]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="e39c3233-a2be-426f-88dd-5764de1394bf" key="staticText" style="pageHeader" mode="Opaque" x="187" y="5" width="83" height="15"/>
+				<textElement/>
+				<text><![CDATA[Nilai Tugas]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="e39c3233-a2be-426f-88dd-5764de1394bf" key="staticText" style="pageHeader" mode="Opaque" x="270" y="5" width="66" height="15"/>
+				<textElement/>
+				<text><![CDATA[Nilai UTS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="e39c3233-a2be-426f-88dd-5764de1394bf" key="staticText" style="pageHeader" mode="Opaque" x="336" y="5" width="64" height="15"/>
+				<textElement/>
+				<text><![CDATA[Nilai UAS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="e39c3233-a2be-426f-88dd-5764de1394bf" key="staticText" style="pageHeader" mode="Opaque" x="400" y="5" width="70" height="15"/>
+				<textElement/>
+				<text><![CDATA[Total Nilai]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="e39c3233-a2be-426f-88dd-5764de1394bf" key="staticText" style="pageHeader" mode="Opaque" x="470" y="5" width="45" height="15"/>
+				<textElement/>
+				<text><![CDATA[Grade]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="43" splitType="Stretch">
+			<textField>
+				<reportElement uuid="707005d5-e654-4b72-bee7-59b6f703d986" x="1" y="11" width="85" height="20"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{npm}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="db8bac3c-67a7-4214-b2c5-8cee3158dbc7" x="187" y="11" width="83" height="20"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{tugas}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="384fc54c-bc1b-490c-ba7e-767db0b14ef4" x="270" y="11" width="66" height="20"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{uts}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="e136f6f4-ccbc-432e-ab30-eb97270d68bc" x="336" y="11" width="64" height="20"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{uas}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="b1ccef11-0048-4b31-b439-358343c04efe" x="400" y="11" width="70" height="20"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{nilai}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="91fe3e9a-f666-4fa2-b540-03ca2514811e" x="470" y="11" width="45" height="20"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{grade}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="46bf7ef2-c0ca-401f-9e7a-6f954a7f3e93" x="86" y="11" width="101" height="20"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{kehadiran}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="84" splitType="Stretch">
+			<line>
+				<reportElement uuid="56bcd339-1df2-4e95-8b39-fc8d2850e589" key="line" x="0" y="10" width="515" height="1"/>
+			</line>
+			<textField isBlankWhenNull="false">
+				<reportElement uuid="5375bb71-d4f6-47d5-8e96-0c634f8a1285" key="textField" x="200" y="20" width="80" height="15"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Page " + String.valueOf($V{PAGE_NUMBER}) + " of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report" isBlankWhenNull="false">
+				<reportElement uuid="0e5a62d7-a264-48f4-845c-cde6500b2569" key="textField" x="280" y="20" width="75" height="15"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[" " + String.valueOf($V{PAGE_NUMBER})]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

@@ -1,0 +1,119 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+	<p:breadCrumb>
+		<p:menuitem value="Categories" url="#" />
+		<p:menuitem disabled="true" value="Rekap Nilai" url="#" />
+	</p:breadCrumb>
+	<br />
+
+	<h:form id="form" prependId="true">
+		<h:panelGrid columns="4">
+			<p:outputLabel value="MataKuliah : " />
+			<p:selectOneMenu id="subMatakuliah"
+				value="#{rekapNilaiBean.tempKodeMataKuliah}" required="true"
+				requiredMessage="Matakuliah Harus Di isi">
+				<f:selectItem itemLabel="-- Pilih MataKuliah --" itemValue="" />
+				<f:selectItems value="#{mataKuliahBean.listMataKuliahs}"
+					var="matakuliah" itemLabel="#{matakuliah.mkNamaMk}"
+					itemValue="#{matakuliah.mkKodeMk}" />
+			</p:selectOneMenu>
+
+			<p:outputLabel value="Dosen : " />
+			<p:selectOneMenu value="#{rekapNilaiBean.tempKodeDosen}"
+				required="true" requiredMessage="Dosen harus Di isi">
+				<f:selectItem itemLabel="-- Pilih Dosen --" itemValue="" />
+				<f:selectItems value="#{dosenBean.listDosens}" var="dosen"
+					itemLabel="#{dosen.DNamaDosen}" itemValue="#{dosen.DKodeDosen}" />
+			</p:selectOneMenu>
+
+			<p:outputLabel value="Kelas : " />
+			<p:selectOneMenu value="#{rekapNilaiBean.tempKelas}" required="true"
+				requiredMessage="Kelas harus di isi">
+				<f:selectItem itemLabel="-- Pilih Kelas --" itemValue="" />
+				<f:selectItem itemLabel="A" itemValue="A" />
+				<f:selectItem itemLabel="B" itemValue="B" />
+				<f:selectItem itemLabel="C" itemValue="C" />
+				<f:selectItem itemLabel="D" itemValue="D" />
+			</p:selectOneMenu>
+
+			<p:outputLabel value="Waktu : " />
+			<p:selectOneMenu value="#{rekapNilaiBean.tempWaktu}" required="true"
+				requiredMessage="Waktu harus di isi">
+				<f:selectItem itemLabel="-- Pilih Waktu --" itemValue="" />
+				<f:selectItem itemLabel="Pagi" itemValue="Pagi" />
+				<f:selectItem itemLabel="Siang" itemValue="Siang" />
+			</p:selectOneMenu>
+		</h:panelGrid>
+		<h:panelGrid columns="3">
+			<p:selectOneRadio value="#{rekapNilaiBean.exportOption}">
+				<f:selectItem itemValue="PDF" itemLabel="PDF" />
+				<f:selectItem itemValue="EXCEL" itemLabel="EXCEL" />
+				<f:selectItem itemValue="RTF" itemLabel="WORD" />
+			</p:selectOneRadio>
+			<p:outputLabel value=":" />
+			<h:commandButton action="#{rekapNilaiBean.execute}"
+				value="Get Report" />
+		</h:panelGrid>
+
+		<p:dataTable id="laporan_nilai" var="kontraks"
+			value="#{rekapNilaiBean.listKomponenNilais}" editable="true"
+			editMode="cell" widgetVar="cellKontraks">
+
+
+			<p:column headerText="NPM" style="width:3%">
+				<h:outputText value="#{kontraks.MAmbil.MMahasiswa.mhsNpm}" />
+			</p:column>
+
+			<p:column headerText="Matakuliah" style="width:5%">
+				<h:outputText value="#{kontraks.MAmbil.MMataKuliah.mkNamaMk}" />
+			</p:column>
+
+			<p:column headerText="Dosen" style="width:7%">
+				<h:outputText value="#{kontraks.MAmbil.MDosen.DNamaDosen}" />
+			</p:column>
+
+			<p:column headerText="Kelas" style="width:5%">
+				<h:outputText value="#{kontraks.MAmbil.AKelas}" />
+			</p:column>
+
+			<p:column headerText="SKS" style="width:2%">
+				<h:outputText value="#{kontraks.MAmbil.MMataKuliah.mkSks}" />
+			</p:column>
+
+			<p:column headerText="Semester" style="width:2%">
+				<h:outputText value="#{kontraks.MAmbil.MMataKuliah.mkSemester}" />
+			</p:column>
+
+			<p:column headerText="Nilai Kehadiran" style="width:3%">
+				<h:outputText value="#{kontraks.knNilaiKehadiran}" />
+			</p:column>
+
+			<p:column headerText="Nilai Tugas" style="width:3%">
+				<h:outputText value="#{kontraks.knNilaiTugas}" />
+			</p:column>
+
+			<p:column headerText="Nilai UTS" style="width:3%">
+				<h:outputText value="#{kontraks.knNilaiUts}" />
+			</p:column>
+
+			<p:column headerText="Nilai UAS" style="width:3%">
+				<h:outputText value="#{kontraks.knNilaiUas}" />
+			</p:column>
+
+			<p:column headerText="Nilai" style="width:3%">
+				<h:outputText value="#{kontraks.MAmbil.ANilai}" />
+			</p:column>
+
+			<p:column id="grade_nilai" headerText="Grade" style="width:3%">
+				<h:outputText value="#{kontraks.MAmbil.AGradeNilai}" />
+			</p:column>
+		</p:dataTable>
+	</h:form>
+</ui:composition>

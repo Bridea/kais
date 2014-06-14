@@ -42,6 +42,12 @@
 								<f:param name="includePath"
 									value="/staff/akademik/includes/main/edit.xhtml" />
 							</h:commandLink></li>
+						<li><h:commandLink id="laporan"
+								actionListener="#{navigationStaffAkademikBean.navigationPathChange}">
+								<span>Laporan</span>
+								<f:param name="includePath"
+									value="/staff/akademik/includes/main/laporan/nilai.xhtml" />
+							</h:commandLink></li>
 						<li><h:commandLink id="logout" action="#{loginBean.doLogout}">
 								<span>Logout</span>
 							</h:commandLink></li>
