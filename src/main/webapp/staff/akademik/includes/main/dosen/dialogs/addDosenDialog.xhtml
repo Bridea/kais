@@ -17,25 +17,31 @@
 				<p:outputLabel value="Kode Dosen : " />
 				<p:inputMask id="add_dsn_inp_kode"
 					value="#{dosenBean.dosen.DKodeDosen}" required="true"
-					requiredMessage="Kode tidak boleh kosong" label="add_dsn_inp_kode"
-					mask="99999999" style="width:90%" />
-
+					requiredMessage="Kode tidak boleh kosong" label="add_dsn_inp_kode" 
+					mask="99999999" style="width:90%"/>
+					
 				<p:outputLabel value="Nama Lengkap : " />
 				<p:inputText id="add_dsn_inp_nama_lengkap"
 					value="#{dosenBean.dosen.DNamaDosen}" required="true"
-					requiredMessage="Nama tidak boleh kosong"
-					label="add_dsn_inp_nama_lengkap" />
+					requiredMessage="Nama tidak boleh kosong" validatorMessage="Nama tidak boleh lebih dari 60 karakter"
+					label="add_dsn_inp_nama_lengkap">
+				    <f:validateLength maximum="60" />
+					<p:message for="add_dsn_inp_nama_lengkap" />
+					</p:inputText>
 
 				<p:outputLabel value="Nidn : " />
-				<p:inputText id="add_dsn_inp_nidn" value="#{dosenBean.dosen.DNidn}"
+				<p:inputMask id="add_dsn_inp_nidn" value="#{dosenBean.dosen.DNidn}"
 					required="true" requiredMessage="Nidn tidak boleh kosong"
-					label="add_dsn_inp_nidn" />
+					label="add_dsn_inp_nidn" mask="9999999999"/>
 
 				<p:outputLabel value="Riwayat Pendidikan : " />
 				<p:inputText id="add_dsn_inp_riwayat_pendidikan"
 					value="#{dosenBean.dosen.DRiwayatPendidikan}" required="true"
 					requiredMessage="Riwayat Pendidikan tidak boleh kosong"
-					label="add_dsn_inp_riwayat_pendidikan" />
+					label="add_dsn_inp_riwayat_pendidikan" validatorMessage="Riwayat pendidikan tidak boleh lebih dari 20 karakter">
+					  <f:validateLength maximum="20" />
+					<p:message for="add_dsn_inp_riwayat_pendidikan" />
+					</p:inputText>
 
 				<p:outputLabel value="Alamat : " />
 				<p:inputText id="add_dsn_inp_alamat"
@@ -47,7 +53,11 @@
 				<p:inputText id="add_dsn_inp_kontak"
 					value="#{dosenBean.dosen.DKontak}" required="true"
 					requiredMessage="Kontak tidak boleh kosong"
-					label="add_dsn_inp_kontak" style="width:90%" />
+					label="add_dsn_inp_kontak" style="width:90%" >
+					<f:validateLength maximum="12" minimum="11" />
+					   <f:validateRegex pattern="^\s*(?:\+?(\d{1,3}))?[-. (]*(\d{3})[-. )]*(\d{3})[-. ]*(\d{4})(?: *x(\d+))?\s*$" />
+					<p:message for="add_dsn_inp_kontak" />
+					</p:inputText>
 
 			</h:panelGrid>
 			<p:commandButton value="Submit" icon="ui-icon-plus"

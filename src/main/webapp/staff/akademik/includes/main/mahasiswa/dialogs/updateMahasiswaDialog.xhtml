@@ -18,13 +18,26 @@
 				<p:inputText id="add_mhs_update_nama_lengkap"
 					value="#{mahasiswaBean.mahasiswa.mhsNamaLengkap}" required="true"
 					requiredMessage="Nama tidak boleh kosong"
-					label="add_mhs_update_nama_lengkap" />
+					label="add_mhs_update_nama_lengkap" validatorMessage="Nama tidak boleh lebih dari 60 karakter">
+					  <f:validateLength maximum="60" />
+					<p:message for="add_mhs_update_nama_lengkap" />
+					</p:inputText>
 
 				<p:outputLabel value="Tempat Lahir : " />
 				<p:inputText id="add_mhs_update_tempat_Lahir"
 					value="#{mahasiswaBean.mahasiswa.mhsTempatLahir}" required="true"
 					requiredMessage="Tempat Lahir tidak boleh kosong"
-					label="add_mhs_update_tempat_Lahir" />
+					label="add_mhs_update_tempat_Lahir" validatorMessage="Tempat Lahir tidak boleh lebih dari 50 karakter">
+					  <f:validateLength maximum="50" />
+					<p:message for="add_mhs_update_tempat_Lahir" />
+					</p:inputText>
+
+
+				<p:outputLabel value="Tanggal Lahir : " />
+				<p:calendar id="add_mhs_update_tanggal_Lahir"
+					value="#{mahasiswaBean.mahasiswa.mhsTanggalLahir}" required="true"
+					requiredMessage="Tempat Lahir tidak boleh kosong"
+					label="add_mhs_update_tanggal_Lahir" pattern="dd-MM-yyyy" />
 
 				<p:outputLabel value="Jenis Kelamin : " />
 				<p:selectOneRadio id="add_mhs_update_jenis_kelamin"
@@ -51,8 +64,11 @@
 				<p:inputText id="add_mhs_update_asal_sekolah"
 					value="#{mahasiswaBean.mahasiswa.mhsAsalSekolah}" required="true"
 					requiredMessage="Asal Sekolah tidak boleh kosong"
-					label="add_mhs_update_asal_sekolah" />
-
+					label="add_mhs_update_asal_sekolah" validatorMessage="Asal Sekolah tidak boleh lebih dari 60 karakter">
+					  <f:validateLength maximum="50" />
+					<p:message for="add_mhs_update_asal_sekolah" />
+					</p:inputText>
+					
 				<p:outputLabel value="Alamat : " />
 				<p:inputText id="add_mhs_update_alamat"
 					value="#{mahasiswaBean.mahasiswa.mhsAlamat}" required="true"
@@ -63,15 +79,21 @@
 				<p:inputText id="add_mhs_update_nama_ortu"
 					value="#{mahasiswaBean.mahasiswa.mhsNamaOrangTua}" required="true"
 					requiredMessage="Nama Orang tua tidak boleh kosong"
-					label="add_mhs_update_nama_ortu" />
+					label="add_mhs_update_nama_ortu" validatorMessage="Nama Orang tua / Wali tidak boleh lebih dari 60 karakter">
+					  <f:validateLength maximum="60" />
+					<p:message for="add_mhs_update_nama_ortu" />
+					</p:inputText>
 
 				<p:outputLabel value="Pekerjaan Orang tua / Wali : " />
 				<p:inputText id="add_mhs_update_pekerjaan_ortu"
 					value="#{mahasiswaBean.mahasiswa.mhsPekerjaanOrangTua}"
 					required="true"
 					requiredMessage="Pekerjaan Orang tua tidak boleh kosong"
-					label="add_mhs_update_pekerjaan_ortu" />
-
+					label="add_mhs_update_pekerjaan_ortu" validatorMessage="Pekerjaan Orang tua / Wali tidak boleh lebih dari 60 karakter">
+					  <f:validateLength maximum="60" />
+					<p:message for="add_mhs_update_pekerjaan_ortu" />
+					</p:inputText>
+					
 				<p:commandButton value="Submit" icon="ui-icon-plus"
 					action="#{mahasiswaBean.update}"
 					update=":growl :form_mahasiswa:tbl_mahasiswa"

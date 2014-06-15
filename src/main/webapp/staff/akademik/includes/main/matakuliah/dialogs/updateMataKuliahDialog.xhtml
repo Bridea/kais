@@ -17,19 +17,21 @@
 				<p:outputLabel value="Nama : " />
 				<p:inputText id="add_mk_update_nama"
 					value="#{mataKuliahBean.mataKuliah.mkNamaMk}" required="true"
-					requiredMessage="Nama tidak boleh kosong"
-					label="add_mk_update_nama" />
-
+					requiredMessage="Nama tidak boleh kosong" label="add_mk_update_nama"  validatorMessage="Nama tidak boleh lebih dari 60 karakter">
+					  <f:validateLength maximum="60" />
+					<p:message for="add_mk_update_nama" />
+					</p:inputText> 
+					
 				<p:outputLabel value="SKS : " />
-				<p:inputText id="add_mk_update_sks"
+				<p:inputMask id="add_mk_update_sks"
 					value="#{mataKuliahBean.mataKuliah.mkSks}" required="true"
-					requiredMessage="SKS tidak boleh kosong" label="add_mk_update_sks" />
+					requiredMessage="SKS tidak boleh kosong" mask="9" label="add_mk_update_sks" />
 
 				<p:outputLabel value="Semester : " />
-				<p:inputText id="add_mk_update_semester"
+				<p:inputMask id="add_mk_update_semester"
 					value="#{mataKuliahBean.mataKuliah.mkSemester}" required="true"
 					requiredMessage="Semester tidak boleh kosong"
-					label="add_mk_update_semester" />
+					label="add_mk_update_semester" mask="9" />
 
 			</h:panelGrid>
 			<p:commandButton value="Submit" icon="ui-icon-plus"

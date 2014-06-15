@@ -18,23 +18,29 @@
 				<p:inputText id="add_mk_inp_kode_mk"
 					value="#{mataKuliahBean.mataKuliah.mkKodeMk}" required="true"
 					requiredMessage="Kode MK tidak boleh kosong"
-					label="add_mk_inp_kode_mk" />
+					label="add_mk_inp_kode_mk" validatorMessage="Kode Mk tidak boleh lebih dari 8 karakter">
+					  <f:validateLength maximum="8" />
+					<p:message for="add_mk_inp_kode_mk" />
+					</p:inputText>
 
 				<p:outputLabel value="Nama : " />
 				<p:inputText id="add_mk_inp_nama"
 					value="#{mataKuliahBean.mataKuliah.mkNamaMk}" required="true"
-					requiredMessage="Nama tidak boleh kosong" label="add_mk_inp_nama" />
-
+					requiredMessage="Nama tidak boleh kosong" label="add_mk_inp_nama"  validatorMessage="Nama tidak boleh lebih dari 60 karakter">
+					  <f:validateLength maximum="60" />
+					<p:message for="add_mk_inp_nama" />
+					</p:inputText> 
+					
 				<p:outputLabel value="SKS : " />
-				<p:inputText id="add_mk_inp_sks"
+				<p:inputMask id="add_mk_inp_sks"
 					value="#{mataKuliahBean.mataKuliah.mkSks}" required="true"
-					requiredMessage="SKS tidak boleh kosong" label="add_mk_inp_sks" />
+					requiredMessage="SKS tidak boleh kosong" mask="9" label="add_mk_inp_sks" />
 
 				<p:outputLabel value="Semester : " />
-				<p:inputText id="add_mk_inp_semester"
+				<p:inputMask id="add_mk_inp_semester"
 					value="#{mataKuliahBean.mataKuliah.mkSemester}" required="true"
 					requiredMessage="Semester tidak boleh kosong"
-					label="add_mk_inp_semester" />
+					label="add_mk_inp_semester" mask="9" />
 
 			</h:panelGrid>
 			<p:commandButton value="Submit" icon="ui-icon-plus"
