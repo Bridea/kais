@@ -1,5 +1,6 @@
 package com.bridea.siak.bean;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -96,28 +97,32 @@ public class RekapNilaiBean extends AbstractBaseReportBean {
 		try {
 			// listKomponenNilais = new ArrayList<>();
 			// filterMk();
-			setListKomponenNilais(editNilai.getListNilaiMahasiswa());
+
 			super.prepareReport();
 		} catch (Exception e) {
 			// make your own exception handling
 			e.printStackTrace();
 		}
-
 		return null;
 	}
 
 	public void filterMk() {
+		listKomponenNilais = new ArrayList<>();
 		List<MKomponenNilai> tempList = komponenNilaiBean
 				.getListKomponenNilais();
+		System.out.println(tempList.size());
 		for (MKomponenNilai mKomponenNilai : tempList) {
 			if (mKomponenNilai.getMAmbil().getMMataKuliah().getMkKodeMk()
 					.equals(getTempKodeMataKuliah())
 					&& mKomponenNilai.getMAmbil().getMDosen().getDKodeDosen()
 							.equals(getTempKodeDosen())
-					&& mKomponenNilai.getMAmbil().getAKelas().equals(tempKelas)
-					&& mKomponenNilai.getMAmbil().getAWaktu().equals(tempWaktu)) {
+					&& mKomponenNilai.getMAmbil().getAKelas()
+							.equals(getTempKelas())
+					&& mKomponenNilai.getMAmbil().getAWaktu()
+							.equals(getTempWaktu())) {
 				listKomponenNilais.add(mKomponenNilai);
 			}
 		}
+		System.out.println(listKomponenNilais.size());
 	}
 }

@@ -51,6 +51,10 @@
 				<f:selectItem itemLabel="Siang" itemValue="Siang" />
 			</p:selectOneMenu>
 		</h:panelGrid>
+
+		<p:commandButton value="Search" action="#{rekapNilaiBean.filterMk}"
+			update=":form:laporan_nilai" />
+
 		<h:panelGrid columns="3">
 			<p:selectOneRadio value="#{rekapNilaiBean.exportOption}">
 				<f:selectItem itemValue="PDF" itemLabel="PDF" />

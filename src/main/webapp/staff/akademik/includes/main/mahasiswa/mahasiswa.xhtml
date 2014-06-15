@@ -25,25 +25,28 @@
 		<br />
 		<br />
 
-		<p:outputLabel value="Export Page Data Only" />
-		<h:commandLink>
-			<p:graphicImage value="/resources/icon/excel.png" />
-			<p:dataExporter type="xls" target="tbl_mahasiswa"
-				fileName="mahasiswa"
-				postProcessor="#{exporterSetting.postProcessXLS}" />
-		</h:commandLink>
-
-		<h:commandLink>
-			<p:graphicImage value="/resources/icon/pdf.png" />
-			<p:dataExporter type="pdf" target="tbl_mahasiswa"
-				fileName="mahasiswa" preProcessor="#{exporterSetting.preProcessPDF}" />
-		</h:commandLink>
-
 		<p:dataTable id="tbl_mahasiswa" widgetVar="mahasiswaTable"
 			value="#{mahasiswaBean.listMahasiswas}" var="mahasiswas"
 			paginator="true" rows="20"
 			paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
 			rowsPerPageTemplate="20,50,100">
+
+			<f:facet name="header">
+       		 List of Mahasiswa
+				<h:commandLink style="float:right">
+					<p:graphicImage value="/resources/icon/excel.png" />
+					<p:dataExporter type="xls" target="tbl_mahasiswa"
+						fileName="mahasiswa"
+						postProcessor="#{exporterSetting.postProcessXLS}" />
+				</h:commandLink>
+
+				<h:commandLink style="float:right">
+					<p:graphicImage value="/resources/icon/pdf.png" />
+					<p:dataExporter type="pdf" target="tbl_mahasiswa"
+						fileName="mahasiswa"
+						preProcessor="#{exporterSetting.preProcessPDF}" />
+				</h:commandLink>
+			</f:facet>
 
 			<p:column filterBy="#{mahasiswas.mhsNpm}" filterMatchMode="contains">
 				<f:facet name="header">

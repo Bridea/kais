@@ -15,13 +15,6 @@
 
 	<h:form id="form" prependId="true">
 
-		<p:selectOneRadio value="#{rekapNilaiBean.exportOption}">
-			<f:selectItem itemValue="PDF" itemLabel="PDF" />
-			<f:selectItem itemValue="EXCEL" itemLabel="EXCEL" />
-			<f:selectItem itemValue="RTF" itemLabel="WORD" />
-		</p:selectOneRadio>
-		<h:commandButton action="#{rekapNilaiBean.execute}" value="Get Report" />
-		<br />
 		<p:contextMenu for="kontrak" widgetVar="cMenu">
 			<p:menuitem value="Edit Nilai" icon="ui-icon-search"
 				onclick="PF('cellKontraks').showCellEditor();return false;" />
