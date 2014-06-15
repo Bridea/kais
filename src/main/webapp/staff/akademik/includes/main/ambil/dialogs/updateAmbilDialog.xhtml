@@ -58,6 +58,10 @@
 					<f:selectItem itemLabel="Siang" itemValue="Siang" />
 				</p:selectOneMenu>
 
+				<p:outputLabel value="Lahan Praktek : " />
+				<p:inputText value="#{ambilBean.ambil.ALahanPraktek}"
+					required="true" requiredMessage="lahan praktek harus di isi" />
+
 			</h:panelGrid>
 			<p:commandButton value="Submit" icon="ui-icon-plus"
 				action="#{ambilBean.update}" update=":growl :form_ambil:tbl_ambil"
