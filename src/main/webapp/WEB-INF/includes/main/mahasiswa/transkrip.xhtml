@@ -11,7 +11,7 @@
 
 	<div class="span8 page-content">
 		<h:form>
-			<h:commandLink id="dashboard" value="Kembali"
+			<h:commandLink id="dashboard" value="Logout"
 				actionListener="#{navigationBean.navigationPathChange}"
 				styleClass="btn btn-success">
 				<f:param name="includePath"
@@ -126,7 +126,7 @@
 
 				<p:panel
 					style="margin-top:-3%;margin-bottom:2%;width:20%; float:right;">
-					<h5>IPS : #{fn:substring(entry.key, 4, 8)}</h5>
+					<h5>IP : #{fn:substring(entry.key, 4, 8)}</h5>
 				</p:panel>
 
 			</ui:repeat>
