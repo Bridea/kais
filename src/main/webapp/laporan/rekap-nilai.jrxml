@@ -4,7 +4,7 @@
 	<property name="ireport.encoding" value="UTF-8"/>
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="15"/>
+	<property name="ireport.y" value="4"/>
 	<import value="net.sf.jasperreports.engine.*"/>
 	<import value="java.util.*"/>
 	<import value="net.sf.jasperreports.engine.data.*"/>
@@ -42,21 +42,21 @@
 					<bottomPen lineWidth="1.0" lineColor="#000000"/>
 				</box>
 				<frame>
-					<reportElement uuid="49b7eebb-e334-4b47-8c58-3e9f533faa61" x="270" y="0" width="245" height="99"/>
+					<reportElement uuid="49b7eebb-e334-4b47-8c58-3e9f533faa61" x="1" y="0" width="514" height="99"/>
 					<image>
-						<reportElement uuid="18d65005-bec0-418e-af5a-01493c860289" x="98" y="0" width="53" height="54"/>
-						<imageExpression><![CDATA["C:\\Users\\WahyudinScatt\\git\\kais\\src\\main\\webapp\\resources\\img\\Logo Apikes.png"]]></imageExpression>
+						<reportElement uuid="661471f8-a091-4e44-a9b1-52e30c68b57f" x="238" y="0" width="52" height="53"/>
+						<imageExpression><![CDATA["C:\\xampp\\tomcat\\webapps\\siak\\resources\\img\\Logo Apikes.png"]]></imageExpression>
 					</image>
-					<staticText>
-						<reportElement uuid="c4c7649e-7e57-435e-87a5-2fe78985566d" x="0" y="58" width="245" height="41"/>
-						<textElement textAlignment="Center">
-							<font size="11"/>
-						</textElement>
-						<text><![CDATA[Akademi Perekam Medis
-dan Informatika Kesehatan (APIKES) Bandung
-Jalan W.R. Supratman No. 100blk Bandung]]></text>
-					</staticText>
 				</frame>
+				<staticText>
+					<reportElement uuid="dc595f80-9e50-4303-8975-3f68e220004f" x="0" y="63" width="514" height="46"/>
+					<textElement textAlignment="Center">
+						<font size="12"/>
+					</textElement>
+					<text><![CDATA[Akademi Perekam Medis dan Informatika Kesehatan
+(APIKES) Bandung
+Jalan W.R. Supratman No. 100blk Bandung]]></text>
+				</staticText>
 			</frame>
 			<staticText>
 				<reportElement uuid="4c66eff3-5ca8-40cf-9c9e-46db2344a4ef" x="0" y="161" width="100" height="20"/>

@@ -53,8 +53,9 @@
 		</h:panelGrid>
 
 		<p:commandButton value="Search" action="#{rekapNilaiBean.filterMk}"
-			update=":form:laporan_nilai" />
-
+			update=":form:laporan_nilai :growl" />
+		
+		<br/><br/>
 		<h:panelGrid columns="3">
 			<p:selectOneRadio value="#{rekapNilaiBean.exportOption}">
 				<f:selectItem itemValue="PDF" itemLabel="PDF" />

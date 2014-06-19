@@ -49,7 +49,8 @@
 
 	<filter-mapping>
 		<filter-name>AuthorizationFilter</filter-name>
-		<url-pattern>/staff.akademikK.jsf</url-pattern>
+		<url-pattern>/staff.akademik.jsf</url-pattern>
+		<url-pattern>/servlets/report/PDF</url-pattern>
 	</filter-mapping>
 
 	<context-param>
