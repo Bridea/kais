@@ -42,7 +42,11 @@
 					<p:column>NPM : #{ambilBean.mahasiswa.mhsNpm}</p:column>
 				</p:row>
 				<p:row>
-					<p:column>Tempat Tanggal Lahir : #{ambilBean.mahasiswa.mhsTempatLahir},#{ambilBean.mahasiswa.mhsTanggalLahir}</p:column>
+					<p:column>Tempat Tanggal Lahir : #{ambilBean.mahasiswa.mhsTempatLahir},
+					<h:outputText value="#{ambilBean.mahasiswa.mhsTanggalLahir}">
+					<f:convertDateTime pattern="dd-MM-yyyy" />
+					</h:outputText>
+					</p:column>
 				</p:row>
 				<p:row>
 					<p:column>Program Studi :<br />
