@@ -71,7 +71,9 @@
 				<f:facet name="header">
 					<h:outputText value="Tanggal Lahir" />
 				</f:facet>
-				<h:outputText value="#{mahasiswas.mhsTanggalLahir}" />
+				<h:outputText value="#{mahasiswas.mhsTanggalLahir}">
+				 <f:convertDateTime pattern="MM-dd-yyyy" />
+				</h:outputText>
 			</p:column>
 			<p:column>
 				<f:facet name="header">
