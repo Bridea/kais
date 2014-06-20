@@ -86,8 +86,11 @@
 						<h:outputText value="#{kontraks.knNilaiKehadiran}" />
 					</f:facet>
 					<f:facet name="input">
-						<p:inputMask value="#{kontraks.knNilaiKehadiran}"
-							style="width:30%" mask="99" />
+						<p:inputText value="#{kontraks.knNilaiKehadiran}"
+							style="width:30%" id="nilaiKehadiran"  validatorMessage="Nilai Kehadiran tidak boleh kurang dari 0 dan lebih dari 100">
+							<f:validateDoubleRange minimum="0.0" maximum="100.0"/>
+							<p:message for="nilaiKehadiran" />
+							</p:inputText>
 					</f:facet>
 				</p:cellEditor>
 			</p:column>
@@ -98,8 +101,11 @@
 						<h:outputText value="#{kontraks.knNilaiTugas}" />
 					</f:facet>
 					<f:facet name="input">
-						<p:inputMask value="#{kontraks.knNilaiTugas}" style="width:30%"
-							mask="99" />
+						<p:inputText value="#{kontraks.knNilaiTugas}" style="width:30%"
+							id="nilaiTugas" validatorMessage="Nilai Tugas tidak boleh kurang dari 0 dan lebih dari 100">
+							<f:validateDoubleRange minimum="0.0" maximum="100.0"/>
+							<p:message for="nilaiTugas" />
+							</p:inputText>
 					</f:facet>
 				</p:cellEditor>
 			</p:column>
@@ -110,8 +116,11 @@
 						<h:outputText value="#{kontraks.knNilaiUts}" />
 					</f:facet>
 					<f:facet name="input">
-						<p:inputMask value="#{kontraks.knNilaiUts}" style="width:30%"
-							mask="99" />
+						<p:inputText value="#{kontraks.knNilaiUts}" style="width:30%"
+							id="nilaiUts" validatorMessage="Nilai Uts tidak boleh kurang dari 0 dan lebih dari 100">
+							<f:validateDoubleRange minimum="0.0" maximum="100.0"/>
+							<p:message for="nilaiUts" />
+							</p:inputText>
 					</f:facet>
 				</p:cellEditor>
 			</p:column>
@@ -122,8 +131,11 @@
 						<h:outputText value="#{kontraks.knNilaiUas}" />
 					</f:facet>
 					<f:facet name="input">
-						<p:inputMask value="#{kontraks.knNilaiUas}" style="width:30%"
-							mask="99" />
+						<p:inputText value="#{kontraks.knNilaiUas}" style="width:30%"
+							id="nilaiUas" validatorMessage="Nilai Uas tidak boleh kurang dari 0 dan lebih dari 100">
+							<f:validateDoubleRange minimum="0.0" maximum="100.0"/>
+							<p:message for="nilaiUas" />
+							</p:inputText>
 					</f:facet>
 				</p:cellEditor>
 			</p:column>
