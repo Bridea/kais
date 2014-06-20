@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import javax.faces.context.FacesContext;
+
+import org.primefaces.component.datatable.DataTable;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Scope;
@@ -117,6 +120,14 @@ public class MataKuliahBean extends DialogBean {
 		try {
 			mataKuliah.setMkStatus(false);
 			dao.update(mataKuliah);
+
+			DataTable dataTable = (DataTable) FacesContext.getCurrentInstance()
+					.getViewRoot()
+					.findComponent(":form_mataKuliah:tbl_mataKuliah");
+			if (dataTable != null) {
+				dataTable.reset();
+			}
+
 			displayInfoMessageToUser("Hapus MataKuliah Berhasil");
 		} catch (Exception e) {
 			System.out.println("error Karena : " + e.getMessage());

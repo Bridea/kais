@@ -5,6 +5,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.TreeMap;
 
+import javax.faces.context.FacesContext;
+
+import org.primefaces.component.datatable.DataTable;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Scope;
@@ -199,6 +202,13 @@ public class AmbilBean extends DialogBean {
 	public void delete() {
 		try {
 			dao.delete(ambil);
+
+			DataTable dataTable = (DataTable) FacesContext.getCurrentInstance()
+					.getViewRoot().findComponent(":form_ambil:tbl_ambil");
+			if (dataTable != null) {
+				dataTable.reset();
+			}
+
 			displayInfoMessageToUser("Hapus Ambil Berhasil");
 		} catch (Exception e) {
 			System.out.println("error Karena : " + e.getMessage());

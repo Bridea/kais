@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import javax.faces.context.FacesContext;
+
+import org.primefaces.component.datatable.DataTable;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Scope;
@@ -89,6 +92,13 @@ public class DosenBean extends DialogBean {
 		try {
 			dosen.setDStatus(false);
 			dao.update(dosen);
+
+			DataTable dataTable = (DataTable) FacesContext.getCurrentInstance()
+					.getViewRoot().findComponent(":form_dosen:tbl_dosen");
+			if (dataTable != null) {
+				dataTable.reset();
+			}
+
 			displayInfoMessageToUser("Hapus Dosen Berhasil");
 		} catch (Exception e) {
 			System.out.println("error Karena : " + e.getMessage());
