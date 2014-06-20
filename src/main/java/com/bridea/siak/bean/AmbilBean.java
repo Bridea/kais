@@ -238,7 +238,10 @@ public class AmbilBean extends DialogBean {
 		boolean status = true;
 		System.out.println("masuk check NPM");
 		if (!getTempNPMCariNilai().equals("")) {
-			if ((mahasiswaBean.getMahasiswaByID(getTempNPMCariNilai())) == null) {
+			MMahasiswa mahasiswaTemp = new MMahasiswa();
+			mahasiswaTemp = mahasiswaBean
+					.getMahasiswaByID(getTempNPMCariNilai());
+			if (mahasiswaTemp.isMhsStatus() == false) {
 				displayInfoMessageToUser("NPM Anda Tidak Terdaftar, Mohon Untuk Dicek kembali");
 				status = false;
 			}
