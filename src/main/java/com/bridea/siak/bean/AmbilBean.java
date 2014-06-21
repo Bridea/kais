@@ -251,7 +251,10 @@ public class AmbilBean extends DialogBean {
 			MMahasiswa mahasiswaTemp = new MMahasiswa();
 			mahasiswaTemp = mahasiswaBean
 					.getMahasiswaByID(getTempNPMCariNilai());
-			if (mahasiswaTemp.isMhsStatus() == false) {
+			if (mahasiswaTemp == null) {
+				displayInfoMessageToUser("NPM Anda Tidak Terdaftar, Mohon Untuk Dicek kembali");
+				status = false;
+			} else if (mahasiswaTemp.isMhsStatus() == false) {
 				displayInfoMessageToUser("NPM Anda Tidak Terdaftar, Mohon Untuk Dicek kembali");
 				status = false;
 			}

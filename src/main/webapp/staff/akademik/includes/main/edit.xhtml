@@ -32,7 +32,7 @@
        </f:facet>
 
 			<p:ajax event="cellEdit" listener="#{editNilai.onCellEdit}"
-				update=":growl" oncomplete="rc()">
+				update=":growl">
 			</p:ajax>
 
 			<!-- <p:column headerText="ID" style="width:2%">
@@ -87,10 +87,11 @@
 					</f:facet>
 					<f:facet name="input">
 						<p:inputText value="#{kontraks.knNilaiKehadiran}"
-							style="width:30%" id="nilaiKehadiran"  validatorMessage="Nilai Kehadiran tidak boleh kurang dari 0 dan lebih dari 100">
-							<f:validateDoubleRange minimum="0.0" maximum="100.0"/>
+							style="width:30%" id="nilaiKehadiran"
+							validatorMessage="Nilai Kehadiran tidak boleh kurang dari 0 dan lebih dari 100">
+							<f:validateDoubleRange minimum="0.0" maximum="100.0" />
 							<p:message for="nilaiKehadiran" />
-							</p:inputText>
+						</p:inputText>
 					</f:facet>
 				</p:cellEditor>
 			</p:column>
@@ -102,10 +103,11 @@
 					</f:facet>
 					<f:facet name="input">
 						<p:inputText value="#{kontraks.knNilaiTugas}" style="width:30%"
-							id="nilaiTugas" validatorMessage="Nilai Tugas tidak boleh kurang dari 0 dan lebih dari 100">
-							<f:validateDoubleRange minimum="0.0" maximum="100.0"/>
+							id="nilaiTugas"
+							validatorMessage="Nilai Tugas tidak boleh kurang dari 0 dan lebih dari 100">
+							<f:validateDoubleRange minimum="0.0" maximum="100.0" />
 							<p:message for="nilaiTugas" />
-							</p:inputText>
+						</p:inputText>
 					</f:facet>
 				</p:cellEditor>
 			</p:column>
@@ -117,10 +119,11 @@
 					</f:facet>
 					<f:facet name="input">
 						<p:inputText value="#{kontraks.knNilaiUts}" style="width:30%"
-							id="nilaiUts" validatorMessage="Nilai Uts tidak boleh kurang dari 0 dan lebih dari 100">
-							<f:validateDoubleRange minimum="0.0" maximum="100.0"/>
+							id="nilaiUts"
+							validatorMessage="Nilai Uts tidak boleh kurang dari 0 dan lebih dari 100">
+							<f:validateDoubleRange minimum="0.0" maximum="100.0" />
 							<p:message for="nilaiUts" />
-							</p:inputText>
+						</p:inputText>
 					</f:facet>
 				</p:cellEditor>
 			</p:column>
@@ -132,10 +135,11 @@
 					</f:facet>
 					<f:facet name="input">
 						<p:inputText value="#{kontraks.knNilaiUas}" style="width:30%"
-							id="nilaiUas" validatorMessage="Nilai Uas tidak boleh kurang dari 0 dan lebih dari 100">
-							<f:validateDoubleRange minimum="0.0" maximum="100.0"/>
+							id="nilaiUas"
+							validatorMessage="Nilai Uas tidak boleh kurang dari 0 dan lebih dari 100">
+							<f:validateDoubleRange minimum="0.0" maximum="100.0" />
 							<p:message for="nilaiUas" />
-							</p:inputText>
+						</p:inputText>
 					</f:facet>
 				</p:cellEditor>
 			</p:column>
@@ -148,7 +152,7 @@
 				<h:outputText value="#{kontraks.MAmbil.AGradeNilai}" />
 			</p:column>
 			<p:column style="width:3%">
-				<p:commandButton value="Simpan" />
+				<p:commandButton icon="ui-icon-refresh" update=":form:kontrak" />
 			</p:column>
 		</p:dataTable>
 	</h:form>
